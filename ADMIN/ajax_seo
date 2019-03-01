@@ -1,0 +1,58 @@
+<?php
+require_once('../Connections/divdb.php');
+session_start();
+
+ if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$timezone = new DateTimeZone("Asia/Kolkata" );
+  $date = new DateTime();
+  $date->setTimezone($timezone );
+  $mm=$date->format('m');
+  $mm1=$date->format('M');
+  $yy=$date->format('Y');
+  $dd=$date->format('d');
+  $time=date("H:i:s");
+  $today=date("Y-m-d");
+?>
+
+<?php
+//inserting faq questions and answers
+if(isset($_GET['type']) && $_GET['type']==1)
+{ 
+echo "fdf".$field_name=$_POST['field'];
+echo "fddfsf".$upd_vals=$_POST['vals'];
+
+		echo $seo =$conn->prepare(("update seo_settings set ".$field_name."=?",
+			 		mysql_real_escape_string($upd_vals)));
+	    $seo->execute(array($upd_vals));
+
+}?>

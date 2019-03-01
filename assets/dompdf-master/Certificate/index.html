@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Certificate</title>
+</head>
+<style>
+
+
+@font-face {
+    font-family: 'sonoma_scriptregular';
+ src: url('font/sonomascript-webfont.eot');
+    src: url('font/sonomascript-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/sonomascript-webfont.woff2') format('woff2'),
+         url('font/sonomascript-webfont.woff') format('woff'),
+         url('font/sonomascript-webfont.ttf') format('truetype'),
+         url('font/sonomascript-webfont.svg#sonoma_scriptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('font/roboto-regular-webfont.eot');
+    src: url('font/roboto-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/roboto-regular-webfont.woff2') format('woff2'),
+         url('font/roboto-regular-webfont.woff') format('woff'),
+         url('font/roboto-regular-webfont.ttf') format('truetype'),
+         url('font/roboto-regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'ScriptMTBoldRegular';
+    src: url('font/scriptbl.eot');
+    src: url('font/scriptbl.eot') format('embedded-opentype'),
+         url('font/scriptbl.woff2') format('woff2'),
+         url('font/scriptbl.woff') format('woff'),
+         url('font/scriptbl.ttf') format('truetype'),
+         url('font/scriptbl.svg#ScriptMTBoldRegular') format('svg');
+}
+
+</style>
+
+<body>
+
+
+<div style="width:950px; height:550px; background-image:url(images/bg.png); margin:auto; 
+ border-style:inset; border-width:20px; border-bottom-color:#000; border-left-color:#000;">
+
+<div style="border-style:solid; margin:10px 10px 10px 10px;height:520px;">
+
+<div align="center" style="padding-top:5px;">
+<input type="text" value="ExamBooking.Crop" style=" font-family:'robotoregular';font-size:24px;text-align:center;background-color:inherit;border:1px dashed  #FF0000"/>
+</div>
+
+<div style="background-image:url(images/STAR.png); background-position:center; background-repeat:no-repeat; height:25px;">
+
+</div>
+
+<div style="font-family:'Lucida Console', Monaco, monospace; font-size:48px; text-align:center">
+
+CERTIFICATE
+
+</div>
+
+<div style="background-image:url(images/of.png); background-position:center; background-repeat:no-repeat; height:25px; padding-bottom:15px;" >
+
+</div>
+
+<div align="center" style="background-image:url(images/red.png); background-position:center; background-repeat:no-repeat; height:50px; "> 
+
+<input type="text" style="font-family:Arial, Helvetica, sans-serif; font-size:44px; color:#FFF; text-align:center; background-color:inherit;border:none;" />
+
+</div>
+
+<div align="center">
+<input type="text" style="font-family:'ScriptMTBoldRegular'; font-size:24px; width:550px; text-align:center; margin-right:200px;
+ margin-left:200px; padding-top:5px;background:inherit;border:1px dashed #FF0000" />
+</div>
+
+<div  align="center">
+<input type="text" style="font-family:'robotoregular'; font-size:55px; text-align:center;background:inherit;border:1px dashed #FF0000"" />
+</div>
+
+<div align="center">
+<input type="text" style="font-family:'ScriptMTBoldRegular'; font-size:22px; width:550px; text-align:center; margin-right:200px;
+padding-bottom:5px; margin-left:200px;background:inherit;border:1px dashed #FF0000"" />
+
+
+<div align="center">  
+<input type="text"  style="font-family:Segoe UI Symbol; font-size:24px; text-align:center;background:inherit;border:1px dashed #FF0000""/>
+</div> 
+
+<input type="text" style="font-family:'ScriptMTBoldRegular'; font-size:22px; width:550px; text-align:center; margin-right:200px;
+padding-bottom:5px; margin-left:200px;background:inherit;border:1px dashed #FF0000"" />
+</div>
+
+
+
+
+<div style="font-family:'robotoregular'; font-size:18px; text-align:left; margin-left:20px; margin-top:30px; float:left;">
+Exam Code:123456<br />
+Certificate ID:654321
+</div>
+
+
+<div style="float:left; margin-left:210px; padding-top:20px;">
+<img id="uploadPreview" style="width: 180px; height: 64px;" />
+<input id="uploadImage" type="file" name="myPhoto" onchange="PreviewImage();" style="position:absolute;"/>
+</div>
+
+
+
+<div align="right" style="margin-right:20px; margin-top:18px;">
+<input id="uploadsign" type="file" name="myPhoto" onchange="PreviewImage1();" style="position:absolute;margin-left:-10%;margin-top:-2%;"/>
+<div style="margin-left:115px;">
+<img id="signPreview" style="width: 134px; height:38px;" />
+
+</div>
+<div style="margin-right:25px;">
+<input type="text" value="Issued By" style="font-family:'robotoregular'; font-size:18px; text-align:right; background:inherit;border:1px dashed #FF0000"/>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>
+<script type="text/javascript">
+
+    function PreviewImage1() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadsign").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("signPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>

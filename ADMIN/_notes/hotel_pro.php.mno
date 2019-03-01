@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_htpro" value="name:sno;datatype:int,name:hotel_id;datatype:blob,name:hotel_name;datatype:blob,name:location;datatype:blob,name:city;datatype:int,name:state;datatype:int,name:category;datatype:blob,name:hotel_link;datatype:blob,name:hotel_phone;datatype:blob,name:datetime;datatype:blob,name:status;datatype:int" />
+	<infoitem key="UD_hot1" value="name:sno;datatype:int,name:hotel_id;datatype:blob,name:hotel_name;datatype:blob,name:location;datatype:blob,name:city;datatype:int,name:state;datatype:int,name:category;datatype:blob,name:hotel_link;datatype:blob,name:hotel_phone;datatype:blob,name:datetime;datatype:blob,name:status;datatype:int" />
+</info>

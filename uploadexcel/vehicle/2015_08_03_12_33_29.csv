@@ -1,0 +1,10 @@
+vehicle_type,capacity,avail_cities,perday_rental,perkm_charge,max_km_perday
+Indica A/C,3,47,1800,11,150
+Indigo A/C,4,47,1700,11,100
+Swift Dzire A/C,4,47,1750,11,100
+Etios A/C,4,47,1800,11,100
+Tavera A/C,6,47,1800,12,100
+Innova A/C,6,47,2150,15,100
+Tempo Traveller (12 Seated),11,47,3150,15,100
+Tempo Traveller (17 Seated),17,47,3450,17,100
+Tempo Traveller (26 Seated),25,47,5900,26,80

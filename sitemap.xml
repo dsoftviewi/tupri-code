@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- sitemap-generator-url="http://www.elysiumservices.info" -->
+<!-- Portal, Web Development by Elysium Services -->
+<!-- Exambooking.com  assesmnet enginee for you www.exambooking.com-->
+<urlset 
+		xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
+		http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+<url>
+    <loc>http://dvi.co.in</loc>
+	<priority>1.0</priority>
+    <changefreq>always</changefreq>
+	
+</url>
+<url>
+    <loc>http://dvi.co.in/contact.php</loc>
+	<priority>0.9</priority>
+    <changefreq>always</changefreq>
+</url>
+<url>
+    <loc>http://dvi.co.in/index.php</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/about.php</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=22</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=40</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/gallery.php</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/faq.php</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1792-lady-s-seat.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=40&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1703-i_BDYRv5z.jpg&#x26;cluster%5B1%5D=SPOT1703-hqdefault.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=14&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1854-18-vittala-temple.jpg&#x26;cluster%5B1%5D=SPOT1854-vittala.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=67&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1736-Government+Museum.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=22&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1711-nagoor_img.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=17&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1654-T_500_914.jpg&#x26;cluster%5B1%5D=SPOT1654-download+%282%29.jpg&#x26;cluster%5B2%5D=SPOT1654-hqdefault.jpg&#x26;cluster%5B3%5D=SPOT1654-images+%282%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=6&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1847-Belgaum.JPG&#x26;cluster%5B1%5D=SPOT1847-Kapileeswarar+temple+in+Belgaum.jpg&#x26;cluster%5B2%5D=SPOT1847-Kamal+Basti+in+VKS+2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=63&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1810-The-Quilon-Beach-Kollam.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=48&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1650-images+%289%29.jpg&#x26;cluster%5B1%5D=SPOT1650-images+%288%29.jpg&#x26;cluster%5B2%5D=SPOT1650-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=5&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1786-Sripuram_Temple_Full_View.jpg&#x26;cluster%5B1%5D=SPOT1786-thumbs_2.jpg&#x26;cluster%5B2%5D=SPOT1786-15FR_SWARNALAKSHMI_1363711f.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=37&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1863-Mysore+Palace1.jpg&#x26;cluster%5B1%5D=SPOT1863-45630789aa5cf63c93625b7c259754e2.jpg&#x26;cluster%5B2%5D=SPOT1863-Darbar-hall.jpg&#x26;cluster%5B3%5D=SPOT1863-images.jpg&#x26;cluster%5B4%5D=SPOT1863-Mysore.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=72&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1848-300px-Bellary_Fort3.jpg&#x26;cluster%5B1%5D=SPOT1848-Mining_Bellary.gif</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=64&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1685-banner1.jpg&#x26;cluster%5B1%5D=SPOT1685-Krishnagiri-Dam.jpg&#x26;cluster%5B2%5D=SPOT1685-krishnagiri_dam.jpg&#x26;cluster%5B3%5D=SPOT1685-Krish_dam.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=12&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1803-194_Athirapally+waterfalls.jpg&#x26;cluster%5B1%5D=SPOT1803-athirappilly-water-falls-thrissur-kerala-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=45&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1801-Sun+Rise+Alleppey+Beach_Kerala.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=44&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1770-28_tiruchendur_1600046f.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=29&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1774-download.jpg&#x26;cluster%5B1%5D=SPOT1774-Thiruvarur-Thyagarajaswamy-Shiva-Temple5.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=32&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1755-107604199.jpg&#x26;cluster%5B1%5D=SPOT1755-maxresdefault.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=25&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=75&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=76&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=77&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=78&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=79&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=80&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=81&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=82&#x26;sid=2</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/tour_details.php?tid1=TH&#x26;tid2=3734</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/tour_details.php?tid1=TH&#x26;tid2=3571</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/tour_details.php?tid1=TH&#x26;tid2=3568</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=59&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=43&#x26;sid=22</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=41&#x26;sid=40</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=60&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=61&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=62&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=65&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=66&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=68&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=19&#x26;more=more</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=46&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=47&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=49&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=50&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=51&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=52&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=53&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=13&#x26;more=more</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=42&#x26;sid=40</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=1&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=2&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=3&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=4&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=7&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=8&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=9&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=10&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspot.php?id=25&#x26;more=more</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1875-Anantapur.jpg&#x26;cluster%5B1%5D=SPOT1875-Dharmavaram.jpg&#x26;cluster%5B2%5D=SPOT1875-2294img4-new.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1876-isckon-+2.jpg&#x26;cluster%5B1%5D=SPOT1876-isckon.jpg&#x26;cluster%5B2%5D=SPOT1876-ISKCON_TEMPLE-Anantapur-Dr._Murali_Mohan_Gurram_%2817%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1877-lepkashi+2.jpg&#x26;cluster%5B1%5D=SPOT1877-Lepakshi-Temple-in-Anantapur-21.jpg&#x26;cluster%5B2%5D=SPOT1877-DSC04223EN-500x271.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1878-04_-_On_the_Banks_of_River_Pennar.JPG&#x26;cluster%5B1%5D=SPOT1878-Sri-Chintala-Venkata-Ramana-Swamy-Temple-in-Tadipatri.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1879-800px-Puttaparthi.jpg&#x26;cluster%5B1%5D=SPOT1879-imperial-pomp-at-puttaparthi-jpeg.jpg&#x26;cluster%5B2%5D=SPOT1879-puttaparthi.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1880-Bhadrachalam1.jpg&#x26;cluster%5B1%5D=SPOT1880-800px-A_View_of_Bhadrachalam_Gopuram.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1881-Belum+Caves.jpg&#x26;cluster%5B1%5D=SPOT1881-belum+caves-3.jpeg&#x26;cluster%5B2%5D=SPOT1881-Belum-Caves2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1882-Kurnool-Mahanandi.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1883-7171112_mantralayam_01.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1884-Ahobilam.jpg&#x26;cluster%5B1%5D=SPOT1884-800px-Upper_Ahobilam_temple_Gopuram_02.jpg&#x26;cluster%5B2%5D=SPOT1884-A_pillar_at_Ahobilam_temple_in_Kurnool_District_of_Andhra_Pradesh.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1885-Orvakallu-1.jpg&#x26;cluster%5B1%5D=SPOT1885-Orvakallu2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1886-yaganti.jpg&#x26;cluster%5B1%5D=SPOT1886-220px-Yaganti.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1802-cocohouseboats-slider-main.png&#x26;cluster%5B1%5D=SPOT1802-hbs.jpg&#x26;cluster%5B2%5D=SPOT1802-kerala-backwater-tour.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1804-2809-3626-800px-Cherai_Beach1.jpg&#x26;cluster%5B1%5D=SPOT1804-Cherai-Beach.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1805-800px-Fort_Cochin_cathedral.jpg&#x26;cluster%5B1%5D=SPOT1805-Inside_santa_cruez_Basilica.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1806-Royal_palace_in_cochin.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1807-Jewish_synagouge_kochi_india.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1808-St+Francis+Church+kochi+offers.jpg&#x26;cluster%5B1%5D=SPOT1808-st-francis.jpg&#x26;cluster%5B2%5D=SPOT1808-st-francis-church.jpg&#x26;cluster%5B3%5D=SPOT1808-francis+church.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1809-Fort+Kochi.jpg&#x26;cluster%5B1%5D=SPOT1809-Fort+Kochi2.jpg&#x26;cluster%5B2%5D=SPOT1809-fort_kochi20131031104449_422_1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1811-Hawa-Beach.jpg&#x26;cluster%5B1%5D=SPOT1811-Kovalam-Photos-Beach-View-2-Kovalam-3518-9-jpg-destreviewimages-500x375-1324605548.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1812-pazhassi_raja_museum_art_gallery_kozhikode20131206115017_258_1.jpg&#x26;cluster%5B1%5D=SPOT1812-Pazhassiraja+-3.jpg&#x26;cluster%5B2%5D=SPOT1812-Pazhassiraja+-4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1834-800px-Aihole.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1835-1024px-Lad_NKAD90.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1836-Meguti+temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1837-gowda+temple.jpg&#x26;cluster%5B1%5D=SPOT1837-Gowda+temple+2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1838-BadamiCaves87.JPG&#x26;cluster%5B1%5D=SPOT1838-Vishnu_image_inside_cave_number_3_in_Badami.jpg&#x26;cluster%5B2%5D=SPOT1838-15_Troglodytique_Shiva_Hindu_Temple_Badami_Karnataka_India_2014.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1839-bandipur-national-park.jpg&#x26;cluster%5B1%5D=SPOT1839-bandipur-national-park-ooty.jpg&#x26;cluster%5B2%5D=SPOT1839-event_barrier1.jpg&#x26;cluster%5B3%5D=SPOT1839-images.jpg&#x26;cluster%5B4%5D=SPOT1839-2012-bandipur-chital.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1840-bangalore-palace.jpg&#x26;cluster%5B1%5D=SPOT1840-9.jpg&#x26;cluster%5B2%5D=SPOT1840-images.jpg&#x26;cluster%5B3%5D=SPOT1840-in-ka-blr-160_interior.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1841-Lal-Bagh-flower-show.jpg&#x26;cluster%5B1%5D=SPOT1841-Funchal_Botanical_garden_IMG_1806.JPG&#x26;cluster%5B2%5D=SPOT1841-Lalbagh_Glasshouse_night_panorama.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1842-Palace.jpg&#x26;cluster%5B1%5D=SPOT1842-Tipu-Sultan-Palace-Sean-Ellis-Flickr-Creative-commons.jpg&#x26;cluster%5B2%5D=SPOT1842-634902364832316346_Tipu-Sultan-Fort-and-Palace-Bangalore-India.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1843-Vidhana+southa.jpeg&#x26;cluster%5B1%5D=SPOT1843-vidhana-soudha-interior.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1844-Iskcon+temple.jpg&#x26;cluster%5B1%5D=SPOT1844-radha_krishna-31.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1845-bull-temple.jpg&#x26;cluster%5B1%5D=SPOT1845-Bangalore-Bull-Temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1799-Pondicherry2.jpg&#x26;cluster%5B1%5D=SPOT1799-16.jpg&#x26;cluster%5B2%5D=SPOT1799-pondicherry+museum+puducherry+india+picture.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1798-ImageReader.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1797-botanical-gardens_82380_m.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1796-sacred-heart-of-jesus.jpg&#x26;cluster%5B1%5D=SPOT1796-Church-of-the-Sacred-Heart-of-Jesus.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1795-Promenade+Beach.jpg&#x26;cluster%5B1%5D=SPOT1795-pondicherry-weekend-tour.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1794-auroville.jpg&#x26;cluster%5B1%5D=SPOT1794-pondicherry.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1793--35332_6984.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1800-ManakulaVinayagar.jpg&#x26;cluster%5B1%5D=SPOT1800-Manakula-Vinayagar-Kovil-Pondicherry.jpg&#x26;cluster%5B2%5D=SPOT1800-Temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1791-Yercaud+Lake.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1790-viewfarm1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1789-fruit+farm.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1788-Punganur+lake.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1787-images+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1787-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1785-flight-company-logos-250x250.jpg&#x26;cluster%5B1%5D=SPOT1785-d3871975d8ddfb61124cb264893161b2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1784-vellore.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1783-velankanni-church-hd-2.jpg&#x26;cluster%5B1%5D=SPOT1783-Velankanni+Matha.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1782-19.-kalash-of-samayapuram-mariamman-temple.jpg&#x26;cluster%5B1%5D=SPOT1782-SAMAYAPURAM5_108685f.jpg&#x26;cluster%5B2%5D=SPOT1782-samaya5.jpg&#x26;cluster%5B3%5D=SPOT1782-Mariamman_Samayapuram.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1781-jambukeswarar-temple-thiruvanaikavar2.jpg&#x26;cluster%5B1%5D=SPOT1781-trichy-thiruvanaikoil-1.jpg&#x26;cluster%5B2%5D=SPOT1781-GW430.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1926-Charminar+-+1.jpg&#x26;cluster%5B1%5D=SPOT1926-Charminar2.jpg&#x26;cluster%5B2%5D=SPOT1926-Charminar+-+3.jpg&#x26;cluster%5B3%5D=SPOT1926-Charminar+4.JPG&#x26;cluster%5B4%5D=SPOT1926-Charminar5.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1927-qutubshahi.jpg&#x26;cluster%5B1%5D=SPOT1927-qutub2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1928-Salar+jung.jpg&#x26;cluster%5B1%5D=SPOT1928-Salar+jung1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1929-Mecca2.jpg&#x26;cluster%5B1%5D=SPOT1929-meccamasjid.jpg&#x26;cluster%5B2%5D=SPOT1929-Meeca1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1931-Golconda1.jpg&#x26;cluster%5B1%5D=SPOT1931-Golconda2.jpg&#x26;cluster%5B2%5D=SPOT1931-golconda-fort-hyderabad.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1933-Birla+Mandir1.jpg&#x26;cluster%5B1%5D=SPOT1933-Pict0745-Birla-Mandir-Temple-2.Jpg&#x26;cluster%5B2%5D=SPOT1933-Birla-Mandir3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1936-ramoji1.jpg&#x26;cluster%5B1%5D=SPOT1936-ramoji2.jpg&#x26;cluster%5B2%5D=SPOT1936-ramoji3.jpg&#x26;cluster%5B3%5D=SPOT1936-ramoji4.jpg&#x26;cluster%5B4%5D=SPOT1936-ramoji5.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1942-Hussain-Sagar-1.jpg&#x26;cluster%5B1%5D=SPOT1942-Hussain_Sagar_Lake2.jpg&#x26;cluster%5B2%5D=SPOT1942-Gautam_Budhha_Statue_on_the_Hussain_Sagar_Lake.jpg&#x26;cluster%5B3%5D=SPOT1942-hussain-sagar-lake-4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1943-Nizam+Museum1.jpg&#x26;cluster%5B1%5D=SPOT1943-nizams-silver-jubilee2.jpg&#x26;cluster%5B2%5D=SPOT1943-Nizam+Museum3.jpg&#x26;cluster%5B3%5D=SPOT1943-The+Nizam%E2%80%99s+Silver+Jubilee+Museum4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1944-Chowmohalla+Palace1.jpg&#x26;cluster%5B1%5D=SPOT1944-Chowmohalla+Palace2.jpg&#x26;cluster%5B2%5D=SPOT1944-Chowmohalla+Palace3.jpg&#x26;cluster%5B3%5D=SPOT1944-Chowmohalla+Palace4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1946-osman1.jpg&#x26;cluster%5B1%5D=SPOT1946-Osman-Sagar2.jpg&#x26;cluster%5B2%5D=SPOT1946-osman3.jpg&#x26;cluster%5B3%5D=SPOT1946-Osman4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1947-Warangal+fort1.jpg&#x26;cluster%5B1%5D=SPOT1947-Warangal+fort2.jpg&#x26;cluster%5B2%5D=SPOT1947-WarangalFort3.jpg&#x26;cluster%5B3%5D=SPOT1947-Warangalfort4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/gallery.php?more=more</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1702-Thiruparankundram-Murugan-temple1.jpg&#x26;cluster%5B1%5D=SPOT1702-Thiruparanakundram-Thiruparankundram+Subramanya+Temple-3.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1700-muse_pic2.jpg&#x26;cluster%5B1%5D=SPOT1700-31MA_MUSEUMDU_1739272f.jpg&#x26;cluster%5B2%5D=SPOT1700-Madurai-Government+Museum+in+the+Gandhi+Museum+Complex-2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1699-madurai+museum.jpg&#x26;cluster%5B1%5D=SPOT1699-caption.jpg&#x26;cluster%5B2%5D=SPOT1699-MA27_GANDHI_1918380f.jpg&#x26;cluster%5B3%5D=SPOT1699-atmemorial.jpg&#x26;cluster%5B4%5D=SPOT1699-1344323110_639.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1698-Koodal2-1395192.jpg&#x26;cluster%5B1%5D=SPOT1698-Koodal-Azhagar-Perumal-Vishnu-Temple1st1-1397192.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1697-Azhagar.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1696-images.jpg&#x26;cluster%5B1%5D=SPOT1696-thirumalai-nayakar-mahal.jpg&#x26;cluster%5B2%5D=SPOT1696-thirumalai+nayakar+mahal_1+%289%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1695-5.jpg&#x26;cluster%5B1%5D=SPOT1695-meenakshi.png&#x26;cluster%5B2%5D=SPOT1695-Meenakshi_Sundareswarar.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1639-download+%286%29.jpg&#x26;cluster%5B1%5D=SPOT1639-download+%287%29.jpg&#x26;cluster%5B2%5D=SPOT1639-gse_multipart20602.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1735-Sittanavasal1.jpg&#x26;cluster%5B1%5D=SPOT1735-Siththannavasal-redrawn-2-Reduced.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1734-58e29eeccb43a00705a803cedfbfaf60_giant.jpg&#x26;cluster%5B1%5D=SPOT1734-tamil_002.jpg&#x26;cluster%5B2%5D=SPOT1734-Viralimalai1.jpg&#x26;cluster%5B3%5D=SPOT1734-Viralimalai-Sanctuary2.jpg&#x26;cluster%5B4%5D=SPOT1734-Viralimalai+Murugan+temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1733-Maruthamalai_Rajagopuram_1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1732-Tirumaiyam_Anantasayanam.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1731-dpa-maa-169460.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1730-Avur+church.gif&#x26;cluster%5B1%5D=SPOT1730-ww2.etownpudukkottai.comindex.gif</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1855-Hampi_virupaksha_temple.jpg&#x26;cluster%5B1%5D=SPOT1855-virupaksha+temple2.jpg&#x26;cluster%5B2%5D=SPOT1855-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1653-pno.png&#x26;cluster%5B1%5D=SPOT1653-images+%283%29.jpg&#x26;cluster%5B2%5D=SPOT1653-images+%285%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1652-download+%285%29.jpg&#x26;cluster%5B1%5D=SPOT1652-download+%283%29.jpg&#x26;cluster%5B2%5D=SPOT1652-download+%284%29.jpg&#x26;cluster%5B3%5D=SPOT1652-images+%286%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1651-images+%287%29.jpg&#x26;cluster%5B1%5D=SPOT1651-nlcshiftableconveyors_3.jpg&#x26;cluster%5B2%5D=SPOT1651-images+%2823%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1649-download.jpg&#x26;cluster%5B1%5D=SPOT1649-hqdefault.jpg&#x26;cluster%5B2%5D=SPOT1649-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1648-download+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1648-download+%282%29.jpg&#x26;cluster%5B2%5D=SPOT1648-download+%283%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1647-download.jpg&#x26;cluster%5B1%5D=SPOT1647-Then-Aruvi-%2B-honey-falls-%2B-courtallam.jpg&#x26;cluster%5B2%5D=SPOT1647-download+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1646-download+%283%29.jpg&#x26;cluster%5B1%5D=SPOT1646-download+%285%29.jpg&#x26;cluster%5B2%5D=SPOT1646-download+%286%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1645-634935392549144023_Courtallam_Main_Falls.jpg&#x26;cluster%5B1%5D=SPOT1645-download+%287%29.jpg&#x26;cluster%5B2%5D=SPOT1645-download+%286%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1644-CourtallamChitraSabha7.JPG&#x26;cluster%5B1%5D=SPOT1644-download+%288%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1643-download+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1643-download+%282%29.jpg&#x26;cluster%5B2%5D=SPOT1643-download+%283%29.jpg&#x26;cluster%5B3%5D=SPOT1643-download.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1641-800px-Courtallam.jpg&#x26;cluster%5B1%5D=SPOT1641-Boat_House.jpg&#x26;cluster%5B2%5D=SPOT1641-Courtalleswaran_Temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1864-brindavan-gardens-3mysore.jpg&#x26;cluster%5B1%5D=SPOT1864-brindavan_gardens.jpg&#x26;cluster%5B2%5D=SPOT1864-Brindavan+garden.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1865-Chamundeswari-Temple-Mysore1.jpg&#x26;cluster%5B1%5D=SPOT1865-Chamundeswari-Temple-2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1866-800px-Giraffe_Pair_Mysore_Zoo.jpg&#x26;cluster%5B1%5D=SPOT1866-Asiatic_Lion_2_Mysore_Zoo_cmprsd.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1867-church1.jpg&#x26;cluster%5B1%5D=SPOT1867-church2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1888-Dindi1.jpg&#x26;cluster%5B1%5D=SPOT1888-dindi12.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1889-ISKCON.jpg&#x26;cluster%5B1%5D=SPOT1889-ISKCON2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1890-Markandeya1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1891-maxresdefault.jpg&#x26;cluster%5B1%5D=SPOT1891-telugu+travel+blog.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1892-Godavari+bridge.JPG&#x26;cluster%5B1%5D=SPOT1892-maxresdefault.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1754-26529123.FJTz90pB.dscn654_F.jpg&#x26;cluster%5B1%5D=SPOT1754-3859869-md.jpg&#x26;cluster%5B2%5D=SPOT1754-tourism.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1753-TN_120425113548000000.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1752-68704538.jpg&#x26;cluster%5B1%5D=SPOT1752-220px-%E0%AE%95%E0%AF%81%E0%AE%A9%E0%AF%8D%E0%AE%B1%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81%E0%AE%9F%E0%AE%BF_%E0%AE%9A%E0%AE%A3%E0%AF%8D%E0%AE%AE%E0%AF%81%E0%AE%95%E0%AE%A8%E0%AE%BE%E0%AE%A4%E0%AE%AA%E0%AF%8D_%E0%AE%AA%E0%AF%86%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%BE%E0%AE%A9%E0%AF%8D.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1751-karpaga+vinayagar+temple+pillayarpatti.jpg&#x26;cluster%5B1%5D=SPOT1751-Pillayarpatti.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1887-rollapdu.jpg&#x26;cluster%5B1%5D=SPOT1887-Rollapadu-sanctuary-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1893-5.jpg&#x26;cluster%5B1%5D=SPOT1893-Srisailam-Bhramaramba-Mallikarjuna-swamy-temple-ritsin.com-.jpg&#x26;cluster%5B2%5D=SPOT1893-srisailam-mallikarjuna-swamy.jpg&#x26;cluster%5B3%5D=SPOT1893-Nandi-at-Sikharam.jpg&#x26;cluster%5B4%5D=SPOT1893-Malikarjuna.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1894-Tirumala-Venkateswara-Temple-at-Tirumala-in-Chittoor.jpg&#x26;cluster%5B1%5D=SPOT1894-tirupati-temple.png&#x26;cluster%5B2%5D=SPOT1894-sree-padmanabhaswamy-temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1895-Sri-Padmavathi-Ammavari-Tem.jpg&#x26;cluster%5B1%5D=SPOT1895-Alamelu+mangai+temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1896-Kanipakam+golden+temple.jpg&#x26;cluster%5B1%5D=SPOT1896-Vinayaka.jpeg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1897-Kalahasti_temple1.jpg&#x26;cluster%5B1%5D=SPOT1897-Kalahasti_temple2.jpg&#x26;cluster%5B2%5D=SPOT1897-srikalahasti-temple4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1898-Chandragiri+fort.jpg&#x26;cluster%5B1%5D=SPOT1898-800px-Chandragiri_fort_complex.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1913-Araku+Valley+in+Visakhapatnam.JPG&#x26;cluster%5B1%5D=SPOT1913-1249971746343.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1914-vizag_borra_caves_andra_pradesh_india_photo.jpg&#x26;cluster%5B1%5D=SPOT1914-1024px-Borra_Cave.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1915-Vizag-Kailasagiri-6.jpg&#x26;cluster%5B1%5D=SPOT1915-kailash-giri-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1916-800px-An_afternoon_view_of_RK_Beach_in_Visakhapatnam.JPG&#x26;cluster%5B1%5D=SPOT1916-800px-RK_beach_view_at_noon_time_03.jpg&#x26;cluster%5B2%5D=SPOT1916-1280px-RK_Beach_Visakhapatnam_Nov_2012.JPG&#x26;cluster%5B3%5D=SPOT1916-Sunrise_over_Bay_of_Bengal_at_RK_Beach_01.jpg&#x26;cluster%5B4%5D=SPOT1916-View_of_Sea_at_RK_beach.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1917-Submarine+Museum1.jpg&#x26;cluster%5B1%5D=SPOT1917-22_big.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1918-Dolphins-Nose-Visakhapatnam.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1920-rushikondavisakha.jpg&#x26;cluster%5B1%5D=SPOT1920-img_1782.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1921-Lawson+beach1.jpg&#x26;cluster%5B1%5D=SPOT1921-lawsonsbay-2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1922-Vuda+Park1.jpg&#x26;cluster%5B1%5D=SPOT1922-Vuda+Park2.jpg&#x26;cluster%5B2%5D=SPOT1922-Vuda+Park3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1923-800px-An_Emu_at_Indira_Gandhi_Zoo_park_in_Visakhapatnam_%281%29.JPG&#x26;cluster%5B1%5D=SPOT1923-800px-Terrapin_IGZoo_park_Visakhapatnam.JPG&#x26;cluster%5B2%5D=SPOT1923-800px-White_tiger_at_IGZoo_park.jpg&#x26;cluster%5B3%5D=SPOT1923-indra+gandhi+zoological+park-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1924-Simhachalam-temple-2_big.jpg&#x26;cluster%5B1%5D=SPOT1924-A_Stone_carved_throne_in_the_backyard_of_Simhachalam_temple.jpg&#x26;cluster%5B2%5D=SPOT1924-Simhachalam_new_mandapam_2010.jpg&#x26;cluster%5B3%5D=SPOT1924-Wooden_chariot_at_Simhachalam_Visakhapatnam.jpg&#x26;cluster%5B4%5D=SPOT1924-simhachalam-temple-Visakhapatnam.final.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1925-Bheemunipatnam+beach1.jpg&#x26;cluster%5B1%5D=SPOT1925-Bheemunipatnam+beach2.jpg&#x26;cluster%5B2%5D=SPOT1925-Buddha_Statue_at_Bheemili_beach_Road.jpg&#x26;cluster%5B3%5D=SPOT1925-Bheemili-Beach-Visakhapatnam3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1899-kanagadurga-2.jpg&#x26;cluster%5B1%5D=SPOT1899-kanagadurga-top-img.jpg&#x26;cluster%5B2%5D=SPOT1899-kanagadurga-3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1900-Amaravati-museum-2-2.jpg&#x26;cluster%5B1%5D=SPOT1900-inside-view-of-amaravati-museum-vijayawada.jpg&#x26;cluster%5B2%5D=SPOT1900-Amaravati_Stupa_relief_at_Museum.jpg&#x26;cluster%5B3%5D=SPOT1900-Buddhist.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1901-_05VZ_BHAVANI_ISLA_1744893f.jpg&#x26;cluster%5B1%5D=SPOT1901-Bhavani+Island2.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1902-HY23-SPLIT-4_844656f.jpg&#x26;cluster%5B1%5D=SPOT1902-Prakasam-BarrageVijayawada.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1903-1024px-Ananta_Padmanabha_Swami_Temple.jpg&#x26;cluster%5B1%5D=SPOT1903-Undavalli_Caves_at_Mangalagiri_04.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1904-Kuchipudi_Dance_Uma_Muralikrishna.jpg&#x26;cluster%5B1%5D=SPOT1904-Kuchipudi-Dance.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1905-HY24ST__MARY_S_CHU_1308165e.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1906-Rajiv+Gandhi+park.jpg&#x26;cluster%5B1%5D=SPOT1906-Vijayawada-Rajeev+Gandhi+Park-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1907-Victoria.jpg&#x26;cluster%5B1%5D=SPOT1907-vijayawada_victoria_museum-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1908-Gandhi+Hill.jpg&#x26;cluster%5B1%5D=SPOT1908-18vjsuj_Gandhi-_29_1314415e.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1909-8280015953_af4371a26f.jpg&#x26;cluster%5B1%5D=SPOT1909-Mogalrajapuram.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1910-Hazrat-Bal-Mosque-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1911-Vijayawada-Kondapalli_Quilla.jpg&#x26;cluster%5B1%5D=SPOT1911-kondapalli-fort-picture-04.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1912-download.jpg&#x26;cluster%5B1%5D=SPOT1912-Mangalagiri_temple_4.JPG&#x26;cluster%5B2%5D=SPOT1912-A_21th_Century_Painting_of_Mangalagiri_Narasimha.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1846-Govt+Museum.jpg&#x26;cluster%5B1%5D=SPOT1846-Govt+Museum2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1849-1+a+Sharan+Sharma+Abbi+Falls+Coorg+November+2011.JPG&#x26;cluster%5B1%5D=SPOT1849-abbey_falls.jpg&#x26;cluster%5B2%5D=SPOT1849-Abby+falls.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1850-Omkhareshwara+temple.jpg&#x26;cluster%5B1%5D=SPOT1850-Omkhareswara+temple.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1851-raja+seat.jpg&#x26;cluster%5B1%5D=SPOT1851-raja+seat2.jpg&#x26;cluster%5B2%5D=SPOT1851-raja+seat-05.jpg&#x26;cluster%5B3%5D=SPOT1851-RAJA+-SEAT-MADIKERI.jpg&#x26;cluster%5B4%5D=SPOT1851-raja_seat-b.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1852-kavala-caves-06.jpg&#x26;cluster%5B1%5D=SPOT1852-Kavala+caves+2.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1853-Syntheri+rock+-+02.jpg&#x26;cluster%5B1%5D=SPOT1853-Syntheri+rock.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1856-artistic-seating-arrangements-250x250.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1857-yana1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1813-Sunset-at-Kozhikode-Beach.jpg&#x26;cluster%5B1%5D=SPOT1813-Kozhikode-Calicut-501537_4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=69&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=70&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=71&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=73&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=74&#x26;sid=19</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1816-mattupatty+dam.jpg&#x26;cluster%5B1%5D=SPOT1816-MadupettyDam2.jpg&#x26;cluster%5B2%5D=SPOT1816-800px-Boating_in_Munnar_Mattupetty_Dam_reservoir.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1817-Echo+point.JPG&#x26;cluster%5B1%5D=SPOT1817-Echo+point.JPG2.jpg&#x26;cluster%5B2%5D=SPOT1817-echo+point+3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1818-Ervikulam.jpg&#x26;cluster%5B1%5D=SPOT1818-idukki_wildlife_sanctuary20131031104628_188_1.jpg&#x26;cluster%5B2%5D=SPOT1818-Wildlife-at-Peechi-Vazhani-Wildlife-Sanctuary-600x400.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1819-tea-museum.jpg&#x26;cluster%5B1%5D=SPOT1819-TATA-Tea-Museum-Munnar-5.jpg&#x26;cluster%5B2%5D=SPOT1819-10_MP_TEA_MUSEUM_2_1263987g.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1820-Flower+garden.jpg&#x26;cluster%5B1%5D=SPOT1820-DSC01218.JPG&#x26;cluster%5B2%5D=SPOT1820-Flower+garden.jpg2.jpg&#x26;cluster%5B3%5D=SPOT1820-images+%281%29.jpg&#x26;cluster%5B4%5D=SPOT1820-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1821-blossom-hydel-park.jpg&#x26;cluster%5B1%5D=SPOT1821-blossom-hydel-park+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1822-MunnarPhotoPoint.jpg&#x26;cluster%5B1%5D=SPOT1822-Munnar+Photo+Point.jpg&#x26;cluster%5B2%5D=SPOT1822-devikulam_hills_in_munnar20131031103731_132_1.jpg&#x26;cluster%5B3%5D=SPOT1822-munnar5.jpg&#x26;cluster%5B4%5D=SPOT1822-munnar6.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1823-IMGGALL_2803.jpg&#x26;cluster%5B1%5D=SPOT1823-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1625-download.jpg&#x26;cluster%5B1%5D=SPOT1625-topslip-wildlife-tour.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1814-340x220_kumarakombirdsanctuary_46415.jpg&#x26;cluster%5B1%5D=SPOT1814-634927426012796980_kumarakom-bird-sanctuary1.jpg&#x26;cluster%5B2%5D=SPOT1814-egret-chick.jpg&#x26;cluster%5B3%5D=SPOT1814-swild3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1815-vembanad-lake-images-photos-511cabbce4b0d051864acf54.jpg&#x26;cluster%5B1%5D=SPOT1815-vembanad_lake_kumarakom20131125145439_111_2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1642-images.jpg&#x26;cluster%5B1%5D=SPOT1642-dhyanalinga.jpg&#x26;cluster%5B2%5D=SPOT1642-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1638-download+%288%29.jpg&#x26;cluster%5B1%5D=SPOT1638-images+%285%29.jpg&#x26;cluster%5B2%5D=SPOT1638-download+%289%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1637-download+%2810%29.jpg&#x26;cluster%5B1%5D=SPOT1637-images+%287%29.jpg&#x26;cluster%5B2%5D=SPOT1637-images+%286%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=54&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=55&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=56&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=57&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=58&#x26;sid=13</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1635-download+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1635-snake.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1634-images.jpg&#x26;cluster%5B1%5D=SPOT1634-madras-light-house-lighthouse-facing-bay-bengal-east-coast-indian-subcontinent-famous-33901278.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1633-Ripon_Building_panorama.jpg&#x26;cluster%5B1%5D=SPOT1633-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1632-St_Thomas_Church_on_the_Mount.JPG&#x26;cluster%5B1%5D=SPOT1632-2432408266_a765035250.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1631-2706943316_4d2e867e7b.jpg&#x26;cluster%5B1%5D=SPOT1631-images+%287%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1630-download+%282%29.jpg&#x26;cluster%5B1%5D=SPOT1630-images+%285%29.jpg&#x26;cluster%5B2%5D=SPOT1630-images+%286%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1629-mgr-memorial.jpg&#x26;cluster%5B1%5D=SPOT1629-images+%283%29.jpg&#x26;cluster%5B2%5D=SPOT1629-VCC-Revised-800px.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1628-Santhome-Basilica-side-view1.jpg&#x26;cluster%5B1%5D=SPOT1628-india-tamil-nadu-chennai-santhome-catholic-cathedral-basilica-interior-B8P61J.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1627-download.jpg&#x26;cluster%5B1%5D=SPOT1627-images+%282%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1626-fort-st-george-chennai.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1660-images.jpg&#x26;cluster%5B1%5D=SPOT1660-maxresdefault.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1659-download.jpg&#x26;cluster%5B1%5D=SPOT1659-temple.jpg&#x26;cluster%5B2%5D=SPOT1659-ZbYfErWxy68O-DGhFCcVDQ71771.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1658-Bhavani-sagar-Dam-and-Reservoir.jpg&#x26;cluster%5B1%5D=SPOT1658-Bhavani-Sagar-Dam.jpg&#x26;cluster%5B2%5D=SPOT1658-Erode+-+Bhavani+Sagar+Dam+3.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1657-download+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1657-download+%282%29.jpg&#x26;cluster%5B2%5D=SPOT1657-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1655-download.jpg&#x26;cluster%5B1%5D=SPOT1655-download+%281%29.jpg&#x26;cluster%5B2%5D=SPOT1655-images.jpg&#x26;cluster%5B3%5D=SPOT1655-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1656-download+%2812%29.jpg&#x26;cluster%5B1%5D=SPOT1656-download+%2813%29.jpg&#x26;cluster%5B2%5D=SPOT1656-download+%2814%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1665-download.jpg&#x26;cluster%5B1%5D=SPOT1665-Kamakshi-Amman-Temple1.jpg&#x26;cluster%5B2%5D=SPOT1665-download+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1664-download+%282%29.jpg&#x26;cluster%5B1%5D=SPOT1664-ekambareswarar-temple-kanchipuram.jpg&#x26;cluster%5B2%5D=SPOT1664-images+%281%29.jpg&#x26;cluster%5B3%5D=SPOT1664-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1663-images+%282%29.jpg&#x26;cluster%5B1%5D=SPOT1663-ulagalandha-perumal-temple-entrance.jpg&#x26;cluster%5B2%5D=SPOT1663-Thiruooragam-Sri-Ulagalanda-Perumal-Temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1662-T_500_633.jpg&#x26;cluster%5B1%5D=SPOT1662-images.jpg&#x26;cluster%5B2%5D=SPOT1662-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1661-Sri-Kailasanathar-Temple-Kanchipuram.jpg&#x26;cluster%5B1%5D=SPOT1661-images.jpg&#x26;cluster%5B2%5D=SPOT1661-10405036213_3c276bd484.jpg&#x26;cluster%5B3%5D=SPOT1661-5383727444_54ff5df51a_b.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1674-download+%288%29.jpg&#x26;cluster%5B1%5D=SPOT1674-download+%289%29.jpg&#x26;cluster%5B2%5D=SPOT1674-563238158_1ddc3f13a5_b.jpg&#x26;cluster%5B3%5D=SPOT1674-2727640601_4940d17d28.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1673-suchindram5.jpg&#x26;cluster%5B1%5D=SPOT1673-Inside-of-Meenakshi-hindu-temple-in-Madurai-Tamil-Nadu-South-India.-Religious-hall-of-thousands-of-columns.jpg&#x26;cluster%5B2%5D=SPOT1673-download.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1672-images.jpg&#x26;cluster%5B1%5D=SPOT1672-5879743847_4a26910b96_b.jpg&#x26;cluster%5B2%5D=SPOT1672-download+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1671-download+%282%29.jpg&#x26;cluster%5B1%5D=SPOT1671-7.jpg&#x26;cluster%5B2%5D=SPOT1671-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1670-3.jpg&#x26;cluster%5B1%5D=SPOT1670-7.+Kamarajar+Manimandapam-W.jpg&#x26;cluster%5B2%5D=SPOT1670-Kamaraj-Memorial.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1669-0.jpg&#x26;cluster%5B1%5D=SPOT1669-58_big.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1668-kanyakumari-EA11_l.jpg&#x26;cluster%5B1%5D=SPOT1668-Thiruvalluvar_Statue.jpg&#x26;cluster%5B2%5D=SPOT1668-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1667-Vivekananda_Rock.jpg&#x26;cluster%5B1%5D=SPOT1667-images+%281%29.jpg&#x26;cluster%5B2%5D=SPOT1667-_DSC2930+copy.jpg&#x26;cluster%5B3%5D=SPOT1667-026.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1666-download+%282%29.jpg&#x26;cluster%5B1%5D=SPOT1666-download+%283%29.jpg&#x26;cluster%5B2%5D=SPOT1666-download+%284%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=11&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=13&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=15&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=16&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=18&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=19&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=20&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=21&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=23&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=24&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=26&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=27&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=28&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=30&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=31&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=33&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=34&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=35&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=36&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=38&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/hotspots_galary.php?cid=39&#x26;sid=25</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1862-220px-Ullal_Bridge_Mangalore.JPG&#x26;cluster%5B1%5D=SPOT1862-170px-Mangaladevi_%28Commons%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1858-Kabini+river2.jpg&#x26;cluster%5B1%5D=SPOT1858-Kabini+river.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1859-kabini_mwn.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1860-nagarhole-national-park-india-1320_48b584d2ff335f02cf3351903912c7dd.jpeg&#x26;cluster%5B1%5D=SPOT1860-Kabini+-+Leopard+on+tree+06.jpg&#x26;cluster%5B2%5D=SPOT1860-deer-rajiv-gandhi-national-park-nagarhole-karnataka-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1861-800px-Kodachadri.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1868-Shravanabelgola_%28195%29.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1869-sacred+heart-1.jpg&#x26;cluster%5B1%5D=SPOT1869-taize_youth_night_vigil_prayer_shimoga.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1870-220px-Shivappanayaka.jpg&#x26;cluster%5B1%5D=SPOT1870-ShivappaNayakaPalaceShimoga.jpg&#x26;cluster%5B2%5D=SPOT1870-Shivappa_Nayaka_Palace_and_garden.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1871-Brpbdvt.jpg&#x26;cluster%5B1%5D=SPOT1871-hqdefault.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1872-Bhadra_reservoir_in_Chikkamagaluru_district.jpg&#x26;cluster%5B1%5D=SPOT1872-Lnbdvt.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1873-Gajanur_Dam_Shimoga_18726.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1874-800px-KudliTemple.jpg&#x26;cluster%5B1%5D=SPOT1874-shimoga-35.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1827-guruvayoor.jpg&#x26;cluster%5B1%5D=SPOT1827-south-indian-temple-attractions-guruvayur-temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1831-janardhana-swami-temple.jpg&#x26;cluster%5B1%5D=SPOT1831-janardhana2.jpg&#x26;cluster%5B2%5D=SPOT1831-Janardhana+Swami+Temple+Varkala.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1832-Papanasam+beach.jpg&#x26;cluster%5B1%5D=SPOT1832-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1833-meenmutty_falls_1st_tier.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1824-spice+plantation+visit.jpg&#x26;cluster%5B1%5D=SPOT1824-spice+plantation+2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1825-VBK29-TREKKING_10099f.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1826-elephant-ride.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1828-sree_padmanabhaswamy_temple_thiruvananthapuram20131031115717_13_1.jpg&#x26;cluster%5B1%5D=SPOT1828-Sri-Padmanabhaswamy-Temple-Kerala.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1829-0507-KuthiraMalika-Dinakarr.jpg&#x26;cluster%5B1%5D=SPOT1829-hqdefault.jpg&#x26;cluster%5B2%5D=SPOT1829-Kuthiramalika.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1830-Napier+Museum.jpg&#x26;cluster%5B1%5D=SPOT1830-napier_museum_thiruvananthapuram20131115173306_327_2.jpg&#x26;cluster%5B2%5D=SPOT1830-napier-museum11.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1780-IMAGE_294.jpg&#x26;cluster%5B1%5D=SPOT1780-Srirangam-vimanam.jpg&#x26;cluster%5B2%5D=SPOT1780-srirangam-temple-trichy.jpg&#x26;cluster%5B3%5D=SPOT1780-Velli-Andal_Srirangam_Thiruvadipooram_2013_021.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1779-Rockfort+temple.jpg&#x26;cluster%5B1%5D=SPOT1779-Rock_fort_trichy_02.jpg&#x26;cluster%5B2%5D=SPOT1779-G_T6_24.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1778-kalakkadu-wildlife-220.jpeg&#x26;cluster%5B1%5D=SPOT1778-tiger.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1777-goldencar.jpg&#x26;cluster%5B1%5D=SPOT1777-Nellaiappar-Temple-in-Tirunelveli-10.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1776-church.jpg&#x26;cluster%5B1%5D=SPOT1776-68_big.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1775-m1m-Minakshi-Temple.jpg&#x26;cluster%5B1%5D=SPOT1775-Sunrise_in_Tuticorin_beach.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1773-Ramana_Maharishi_Ashram.jpg&#x26;cluster%5B1%5D=SPOT1773-ramashram2.jpg&#x26;cluster%5B2%5D=SPOT1773-maxresdefault.jpg&#x26;cluster%5B3%5D=SPOT1773-hram_Samadhi_Bhagavana%5B1%5D.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1772-111.jpg&#x26;cluster%5B1%5D=SPOT1772-Tiruvannamalai-Temple-Night.jpg&#x26;cluster%5B2%5D=SPOT1772-Lingam.jpg&#x26;cluster%5B3%5D=SPOT1772-karthigai-deepam-festival-2013-day-1_morning1.jpg&#x26;cluster%5B4%5D=SPOT1772-e8f61a094ac996e133e8a095a5d9f2f7.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1771-thiruthani01.jpg&#x26;cluster%5B1%5D=SPOT1771-Tiruttani-murugaaa-1053144.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1769-veerapandi-sri-gowmariamman-temple-500x500.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1768-temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1767-waterfalls.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1766-Periyakulam-Bala-Subramanya-Swamy-Temple1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1765-ww2.etowntheni.comindex.gif</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1764-thanjavur-1.gif&#x26;cluster%5B1%5D=SPOT1764-images.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1763-images+%281%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1762-30mp_tymp_prata_30_2085417g.jpg&#x26;cluster%5B1%5D=SPOT1762-hall.jpg&#x26;cluster%5B2%5D=SPOT1762-08ytdiscoversarasva_830719g.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1761-340x220_sangeethamahal-innerview_51780.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1760-download+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1760-Sarasvati-Mahal.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1759-1010_Tanjore_ArulMercy.jpg&#x26;cluster%5B1%5D=SPOT1759-images+%284%29.jpg&#x26;cluster%5B2%5D=SPOT1759-tanjore-painting-limg.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1758-palace1.jpg&#x26;cluster%5B1%5D=SPOT1758-palace2.jpg&#x26;cluster%5B2%5D=SPOT1758-Palace03.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1757-bigtemple.jpg&#x26;cluster%5B1%5D=SPOT1757-The+Tanjavur+Big+temple.jpg&#x26;cluster%5B2%5D=SPOT1757-100_1177.jpg&#x26;cluster%5B3%5D=SPOT1757-Tanjore_BigTemple_BrihadisvaraTemple+%289+%283%29.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1756-T175_Swamimalai_temple3.jpg&#x26;cluster%5B1%5D=SPOT1756-612664395a40232133447d33247d3831363135303634.jpg&#x26;cluster%5B2%5D=SPOT1756-uttara-swami-malai-temple-images-photos-528b6251e4b0bca88f9bfa69.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1750-download.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1749-54775357.jpg&#x26;cluster%5B1%5D=SPOT1749-pal3-pic2.gif&#x26;cluster%5B2%5D=SPOT1749-ramvil.gif&#x26;cluster%5B3%5D=SPOT1749-southindia4.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1747-Villondi_Theerttham.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1748-tslide.jpg&#x26;cluster%5B1%5D=SPOT1748-Final_Scissors+Bridge+001.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1746-dhanushkodi+%281%29.jpg&#x26;cluster%5B1%5D=SPOT1746-Dhanushkodi.jpg&#x26;cluster%5B2%5D=SPOT1746-00202_172190.jpg&#x26;cluster%5B3%5D=SPOT1746-00202_172182.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1745-kothandaramaswamy_temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1744-spritual-goddess.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1743-jada+theertham.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1742-Five-faced-Hanuman-Temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1741-satchi+hanuman.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1740-Sugreevar+temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1739-340x220_gandamadanaparvatham_53451.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1738-Agni+theertham.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1737-rameshwaram+temple.jpg&#x26;cluster%5B1%5D=SPOT1737-download.jpg&#x26;cluster%5B2%5D=SPOT1737-Ramanathapuram-Temple-SMR02.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1729-323px-Puhar-Kannagi-Kovalan.jpg&#x26;cluster%5B1%5D=SPOT1729-9343Masilamani-Nathar-Koil-Poompuhar1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1727-palani_temple_thaipoosam.gif&#x26;cluster%5B1%5D=SPOT1727-malaimandir00214-425.jpg&#x26;cluster%5B2%5D=SPOT1727-b14.gif</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1728-maxresdefault.jpg&#x26;cluster%5B1%5D=SPOT1728-A_SCENE_FROM_SILAPADHIKARAM.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1726-2979126.jpeg&#x26;cluster%5B1%5D=SPOT1726-lamb-s-rock.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1725-Coonoor-670_4.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1724-Sim+Park.jpg&#x26;cluster%5B1%5D=SPOT1724-Sim+Park2.jpg&#x26;cluster%5B2%5D=SPOT1724-tea+plantation+ooty.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1723-Toy-Train-Coonoor.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1722-Khalkatty+falls.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1721-images.jpg&#x26;cluster%5B1%5D=SPOT1721-Pykara-Lake-entrance-view.jpg&#x26;cluster%5B2%5D=SPOT1721-pykara-lake-ooty.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1720-hqdefault.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1719-Lalit+2.jpg&#x26;cluster%5B1%5D=SPOT1719-Lalit1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1718-Deer+Park.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1717-Ooty+Lake.jpg&#x26;cluster%5B1%5D=SPOT1717-ooty-lake-1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1716-Lake+PArk.jpg&#x26;cluster%5B1%5D=SPOT1716-Lake+Park2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1715-Rose+Garden.jpg&#x26;cluster%5B1%5D=SPOT1715-Rose+Garden2.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1714-Botanical-Garden-ooty.jpg&#x26;cluster%5B1%5D=SPOT1714-ooty-botanical-garden-3.jpg&#x26;cluster%5B2%5D=SPOT1714-ooty-botanical-garden-11.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1713-Kolli+hills+2.jpg&#x26;cluster%5B1%5D=SPOT1713-Kolli+hills+3.JPG&#x26;cluster%5B2%5D=SPOT1713-Kolli+hills.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1712-Thiruchengodu.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1710-Elephant+1.jpg&#x26;cluster%5B1%5D=SPOT1710-Tiger2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1709-Light+house+at+Mahabalipuram.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1708-TigerCave.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1707-Krishna+Butter+ball.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1705-Mahabalipuram-Arjuna-Penance-1024x441.jpg&#x26;cluster%5B1%5D=SPOT1705-mahabalipuram-detail-from-arjunas-penance.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1706-Shore+temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1704-Five+Rathas.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1694-sukran-temple-online-puja-prasad.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1693-Kethu-Temple-at-Keezhperumpallam1.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1692-377d52609b41635db09404265f34fdd2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1691-vaitheeswaran.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1690-saneeshwarar.gif</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1689-alangudi-dakshinamurthy.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1688-Thingalur-%28Moon%29-Temple-Chandran-navagraha-temple.JPG</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1687-Suryan7.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1686-ragu.gif</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1684-Shenbaganur_Museum_Kodaikanal_617.jpg&#x26;cluster%5B1%5D=SPOT1684-305939269Shenbaganur_Main.jpg&#x26;cluster%5B2%5D=SPOT1684-26mpshenbaganur_SH_1248300g.jpg&#x26;cluster%5B3%5D=SPOT1684-images+%283%29.jpg&#x26;cluster%5B4%5D=SPOT1684-Shenbaganur-Museum-of-Natural-History-%281%29_800X600_original_watermark.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1683-chettiar-park.jpg&#x26;cluster%5B1%5D=SPOT1683-download+%281%29.jpg&#x26;cluster%5B2%5D=SPOT1683-Chettiar-Park+%281%29.jpg&#x26;cluster%5B3%5D=SPOT1683-images+%284%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1682-Berijam-Lake-Kodaikanal.jpg&#x26;cluster%5B1%5D=SPOT1682-berijam-lake.jpg&#x26;cluster%5B2%5D=SPOT1682-0.67970600+1365929691d2.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1681-Berijam-Lake-Kodaikanal.jpg&#x26;cluster%5B1%5D=SPOT1681-silent-valley-view-in-kodaikanal-hill-station-south-india-AW0X8F.jpg&#x26;cluster%5B2%5D=SPOT1681-Silent-Valley-12.jpg&#x26;cluster%5B3%5D=SPOT1681-kodaikanal_green_valley_view.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1680-pillar-rock-kodaikanal.jpg&#x26;cluster%5B1%5D=SPOT1680-1296124097729-kodaikanal+hill+station.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1679-green-valley-view.jpg&#x26;cluster%5B1%5D=SPOT1679-picture-189.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1678-kurinji-andavar-temple.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1677-634936909508912422_d20051029-kodai-coakers-view1.jpg&#x26;cluster%5B1%5D=SPOT1677-dsc_0510.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1676-images+%284%29.jpg&#x26;cluster%5B1%5D=SPOT1676-download+%284%29.jpg&#x26;cluster%5B2%5D=SPOT1676-download+%283%29.jpg&#x26;cluster%5B3%5D=SPOT1676-images+%282%29.jpg&#x26;cluster%5B4%5D=SPOT1676-images+%283%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1675-download+%285%29.jpg&#x26;cluster%5B1%5D=SPOT1675-download+%287%29.jpg&#x26;cluster%5B2%5D=SPOT1675-images+%285%29.jpg&#x26;cluster%5B3%5D=SPOT1675-images+%286%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1640-images+%282%29.jpg&#x26;cluster%5B1%5D=SPOT1640-download+%284%29.jpg&#x26;cluster%5B2%5D=SPOT1640-download+%285%29.jpg</loc>
+</url>
+<url>
+    <loc>http://dvi.co.in/core/ajax/hotspot_slide.php?cluster%5B0%5D=SPOT1636-Crocodile+Bank.jpg&#x26;cluster%5B1%5D=SPOT1636-2013-10-03.jpg&#x26;cluster%5B2%5D=SPOT1636-2014-06-13.jpg</loc>
+</url>
+</urlset>

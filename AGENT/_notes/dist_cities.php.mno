@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_dist1" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_ss1" value="name:id;datatype:int,name:country;datatype:string,name:region;datatype:int,name:name;datatype:string,name:type;datatype:blob,name:ss_dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_dist2" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_ss2" value="name:id;datatype:int,name:country;datatype:string,name:region;datatype:int,name:name;datatype:string,name:type;datatype:blob,name:ss_dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_exdis1" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_exdis2" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_exdis1a" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_exdis1b" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_exdis1c" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_exdis1d" value="name:sno;datatype:int,name:from_cityid;datatype:blob,name:to_cityid;datatype:blob,name:dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_cnames" value="name:id;datatype:int,name:country;datatype:string,name:region;datatype:int,name:name;datatype:string,name:type;datatype:blob,name:ss_dist;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_snames" value="name:id;datatype:int,name:country;datatype:string,name:code;datatype:int,name:name;datatype:string,name:latitude;datatype:real,name:longitude;datatype:real,name:cities;datatype:int,name:is_permit;datatype:int,name:status;datatype:int" />
+</info>
