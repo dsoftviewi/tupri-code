@@ -228,7 +228,7 @@ body {
 $spro = $conn->prepare("SELECT * FROM stay_sched where stay_id =? ORDER BY sno ASC ");
 $spro->execute(array($_GET['planid']));
 //$row_spro = mysql_fetch_assoc($spro);
-//$row_spro_main=$spro->fetchAll();
+$row_spro_main=$spro->fetchAll();
 $totalRows_spro = $spro->rowCount();
 $scnt=1;
 							
@@ -239,7 +239,7 @@ $scnt=1;
                             
                             <table width="100%" class="table table-th-block table-striped">
                                     <tr><th>S.No</th><th>Date</th><th>Place</th><th>Hotel</th><th>Room Category</th><th>Meal Plan</th><th>T Nights</th></tr>
-                                    <?php while($row_spro = $spro->fetch(PDO::FETCH_ASSOC)){ ?>
+                                    <?php foreach($row_spro_main as $row_spro){ ?>
                                     <tr><td><?php echo $scnt; ?></td><td><?php
 									
 $spro1 = $conn->prepare("SELECT * FROM stay_sched where stay_id =? and hotel_id=?  ORDER BY sno ASC ");
@@ -339,7 +339,7 @@ if(isset($rrom1[$tt+1]) && $rrom1[$tt+1] !='')
 							echo "<center><strong>This itinerary was cancelled / rejected,<br> Before creating hotel details..</strong></center>";
 							
 							}?>
-                            <div class="the-box" style="background-color:#E6ECF2;"><strong  style="font-size: x-large;color: rgb(30, 36, 153);">Overall Cost Of This Plan : <?php echo  convert_currency($row_orders['agnt_grand_tot'],$_GET['planid'])." ".convert_currency_text("Rupees",$_GET['planid']); 
+                            <div class="the-box" style="background-color:#E6ECF2;"><strong  style="font-size: x-large;color: rgb(30, 36, 153);">Overall Cost Of This Plan : <?php echo  $row_orders['agnt_grand_tot']." Rupees"; 
 		?></strong>
         <br /></div>
         <br />

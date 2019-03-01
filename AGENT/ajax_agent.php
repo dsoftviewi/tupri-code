@@ -103,11 +103,11 @@ if(isset($_GET['type']) && $_GET['type']==2)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									 $ses_id=$row_sdate['season_id'];
+									 $ses_id=$row_sdate['sno'];
 								}
 
-								$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' ORDER BY $ses_id ASC");
-								$room->execute(array($hotel_id));
+								$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' and season_sno = ?  ORDER by season_rate ASC");
+								$room->execute(array($hotel_id,$ses_id));
 								//$row_room=mysql_fetch_assoc($room);
 								$row_room_main=$room->fetchAll();
 								$tot_room=$room->rowCount();
@@ -126,8 +126,8 @@ if(isset($_GET['type']) && $_GET['type']==2)
                                <input type="hidden" id="<?php echo $fr; ?>_hot_rm_rent<?php echo $no."_".$room_no; ?>" name="<?php echo $fr; ?>_hot_rm_rent<?php echo $no."_".$room_no; ?>"  />
                                     </td></tr>
                                     <?php 
-									$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' ORDER BY $ses_id ASC");
-								    $room->execute(array($hotel_id));
+									$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' and season_sno = ?  ORDER by season_rate ASC");
+									$room->execute(array($hotel_id,$ses_id));
 									
 									} ?>
                                     </table>
@@ -157,11 +157,11 @@ if(isset($_GET['type']) && $_GET['type']==2)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									 $ses_id=$row_sdate['season_id'];
+									 $ses_id=$row_sdate['sno'];
 								}
 
-								$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' ORDER BY $ses_id ASC");
-								$room->execute(array($hotel_id));
+								$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' and season_sno = ?  ORDER by season_rate ASC");
+								$room->execute(array($hotel_id,$ses_id));
 								//$row_room=mysql_fetch_assoc($room);
 								$row_room_main=$room->fetchAll();
 								$tot_room=$room->rowCount();
@@ -189,8 +189,8 @@ if(isset($_GET['type']) && $_GET['type']==2)
                                     </td>
                                     </tr>
                                     <?php 
-									$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' ORDER BY $ses_id ASC");
-									$room->execute(array($hotel_id));
+									$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' and season_sno = ?  ORDER by season_rate ASC");
+									$room->execute(array($hotel_id,$ses_id));
 									 ?>
                                     </table>
                                     <input type="hidden" name="<?php echo $fr; ?>_tr_cnt_<?php echo $no; ?>" id="<?php echo $fr; ?>_tr_cnt_<?php echo $no; ?>" value="0" />
@@ -470,22 +470,25 @@ if(isset($_GET['type']) && $_GET['type']==10)
 { 
 	$fr=$_GET['fr'];
 	$value=$_GET['val'];
+	
 	if(isset($_GET['date']) && trim($_GET['date']) != '')
 	{
 		$tdate=date("Y-m-d",strtotime($_GET['date']));
 	}
 
 		 $sdate=$conn->prepare("SELECT * FROM setting_season WHERE lock_sts != '1' and  ('$tdate' BETWEEN from_date AND to_date) ");
+		 //print "SELECT * FROM setting_season WHERE lock_sts != '1' and  ('$tdate' BETWEEN from_date AND to_date) ";
 								$sdate->execute();
 								$row_sdate=$sdate->fetch(PDO::FETCH_ASSOC);
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									$ses_id=$row_sdate['season_id'];
+									$ses_id=$row_sdate['sno'];
 								$srate=$conn->prepare("SELECT * FROM hotel_season WHERE sno =?");
 								$srate->execute(array($value));
 								$row_srate=$srate->fetch(PDO::FETCH_ASSOC);
-								echo $row_srate[$ses_id];
+								//print $ses_id;
+								echo $row_srate['season_rate'];
 									
 								}else
 								{
@@ -512,19 +515,26 @@ if(isset($_GET['type']) && $_GET['type']==11)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									$ses_id=$row_sdate['season_id'];
-								$ss=substr($ses_id, -6, 1);
+									$ses_id=$row_sdate['sno'];
+								$ss=$ses_id+1;
 								
 								$sbed=$conn->prepare("SELECT * FROM hotel_food WHERE hotel_id =?");
 								$sbed->execute(array($hotel_id));
 								$row_sbed=$sbed->fetch(PDO::FETCH_ASSOC);
+								
 								$total_sbed=$sbed->rowCount();
 								if($total_sbed){
-									$withoutbed=explode('\\',$row_sbed['child_without_bed']);
-									$cbed_without_rate=$withoutbed[$ss-1];
-								
-									$withbed=explode('\\',$row_sbed['child_with_bed']);
-									$cbed_with_rate1=$withbed[$ss-1];
+									$cbed_with_rate1_arr=decode_unserialize($row_sbed['child_with_bed']);
+										if(isset($cbed_with_rate1_arr[$ss-1]))
+									$cbed_with_rate1=$cbed_with_rate1_arr[$ss-1];
+									else
+									$cbed_with_rate1=$cbed_with_rate1_arr[0];
+									
+									$cbed_without_rate_arr=decode_unserialize($row_sbed['child_without_bed']);
+										if(isset($cbed_without_rate_arr[$ss-1]))
+									$cbed_without_rate=$cbed_without_rate_arr[$ss-1];
+									else
+									$cbed_without_rate=$cbed_without_rate_arr[0];
 								?>
                                 <input type='hidden' id='<?php echo $fr; ?>_withbed_rate<?php echo $no; ?>' name='<?php echo $fr; ?>_withbed_rate<?php echo $no; ?>' value='<?php echo $cbed_with_rate1;?>' /><input type='hidden' id='<?php echo $fr; ?>_withoutbed_rate<?php echo $no; ?>' name='<?php echo $fr; ?>_withoutbed_rate<?php echo $no; ?>' value='<?php echo $cbed_without_rate;?>' />
                                 <?php
@@ -561,20 +571,23 @@ for($rt=0; $rt<count($hotel_id);$rt++)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									$ses_id=$row_sdate['season_id'];
+									$ses_id=$row_sdate['sno'];
 								}else
 								{
 									$ses_id='season1_rate';
 								}
-								$ss=substr($ses_id, -6, 1);
+								$ss=$ses_id+1;
 								
 								$food=$conn->prepare("SELECT * FROM hotel_food WHERE hotel_id =?");
 								$food->execute(array($hotel_id[$rt]));
 								$row_food=$food->fetch(PDO::FETCH_ASSOC);
 								if($value == 'lunch_rate')
 								{
-									$lunch=explode('\\',$row_food['lunch_rate']);
-									$lunch_rate=$lunch[$ss-1];
+									$lunchrate_arr=decode_unserialize($row_food['lunch_rate']);
+									if(isset($lunchrate_arr[$ss-1]))
+									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
 									if($rates_hotel=='')
 									{
@@ -587,8 +600,11 @@ for($rt=0; $rt<count($hotel_id);$rt++)
 								}
 								else if($value == 'dinner_rate')
 								{
-									$dinner=explode('\\',$row_food['dinner_rate']);
-									$dinner_rate=$dinner[$ss-1];
+									$dinnerrate_arr=decode_unserialize($row_food['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
+									$dinner_rate=$dinnerrate_arr[$ss-1];
+									else
+									$dinner_rate=$dinnerrate_arr[0];
 									
 									if($rates_hotel=='')
 									{
@@ -599,11 +615,17 @@ for($rt=0; $rt<count($hotel_id);$rt++)
 									}
 								}else if($value == 'both_food')
 								{
-									$lunch=explode('\\',$row_food['lunch_rate']);
-									$lunch_rate=$lunch[$ss-1];
+									$lunchrate_arr=decode_unserialize($row_food['lunch_rate']);
+									if(isset($lunchrate_arr[$ss-1]))
+									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinner=explode('\\',$row_food['dinner_rate']);
-									$dinner_rate=$dinner[$ss-1];
+									$dinnerrate_arr=decode_unserialize($row_food['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
+									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
 									$both=$lunch_rate+$dinner_rate;
 									$strinp=$lunch_rate.','.$dinner_rate;
@@ -658,12 +680,12 @@ if(isset($_GET['type']) && $_GET['type']==13)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									$ses_id=$row_sdate['season_id'];
+									$ses_id=$row_sdate['sno'];
 								}else
 								{
 									$ses_id='season1_rate';
 								}
-								$ss=substr($ses_id, -6, 1);
+								$ss=$ses_id+1;
 	
 $rates_hotel1=0;
 
@@ -1061,11 +1083,13 @@ if(isset($_GET['type']) && $_GET['type']==22)
 								$sdate=$conn->prepare("SELECT * FROM setting_season WHERE '$ddate' BETWEEN from_date AND to_date");
 								$sdate->execute();
 								$row_sdate=$sdate->fetch(PDO::FETCH_ASSOC);
+								
+								//print_r($row_sdate);
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-											$ses_id=$row_sdate['season_id'];
-											 $num_ses=substr($ses_id,6,1);
+											$ses_id=$row_sdate['sno'];
+											$num_ses=$ses_id+1;
 											
 										$special=$conn->prepare("SELECT * FROM hotel_food WHERE hotel_id =?");
 										$special->execute(array($hid));
@@ -1074,33 +1098,55 @@ if(isset($_GET['type']) && $_GET['type']==22)
 										
 										if($tot_special>0)
 										{
-											$flow_bed=explode('\\',$row_special['flower_bed']);
-											$cand_lig=explode('\\',$row_special['candle_light']);
-											$cake_rat=explode('\\',$row_special['cake_rate']);
-											$fruit_bas=explode('\\',$row_special['fruit_basket']);
+							
+											$flow_bed_arr=decode_unserialize($row_special['flower_bed']);
+											if(isset($flow_bed_arr[$num_ses-1]))
+											$flow_bed_rate=$flow_bed_arr[$num_ses-1];
+											else
+											$flow_bed_rate=$flow_bed_arr[0];
+											//print_r($flow_bed);
 											
-											if($flow_bed[$num_ses-1]>0 || $cand_lig[$num_ses-1]>0 || $fruit_bas[$num_ses-1]>0 || $cake_rat[$num_ses-1]>0)
+											$cand_lig_arr=decode_unserialize($row_special['candle_light']);
+											if(isset($cand_lig_arr[$num_ses-1]))
+											$cand_lig_rate=$cand_lig_arr[$num_ses-1];
+											else
+											$cand_lig_rate=$cand_lig_arr[0];
+										
+											$cake_rat_arr=decode_unserialize($row_special['cake_rate']);
+											if(isset($cake_rat_arr[$num_ses-1]))
+											$cake_rat_rate=$cake_rat_arr[$num_ses-1];
+											else
+											$cake_rat_rate=$cake_rat_arr[0];
+										
+											$fruit_bas_arr=decode_unserialize($row_special['fruit_basket']);
+											if(isset($fruit_bas_arr[$num_ses-1]))
+											$fruit_bas_rate=$fruit_bas_arr[$num_ses-1];
+											else
+											$fruit_bas_rate=$fruit_bas_arr[0];
+											
+																												
+											if($flow_bed_rate>0 || $cand_lig_rate>0 || $fruit_bas_rate>0 || $cake_rat_rate>0)
 											{
 											?>
                                             
                                             <select id='<?php echo $fr; ?>_ext_item_id<?php echo $no; ?>' name='<?php echo $fr; ?>_ext_item_id<?php echo $no; ?>[]' onchange="find_others_rate('<?php echo $fr; ?>',this.value,'<?php echo $no; ?>')" data-placeholder='Choose here to create happy moments' class='form-control chosen-select' multiple tabindex='4'><option></option>
                                             <?php 
-												if($flow_bed[$num_ses-1]>0)
+												if($flow_bed_rate>0)
 												{?>
 					<option value='flower_bed'> Flower Bed </option>								
                                                     <?php
 												}
-												if($cand_lig[$num_ses-1]>0)
+												if($cand_lig_rate>0)
 												{?>
                      <option value='candle_light'> Candle Light </option>                           
                                                 <?php
 												}
-												if($cake_rat[$num_ses-1]>0)
+												if($cake_rat_rate>0)
 												{?>
                       <option value='cake_rate'> Special Cake </option>                          
                                                 <?php 
 												}
-												if($fruit_bas[$num_ses-1]>0)
+												if($fruit_bas_rate>0)
 												{?>
                        <option value='fruit_basket'> Fruit Basket </option>                         
                                                 <?php
@@ -1136,8 +1182,8 @@ if(isset($_GET['type']) && $_GET['type']==23)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-											$ses_id=$row_sdate['season_id'];
-											 $num_ses=substr($ses_id,6,1);
+											$ses_id=$row_sdate['sno'];
+											 $ss=$ses_id+1;
 											
 										$special=$conn->prepare("SELECT * FROM hotel_food WHERE hotel_id =?");
 										$special->execute(array($hid));
@@ -1146,15 +1192,25 @@ if(isset($_GET['type']) && $_GET['type']==23)
 										
 										if($tot_special>0)
 										{
-											$lunch_rat=explode('\\',$row_special['lunch_rate']);
-											$dinner_rat=explode('\\',$row_special['dinner_rate']);
+										
+											$lunchrate_arr=decode_unserialize($row_special['lunch_rate']);
+											if(isset($lunchrate_arr[$ss-1]))
+											$lunchrate=$lunchrate_arr[$ss-1];
+											else
+											$lunchrate=$lunchrate_arr[0];
+										
+											$dinnerrate_arr=decode_unserialize($row_special['dinner_rate']);
+											if(isset($dinnerrate_arr[$ss-1]))
+											$dinnerrate=$dinnerrate_arr[$ss-1];
+											else
+											$dinnerrate=$dinnerrate_arr[0];
 											?>
                                             
                                             <select onchange="find_food_rate('<?php echo $fr; ?>',this.value,'<?php echo $no; ?>')" data-placeholder='Choose Food ' class='form-control chosen-select' id='<?php echo $fr; ?>_food_id<?php echo $no; ?>' name='<?php echo $fr; ?>_food_id<?php echo $no; ?>'>
                                            <option></option>
                                             <?php 
 											
-												if($lunch_rat[$num_ses-1]>0 )
+												if($lunchrate>0 )
 												{ $h1="yes";?>
 					<option value='lunch_rate'> Breakfast & Lunch Only </option>								
                                                     <?php
@@ -1162,7 +1218,7 @@ if(isset($_GET['type']) && $_GET['type']==23)
 													$h1="no";
 												}
 												
-												if($dinner_rat[$num_ses-1]>0)
+												if($dinnerrate>0)
 												{ $h2="yes";?>
                      <option value='dinner_rate'> Breakfast & Dinner Only </option>                          
                                                 <?php
@@ -1347,11 +1403,11 @@ if(isset($_GET['type']) && $_GET['type']==31)
 								$tot_sdate=$sdate->rowCount();
 								if($tot_sdate>0)
 								{
-									 $ses_id=$row_sdate['season_id'];
+									 $ses_id=$row_sdate['sno'];
 								}
 
-$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' ORDER BY $ses_id ASC");
-								$room->execute(array($hotel_id));
+$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' and season_sno = ?  ORDER by season_rate ASC");
+					$room->execute(array($hotel_id,$ses_id));
 								//$row_room=mysql_fetch_assoc($room);
 								$row_room_main=$room->fetchAll();
 								if($tot_room>0)
@@ -1381,8 +1437,8 @@ $room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0'
                                     <td style="padding:9px;" width="15%"><a class="btn btn-sm btn-info"><i class="fa fa-plus"></i></a></td>
                                     </tr>
                                     <?php 
-									$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' ORDER BY $ses_id ASC");
-								    $room->execute(array($hotel_id));
+									$room=$conn->prepare("select * from hotel_season where hotel_id=? and status='0' and season_sno = ?  ORDER by season_rate ASC");
+									$room->execute(array($hotel_id,$ses_id));
 									
 									} ?>
                                     </table>

@@ -328,7 +328,8 @@ if(isset($_SESSION['com_plan_id']))
 				
 				echo "HOUSEBOAT".$h1;	
 		
-			print	$loop=$_POST[$frm.'_tr_cnt_'.$h1];
+			
+			$loop=$_POST[$frm.'_tr_cnt_'.$h1];
 				for($hb=0;$hb<=$loop;$hb++)
 				{
 						//echo "Room".$h3."=".$_POST['hot_rm_id'.$h1.'_'.$h3];
@@ -573,8 +574,8 @@ $currency_rate = $row_currencydb['currency_rate'];
 		{
 			$veh_upl2 = explode('-',$veh_upl1[$vcnt]);
 	
-			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
-			$insertSQL5->execute(array($com_plan_id,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9]));
+			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+			$insertSQL5->execute(array($com_plan_id,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9],$veh_upl2[10],$veh_upl2[11]));
 		}
 		
 		//Insert All travel vehicles from every city's info
@@ -593,8 +594,8 @@ $currency_rate = $row_currencydb['currency_rate'];
 			{
 				$each_veh_upl = explode('-',$exp_get_veh[$evcnt]);
 		
-				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
-				$insertSQL6->execute(array($com_plan_id,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9]));
+				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+				$insertSQL6->execute(array($com_plan_id,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9],$each_veh_upl[10],$each_veh_upl[11]));
 			}
 		}
 		
@@ -839,7 +840,7 @@ $currency_rate = $row_currencydb['currency_rate'];
 								//finding room name to add table
 									$ridd_arr=explode(',',$_POST[$frm.'_rmid_'.$sctg.'_'.$h1]);
 //echo " ---------------------- "; 
-									print_r($ridd_arr[0]);
+									//print_r($ridd_arr[0]);
                                     
 //echo "%%%%% HB -1";
 									for($y=0;$y<count($ridd_arr);$y++)
@@ -984,16 +985,15 @@ if($rm_snumber != '') {
 							$shfood="";
 							$ffood='0';
 						}
-						
+						 
 						$_POST[$frm.'_others_rate'.$h1]=0;
 						$indu_rent=$indu_room_rent.'-'.$rate_for_child_bed.','.$_POST[$frm.'_chwithbed_'.$sctg.'_'.$h1].','.$_POST[$frm.'_chwithoutbed_'.$sctg.'_'.$h1].'-'.$ffood.'-'.$_POST[$frm.'_others_rate'.$h1];
 						
 						//total amount calculation
 						$totalday_amtcal=$totalday_amtcal+$perday_amtcal;
-						//echo "SEEEEEEEE ";
 						//$perday_amount=$_POST['perdayid'.$h1];
-						 $HotelSQL = $conn->prepare("INSERT INTO stay_sched (stay_id, hotel_id, sty_date, sty_city, sty_room_type, sty_room_name, sty_adults, sty_512child, sty_child, sty_child_bed, sty_food, sty_extra, sty_indu_rent, sys_amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '0')");
-						 $HotelSQL->execute(array($com_plan_id,$shotel,$shdate,$shcity,$shroom,$shroom_names,$shadult,$shchild512,$shchild,$shextra,$shfood,$sh_extra,$indu_rent,$perday_amtcal));
+						 $HotelSQL = $conn->prepare("INSERT INTO stay_sched (stay_id, hotel_id, sty_date, sty_city, sty_room_type, sty_room_name, sty_adults, sty_512child, sty_child, sty_child_bed, sty_food, sty_extra, sty_indu_rent, sys_amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,'0')");
+		      $HotelSQL->execute(array($com_plan_id,$shotel,$shdate,$shcity,$shroom,$shroom_names,$shadult,$shchild512,$shchild,$shextra,$shfood,$sh_extra,$indu_rent,$perday_amtcal)); 
 						
 						//echo "<br>Perday_amtcal=".$perday_amtcal;
 				}//for end
@@ -1033,8 +1033,8 @@ $currency_rate = $row_currencydb['currency_rate'];
 		{
 			$veh_upl2 = explode('-',$veh_upl1[$vcnt]);
 	
-			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
-			$insertSQL5->execute(array($com_plan_id,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9]));
+			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+			$insertSQL5->execute(array($com_plan_id,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9],$veh_upl2[10],$veh_upl2[11]));
 		}
 		
 		//Insert All travel vehicles from every city's info
@@ -1053,8 +1053,8 @@ $currency_rate = $row_currencydb['currency_rate'];
 			{
 				$each_veh_upl = explode('-',$exp_get_veh[$evcnt]);
 		
-				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
-				$insertSQL6->execute(array($com_plan_id,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9]));
+				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+				$insertSQL6->execute(array($com_plan_id,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9],$each_veh_upl[10],$each_veh_upl[11]));
 			}
 		}
 		
@@ -1505,6 +1505,7 @@ $spro = $conn->prepare("SELECT * FROM stay_sched where stay_id =? ORDER BY sno A
 $spro->execute(array($_GET['planid']));
 //$row_spro = mysql_fetch_assoc($spro);
 $row_spro_main=$spro->fetchAll();
+//print_r($row_spro_main);
 $totalRows_spro = $spro->rowCount();
 $scnt=1;	
 									?>
@@ -1640,15 +1641,25 @@ $row_count=$totalRows_sspro;
 $trv_future = $conn->prepare("SELECT * FROM travel_sched where travel_id =?");
 $trv_future->execute(array($_GET['planid']));
 //$row_trv_future = mysql_fetch_assoc($trv_future);
-$row_trv_future_main=$trv_future->fetchAll();
+//$row_trv_future_main=$trv_future->fetchAll();
 $area_arr=array();
 $gv=0;
 $dt_cnt_arr=array();
-foreach($row_trv_future_main as $row_trv_future)
+while($row_trv_future = $trv_future->fetch(PDO::FETCH_ASSOC))
 {
-	$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
-	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid']){
+	if(!isset($dt_exists[$row_trv_future['tr_to_cityid']]))
+	$dt_exists[$row_trv_future['tr_to_cityid']]=0;
+$sql_travel_daytrip = $conn->prepare("SELECT COUNT(*) as cnt  FROM dvi_cities dc,travel_daytrip td where dc.id=td.orig_cid and name=? and travel_id = ?");
+$sql_travel_daytrip->execute(array($row_trv_future['tr_to_cityid'],$_GET['planid']));
+$row_sql_travel_daytrip = $sql_travel_daytrip->fetch(PDO::FETCH_ASSOC);
+//print_r($row_trv_future);
+	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid'] && $row_trv_future['via_cities'] =='-' && $row_sql_travel_daytrip['cnt'] && $dt_exists[$row_trv_future['tr_to_cityid']] == 0 && $gv >0){
+			$dt_exists[$row_trv_future['tr_to_cityid']]=1;
 		$dt_cnt_arr[]=$gv;
+	}
+	else{
+		
+$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
 	}
 	$gv++;
 	
@@ -1783,7 +1794,11 @@ $totalRows_via_cty = $via_cty->rowCount();
 									echo "-&nbsp;&nbsp;".$row_trv['tr_to_cityid'];
 									if($row_trv['tr_dist_ss']>0)
 									{
-										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $chn!=0 && in_array($chn,$dt_cnt_arr)){
+										$dt_city_name_int=1;
+										if(isset($dt_arr[$row_trv['tr_from_cityid']][0])){
+										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
+										}
+										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $dt_city_name_int ==0 && $chn!=0 && in_array($chn,$dt_cnt_arr)){
 											 $distanc = $conn->prepare("SELECT * FROM dvi_citydist where (from_cityid =? and to_cityid =?) or (from_cityid =? and to_cityid =?)");
 $distanc->execute(array($row_cityy1['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$row_cityy1['id']));
 $row_distanc= $distanc->fetch(PDO::FETCH_ASSOC);					
@@ -2079,15 +2094,22 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 									}//for first day
 									else // for other days
 									{
-										if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && isset($dt_arr[$row_trv['tr_from_cityid']][0]))
+										$dt_city_name_int= -1;
+										$dt_arr[$row_trv['tr_from_cityid']][0];
+										if(isset($dt_arr[$row_trv['tr_from_cityid']]))
+										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
+											if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && $dt_city_name_int == 0)
 								 {
+									//print "DT";
+
+									
 									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
 										
 
 
 
-			echo "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
+			echo "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
 
 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");
@@ -2231,9 +2253,9 @@ $totalRows_hot1 = $hot1->rowCount();
 								 // daytrip goes here
 								 if(!empty($dt_arr))
 								 {
-									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
+									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && !is_numeric($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
-	 echo "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]."</span>";
+	 echo "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]."</span>";
 
 	 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");

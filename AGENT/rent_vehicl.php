@@ -194,6 +194,9 @@ for ($q=0;$q<$cnt_cities;$q++)
 		
 			
 		//$rentalrept.= "VEHICLE ".($l+1)." - ".$vehtype."<br>";
+		$rentalrept.= "Transfers Rental - &#8377; ".$row_vehics['rent_transfer']."<br>";
+		$rent_upl.= $row_vehics['vehicle_id'].'-';
+		$rent_upl.= $row_vehics['rent_transfer'].'-';
 		$rentalrept.= "Day Rental - &#8377; ".$row_vehics['rent_day']."<br>";
 		$rent_upl.= $row_vehics['vehicle_id'].'-';
 		$rent_upl.= $row_vehics['rent_day'].'-';

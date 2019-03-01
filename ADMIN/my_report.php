@@ -292,7 +292,7 @@ if(!empty($row_orders['sub_paln_id'])){
                                             </tbody>
                                         </table>
                                     </div><!-- /.table-responsive -->
-							<?php
+							<?php 
 								}
 							}
 							?>
@@ -380,6 +380,10 @@ if(!empty($row_orders['sub_paln_id'])){
                             
                            <center> <h4 class="text"><strong> Vehicle rental split-up : </strong><a class="fancybox badge badge-danger tooltips" title="View rent details of vehicles from all cities" data-type="iframe" href="../ADMIN/all_veh_rpt.php?mm=<?php echo $_GET['mm']; ?>&sm=<?php echo $_GET['sm'];?>&planid=<?php echo urlencode($row_orders['plan_id']); ?>"><i class="fa fa-taxi"></i>&nbsp; Details </a></h4></center>
                             
+							
+							<?php $transfers=0; $transfer_rent = 0; $is_arr_transfer=check_arrival_transfer($row_orders['plan_id']); 
+							                    $is_dep_transfer=check_departure_transfer($row_orders['plan_id']); 
+												$transfers= $transfers+$is_arr_transfer+$is_dep_transfer; ?>
                             <div class="table-responsive" style="overflow-x:scroll; width:100%; ">
 								<table class="table table-th-block  table-dark" >
 									<thead>
@@ -387,8 +391,14 @@ if(!empty($row_orders['sub_paln_id'])){
                                         	<th>#</th>
                                             <th>Type</th>
                                             <th>Total driven distance (kms)</th>
+											<?php if($transfers) {?>
+											<th> Transfer Rental (&#8377;)</th>
+											
+											<th> Rental for <?php $row_orders['arr_day']= $transfers; echo $row_orders['arr_day']; ?> Transfer (&#8377;)</th> 
+							<?php }; ?>
                                             <th> Per day rental (&#8377;)</th>
-                                            <th> Rental for <?php echo $row_orders['tr_days']; ?> days (&#8377;)</th>
+                                            <th> Rental for <?php $row_orders['tr_days']= $row_orders['tr_days']-$transfers;  
+											     echo $row_orders['tr_days'];  ?> days (&#8377;)</th>
                                             <th> Per km rental (&#8377;)</th>
                                             <th>Max allowed kms (per day)</th>
                                             <th>Max allowed kms (journey) - <?php echo $row_orders['tr_days']; ?> day(s)</th>
@@ -401,6 +411,7 @@ if(!empty($row_orders['sub_paln_id'])){
 									<tbody>
                                     <?php
 									$num = 1;
+								
 									foreach($row_trvrent_main as $row_trvrent)
 									{
 										
@@ -414,6 +425,11 @@ if(!empty($row_orders['sub_paln_id'])){
                                             <td><?php echo $num; ?></td>
 											<td style="word-wrap:break-word"><?php echo $row_vtyp1['vehicle_type']; ?></td>
                                             <td><?php  echo $row_trvrent['tot_dist'];  //echo  $tt_dist_cal;?></td>
+											<?php if($transfers) {?>
+											<td><?php echo $row_trvrent['rent_transfer']; ?></td>
+											
+											<td width="30%"><?php $transfer_rent=$row_orders['arr_day'] * $row_trvrent['rent_transfer']; echo $row_orders['arr_day'].' * ' .$row_trvrent['rent_transfer'].' = '; echo $transfer_rent; ?></td>
+											<?php }; ?>
 											<td><?php echo $row_trvrent['rent_day']; ?></td>
                                             <td width="30%"><?php $allday_rent = $row_orders['tr_days'] * $row_trvrent['rent_day']; echo $row_orders['tr_days'].' * '.$row_trvrent['rent_day'].' = '; echo $allday_rent; ?></td>
                                             <td><?php echo $row_trvrent['rent_per_km']; ?></td>
@@ -422,11 +438,14 @@ if(!empty($row_orders['sub_paln_id'])){
                                             <td><?php echo $row_trvrent['exceed_km']; ?></td>
                                     		<td width="30%"><?php echo $row_trvrent['rent_per_km'].' * '.$row_trvrent['exceed_km'].' = '; echo $extr_chrg; ?></td>
                                             <td><?php echo $row_trvrent['permit_amt']; ?></td>
-											<td><?php echo $row_trvrent['rent_amt']; ?></td>
+											
+											<td><?php $row_trvrent['rent_amt']=$transfer_rent+$allday_rent+$extr_chrg+$row_trvrent['permit_amt']; 
+											          echo $row_trvrent['rent_amt']; ?></td>
+											
 										</tr>
                                         <?php
 									$num++; 
-									} 
+									}
 										?>
 									</tbody>
 								</table>
@@ -436,7 +455,7 @@ if(!empty($row_orders['sub_paln_id'])){
                             
                             <div class="row">
                                 <div class="col-sm-12">
-                                <div class="the-box" style=" text-align:left; background-color:#E6ECF2;"><strong  style="font-size: x-large;">Total amount chargeable for transport:  <?php echo  convert_currency_text("&#8377;",$_GET['planid'])." ".convert_currency($row_orders['tr_net_amt'],$_GET['planid']);  $grand_ttotal=$grand_ttotal+$row_orders['tr_net_amt']; ?></strong>
+                                <div class="the-box" style=" text-align:left; background-color:#E6ECF2;"><strong  style="font-size: x-large;">Total amount chargeable for transport: <?php echo  convert_currency_text("&#8377;",$_GET['planid'])." ".convert_currency($row_trvrent['rent_amt'] ,$_GET['planid']);  $row_trvrent['rent_amt']; ?></strong>
 						        </div>
                                     
                                 </div>
@@ -671,7 +690,7 @@ $totalRows_spro1 = $spro1->rowCount();
 									</tr>
 									
                                     <tr>
-                                    <td style="padding:2px;font-size:11px">&nbsp;Room Category/Rate</td>
+                                    <td style="padding:2px;font-size:11px">&nbsp;Room Categoryss/Rate</td>
                                     <td style="padding:2px;font-size:11px">&nbsp;With Extra Bed</td>
                                     <td style="padding:2px;font-size:11px">&nbsp;Without Extra Bed</td>
                                     <td style="padding:2px;font-size:11px">&nbsp;Candle Light</td>
@@ -684,9 +703,10 @@ $totalRows_spro1 = $spro1->rowCount();
 									
 									
                                     <tr>
-					               <td style="padding:2px;font-size:11px">&nbsp;<?php 
+					               <td style="padding:2px;font-size:11px">&nbsp; <?php 
 								   
 								  $rrom_rents=explode('-',$row_sspro1['sty_indu_rent']);
+								  //print_r($row_sspro1);
 								  $rrom_amounts=explode(',',$rrom_rents[0]);
 								  $rrom_amounts1=array_unique($rrom_amounts);
 								 // print_r($rrom_amounts1);
@@ -729,7 +749,7 @@ $totalRows_spro1 = $spro1->rowCount();
 									}
 								    ?>
                                     </td>
-                                    <td style="padding:2px;font-size:11px"><?php //&nbsp;Child With Bed
+                                    <td style="padding:2px;font-size:11px"> <?php //&nbsp;Child With Bed
 									$bed_det = $row_sspro1['sty_child_bed'];
 								   $exp_chldbed = explode(',',$bed_det);
 								   

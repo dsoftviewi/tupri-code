@@ -568,7 +568,7 @@ $totalRows_hotelpro = $hotelpro->rowCount();?>
 	foreach($row_hotelroom_main as $row_hotelroom)
 	{	?>	
     
-    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
+    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>&room_type=<?php echo $row_hotelroom['room_type']; ?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
     <br />	
 <?php    }
 	}else{ //if end
@@ -812,7 +812,7 @@ if($totalRows_htpro>0){?>
 	foreach($row_hotelroom_main as $row_hotelroom)
 	{	?>	
     
-    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
+    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>&room_type=<?php echo $row_hotelroom['room_type']; ?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
     <br />	
 <?php    }
 	}else{ //if end
@@ -1254,7 +1254,7 @@ $totalRows_hotelpro = mysql_num_rows($hotelpro);?>
 	while($row_hotelroom = mysql_fetch_assoc($hotelroom))
 	{	?>	
     
-    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
+    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>&room_type=<?php echo $row_hotelroom['room_type']; ?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
     <br />	
 <?php    }
 	}else{ //if end

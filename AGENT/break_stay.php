@@ -7,7 +7,7 @@ table{
 }
 
 .modal-lg1{
-	max-width:1000px;	
+	width:1000px;	
 }
 
 .loader_ax{
@@ -26,7 +26,7 @@ table{
 .flashit{ background: #FFF; color: #F00; text-align:center; font-weight:600; } /* Flash class and keyframe animation */
 
  .flashit:hover{
-	  -webkit-animation: flash linear  infinite; animation: flash linear  infinite; 488
+	  -webkit-animation: flash linear  infinite; animation: flash linear  infinite; 
 	  font-weight:700;
 	  color:#090;
  }
@@ -485,8 +485,8 @@ $totalRows_cities = $cities->rowCount();
                           <div class="panel with-nav-tabs panel-default panel-square" id="rep_tabss">
 						  <div class="panel-heading">
 						  <ul class="nav nav-tabs">
-							<li><a href="#shot_rep" data-toggle="tab">Short Report</a></li>
-							<li class="active"><a href="#det_rep" data-toggle="tab" class="detail_rep">Itinerary Report</a></li>
+								<li ><a href="#shot_rep" data-toggle="tab">Short Report</a></li>
+								<li class="active"><a href="#det_rep" data-toggle="tab">Itinerary Report</a></li>
                                <!-- <li><a href="#det_trv_rep" data-toggle="tab">Travel Report</a></li>-->
 						  </ul>
 						  </div>
@@ -496,10 +496,10 @@ $totalRows_cities = $cities->rowCount();
 										<div class="tab-pane fade " id="shot_rep">
                                      <!--  <div id="addi_cost_toggle" style="border:1px solid #666; padding:6px; background-color:#FDE9BC; text-align:center"> ADD-ONS </div>
                                         <div id="addi_cost_load_div" style="display:none; background-color:#FFF9E9; border:1px solid #CCC"> addi_cost_load_div </div>-->
-               <br><table id="best_route_br0" class="table table-th-block" style="border:1px solid #E8D1BF;">
+               <br><table id="best_route_br0" class="table table-th-block" style="border:1px solid #E8D1BF">
                  <thead>
                  <tr style="background-color:#EAE1D8; color:#73471C;">
-                 <th width="10%">Date</th><th width="10%" colspan="2">From</th><th width="10%">To</th><th width="18%">Kms</th><th width="15%" class="timeHeader">Time</th></tr>
+                 <th width="15%">Date</th><th width="20%" colspan="2">From</th><th width="20%">To</th><th width="18%">Kilometres</th><th width="15%">Time</th></tr>
                  </thead>
                  <tbody ></tbody>
                  </table>
@@ -2250,7 +2250,7 @@ function bestroute(fr)
 		
 		var fr1=fr.split('br');
 		var fr2=fr1[1];
-		var nxt_br='<br><table id="best_route_'+fr+'" class="table table-th-block" style="border:1px solid #E8D1BF"><thead><tr style="background-color:#EAE1D8; color:#73471C;"><th width="15%">Date</th><th width="20%" colspan="2"> From</th><th width="20%">To</th><th width="18%">Kms</th><th width="15%">Time</th></tr></thead><tbody ></tbody></table>';
+		var nxt_br='<br><table id="best_route_'+fr+'" class="table table-th-block" style="border:1px solid #E8D1BF"><thead><tr style="background-color:#EAE1D8; color:#73471C;"><th width="15%">Date</th><th width="20%" colspan="2"> From</th><th width="20%">To</th><th width="18%">Kilometres</th><th width="15%">Time</th></tr></thead><tbody ></tbody></table>';
 		
 		$(nxt_br).appendTo('#shot_rep');
 		
@@ -2280,20 +2280,13 @@ function bestroute(fr)
 				vvhm=vvhh+" hours "+vvmm+" minutes";
 			}
 			
-			tabl_data="<tr><td width='25%'>"+date_read1+"</td><td>"+alldata3[0]+"</td><td><i class='fa fa-random tooltips' data-original-title='"+$('#sel_via_trav_cnames_'+incr+'_'+fr).val()+"'></i></td><td>"+alldata3[1]+"</td><td>"+vvdd+"</td><td class='time'>"+vvhm+"<input type='hidden' id='trav_times"+incr+"' name='trav_times"+incr+"' value='"+vvhm+"'></td></tr>";
+			tabl_data="<tr><td width='25%'>"+date_read1+"</td><td>"+alldata3[0]+"</td><td><i class='fa fa-random tooltips' data-original-title='"+$('#sel_via_trav_cnames_'+incr+'_'+fr).val()+"'></i></td><td>"+alldata3[1]+"</td><td>"+vvdd+"</td><td>"+vvhm+"<input type='hidden' id='trav_times"+incr+"' name='trav_times"+incr+"' value='"+vvhm+"'></td></tr>";
 		}else{
-			tabl_data="<tr><td width='25%'>"+date_read1+"</td><td>"+alldata3[0]+"</td><td><i class='fa fa-random tooltips' data-original-title='Travel Via Not Chosen'></i></td><td>"+alldata3[1]+"</td><td>"+alldata3[4]+"</td><td class='time'>"+alldata3[3]+"<input type='hidden' id='trav_times"+incr+"' name='trav_times"+incr+"' value='"+alldata3[3]+"'></td></tr>";
+			tabl_data="<tr><td width='25%'>"+date_read1+"</td><td>"+alldata3[0]+"</td><td><i class='fa fa-random tooltips' data-original-title='Travel Via Not Chosen'></i></td><td>"+alldata3[1]+"</td><td>"+alldata3[4]+"</td><td>"+alldata3[3]+"<input type='hidden' id='trav_times"+incr+"' name='trav_times"+incr+"' value='"+alldata3[3]+"'></td></tr>";
 		}
-		
 		
 		$(tabl_data).appendTo('#best_route_'+fr);
-		if(isMobile()){
-			$('#best_route_'+fr).find(".time").remove();
-			$('#best_route_'+fr).find(".timeHeader").remove();
-		$('[id^=best_route_]').css("margin-left","-16px");
-		}
 		$('.tooltips').tooltip();
-		
 	}
 }
 
@@ -2476,13 +2469,7 @@ function sendappr(fr)
 				//document.thplan.submit();
 				///return true;
 }
-function isMobile() {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Mobile|Opera Mini/i.test(navigator.userAgent)) {
-	return true;
-    } else {
-	return false;
-    }
-}
+
 function before_submit(fr)
 {
 	//alert('BEFORE SUBMIT ==');
@@ -2520,16 +2507,6 @@ function before_submit(fr)
 							 	$('#Travel_info_mod').modal('show');
 						});
 					}
-					if(isMobile()){
-								$(".detail_rep").hide();
-								$(".tab-pane").hide();
-								$("#shot_rep").show();
-								$("#shot_rep").addClass("active in");
-								$("#det_rep").parent("li").addClass("active");
-								}
-								else{
-									$("#shot_rep").parent("li").removeClass("active");
-								}
             }
         });
 }

@@ -254,15 +254,25 @@ echo date_format($date,"d-M-Y");
 $trv_future = $conn->prepare("SELECT * FROM travel_sched where travel_id =?");
 $trv_future->execute(array($_GET['planid']));
 //$row_trv_future = mysql_fetch_assoc($trv_future);
-$row_trv_future_main=$trv_future->fetchAll();
+//$row_trv_future_main=$trv_future->fetchAll();
 $area_arr=array();
 $gv=0;
 $dt_cnt_arr=array();
-foreach($row_trv_future_main as $row_trv_future)
+while($row_trv_future = $trv_future->fetch(PDO::FETCH_ASSOC))
 {
-	$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
-	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid']){
+	if(!isset($dt_exists[$row_trv_future['tr_to_cityid']]))
+	$dt_exists[$row_trv_future['tr_to_cityid']]=0;
+$sql_travel_daytrip = $conn->prepare("SELECT COUNT(*) as cnt  FROM dvi_cities dc,travel_daytrip td where dc.id=td.orig_cid and name=? and travel_id = ?");
+$sql_travel_daytrip->execute(array($row_trv_future['tr_to_cityid'],$_GET['planid']));
+$row_sql_travel_daytrip = $sql_travel_daytrip->fetch(PDO::FETCH_ASSOC);
+//print_r($row_trv_future);
+	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid'] && $row_trv_future['via_cities'] =='-' && $row_sql_travel_daytrip['cnt'] && $dt_exists[$row_trv_future['tr_to_cityid']] == 0 && $gv >0){
+			$dt_exists[$row_trv_future['tr_to_cityid']]=1;
 		$dt_cnt_arr[]=$gv;
+	}
+	else{
+		
+$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
 	}
 	$gv++;
 	
@@ -314,7 +324,7 @@ if($totalRows_dtrip > 0)
 $trv = $conn->prepare("SELECT * FROM travel_sched where travel_id =? ORDER BY sno ASC");
 $trv->execute(array($_GET['planid']));
 //$row_trv = mysql_fetch_assoc($trv);
-$row_trv_main =$trv->fetchAll();
+//$row_trv_main =$trv->fetchAll();
 $totalRows_trv = $trv->rowCount();
 $chn=0; 
 $trv_cnt_1 = $totalRows_trv - 1;
@@ -323,7 +333,8 @@ $trv_cnt_1 = $totalRows_trv - 1;
                                     <br />
                                     <?php  }?>
                                     <div class="col-sm-12">
-                                     <?php foreach($row_trv_main as $row_trv){
+                                     <?php while($totalRows_trv>0){
+										$row_trv = $trv->fetch(PDO::FETCH_ASSOC);
 										
 										
 										if($trv_cnt_1>0)
@@ -392,7 +403,11 @@ $totalRows_via_cty = $via_cty->rowCount();
 									echo "&nbsp;&nbsp;-&nbsp;&nbsp;".$row_trv['tr_to_cityid'];
 									if($row_trv['tr_dist_ss']>0)
 									{
-										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $chn!=0 && in_array($chn,$dt_cnt_arr)){
+										$dt_city_name_int=1;
+										if(isset($dt_arr[$row_trv['tr_from_cityid']][0])){
+										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
+										}
+										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $dt_city_name_int ==0 && $chn!=0 && in_array($chn,$dt_cnt_arr)){
 											 $distanc = $conn->prepare("SELECT * FROM dvi_citydist where (from_cityid =? and to_cityid =?) or (from_cityid =? and to_cityid =?)");
 $distanc->execute(array($row_cityy1['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$row_cityy1['id']));
 $row_distanc= $distanc->fetch(PDO::FETCH_ASSOC);					
@@ -433,7 +448,7 @@ if($totalRows_trv_new>0)
 	$arr_date_time=$row_orders['tr_arr_date'].' '.$row_orders['tr_arr_time'];//$row_orders['tr_arr_time']
 	$arr_date_tstmp=date('U',strtotime($arr_date_time));
 	
-	$arr_timenxday=date('Y-m-d', strtotime($row_orders['tr_arr_date']. ' +1 day'));
+	$arr_timenxday=date('Y-m-d', strtotime($row_orders['tr_arr_date']. ' +1 day')); 
 	$arr_timenx6am=date('U',strtotime($arr_timenxday.' 06:00 AM'));//for next day morning - arrival
 	
 	$time6am=date('U',strtotime($row_orders['tr_arr_date'].' 06:00 AM'));
@@ -682,16 +697,22 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 									else // for other days
 									{
 										//print_r($dt_cnt_arr);
-										if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && isset($dt_arr[$row_trv['tr_from_cityid']][0]))
+										$dt_city_name_int= -1;
+										$dt_arr[$row_trv['tr_from_cityid']][0];
+										if(isset($dt_arr[$row_trv['tr_from_cityid']]))
+										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
+											if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && $dt_city_name_int == 0)
 								 {
-									// print "KIRAN";
+									//print "DT";
+
+									
 									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
 										
 
 
 
-			echo "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
+			echo "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
 
 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");
@@ -832,9 +853,9 @@ $totalRows_hot1 = $hot1->rowCount();
 								 // daytrip goes here
 								 if(!empty($dt_arr))
 								 {
-									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
+									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && !is_numeric($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
-			echo "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]." : </span>";
+			echo "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]." : </span>";
 
 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");

@@ -13,7 +13,6 @@ $timezone = new DateTimeZone("Asia/Kolkata" );
   $time=date("H:i:s");
   $today=date('d.m.Y');
 
-
 $idd=explode('#',$_GET['planid']);
 $str=$idd[0];
 //print_r($idd);
@@ -36,6 +35,12 @@ for($mia=0;$mia<count($multi_itin_arr);$mia++)
 	}
 }
 
+
+$you = $conn->prepare("SELECT * FROM agent_pro where agent_id =?");
+$you->execute(array($_SESSION['uid']));
+$row_you = $you->fetch(PDO::FETCH_ASSOC);
+$totalRows_you = $you->rowCount();
+
 $customer_name=$_GET['customers'];
 //header("Content-type: application/vnd.ms-word");
 //header("Content-Disposition: attachment;Filename=document_name.doc");
@@ -46,7 +51,17 @@ $html='<html xmlns="http://www.w3.org/1999/xhtml">
 
 .tag 
 {
-	
+	background:url(../images/dvi_pdf1.png);
+	background-position:50% 50% !important;
+	background-color:#FFF;
+	opacity:0.2;
+	background-repeat: no-repeat;
+	padding :10px;
+}
+
+.tag_you
+{
+	background:url(../img_upload/agent_img/logo/'.$row_you['comp_logo'].');
 	background-position:50% 50% !important;
 	background-color:#FFF;
 	opacity:0.2;
@@ -118,17 +133,26 @@ hr {
   <table>
     <tr>
       <td style="border-bottom:1px solid #000; border-top:1px solid #FFF;border-left:1px solid #FFF;border-right:1px solid #FFF">
-<span>
-<img  src="../images/dvi_pdf.png"  height="65px" width="65px" alt="DVI Logo"  style="margin-left:630px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<br></td>
+<span>';
+if(trim($row_you['comp_logo'])=='' || trim($row_you['comp_logo'])=='-')
+{
+	$html.='<img  src="../images/dvi_pdf.png" height="65px" width="65px" alt="DVI Logo" style="margin-left:630px;">';
+	$water_mark='tag';
+}else{
+	$html.='<img  src="../img_upload/agent_img/logo/'.$row_you['comp_logo'].'" height="65px" width="65px" alt="Your Logo"  style="margin-left:630px;">';
+	$water_mark='tag_you';
+}
+
+$html.='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<br><b style="margin-left:550px; font-size:12px;" >An ISO 9001 - 2008 company</b></td>
 
     </tr>
   </table>
 </div>
 <div id="footer"  style="margin-top:-20px" > 
 <strong>Head Office : </strong><strong>#51, Vijaya Nagar, Dheeran Nagar (Extn), Karumandapam, Trichirappalli, Tamilnadu - 620009</strong><br />
-<strong>Ph : </strong><strong>0431-2403615 </strong>&nbsp;&nbsp;&nbsp;<strong> H Phone :</strong><strong>9843288844</strong>&nbsp;&nbsp;&nbsp;<strong> Windows Live ID : </strong><strong> <u>vsr@dvi.co.in</u></strong><br />
-<strong>BRANCHES :: </strong>&nbsp;<strong> MADURAI | COCHIN | HYDERABAD</strong>
+<strong>Ph : </strong><strong>0431-2403615 </strong>&nbsp;&nbsp;&nbsp;<strong> H Phone :</strong><strong>9443164494</strong>&nbsp;&nbsp;&nbsp;<strong> Windows Live ID : </strong><strong> <u>vsr@v-i.in</u></strong><br />
+<strong>BRANCHES :: </strong>&nbsp;<strong>NEW DELHI | MADURAI | COCHIN | VIJAYAWADA</strong>
 </div>
 
 <div class="the-box" style="vertical-align: text-middle; border:thin #666 1px;">';
@@ -136,28 +160,27 @@ hr {
 
 if(!isset($_GET['fdate']) && !isset($_GET['tdate']))
 {
-         $sspro1 = $conn->prepare("SELECT * FROM stay_sched where stay_id = ? ORDER BY sno ASC ");
+		 $sspro1 = $conn->prepare("SELECT * FROM stay_sched where stay_id IN (?) ORDER BY sno ASC ");
 }else{
-		$sspro1 = $conn->prepare("SELECT * FROM stay_sched where stay_id = ? and (`sty_date`>='".date('Y-m-d',strtotime($_GET['fdate']))."' and `sty_date`<='".date('Y-m-d',strtotime($_GET['tdate']))."') ORDER BY sno ASC ");
+		$sspro1 = $conn->prepare("SELECT * FROM stay_sched where stay_id =? and (`sty_date`>=? and `sty_date`<=?) ORDER BY sno ASC ");
 }
-$sspro1->execute(array($_GET['planid']));
+$sspro1->execute(array($multi_itin,$_GET['planid'],date('Y-m-d',strtotime($_GET['fdate'])),date('Y-m-d',strtotime($_GET['tdate']))));
 //$row_sspro1 = mysql_fetch_assoc($sspro1);
-//$row_sspro1_main=$sspro1->fetchAll();
+$row_sspro1_main=$sspro1->fetchAll();
 $totalRows_sspro1 = $sspro1->rowCount();
-
 if($totalRows_sspro1>0)
 {
 	$first_day=0;
 	$last_day=1;
 	$ro=0;;
-while($row_sspro1 = $sspro1->fetch(PDO::FETCH_ASSOC))
+foreach($row_sspro1_main as $row_sspro1)
 {
 	if($ro!=0)
 	{
 		$html.='<hr>';	
 	}
 $ro++;
-  $html.='<table class="tag" style="border-top:#FFF; border-bottom:#FFF; border-left:#FFF; border-right:#FFF; margin-top:60px;" ><tr>
+  $html.='<table class="'.$water_mark.'" style="border-top:#FFF; border-bottom:#FFF; border-left:#FFF; border-right:#FFF; margin-top:60px;" ><tr>
     <td class="hide_border" colspan="6"><center><font style="font-weight: bold; color:#900; font-family:; text-align: center; font-size: 16px">Voucher Details</font></center></td>
   </tr>
  <tr>
@@ -190,10 +213,10 @@ $ro++;
 		$totalRows_sp = $sp->rowCount();
 								
 		$old_date= date('d-M-Y',strtotime($row_sspro1['sty_date']));
-		if($totalRows_sp>0)
+		if($totalRows_sp>1)
 		{			
-			 $totalRows_sp2=$totalRows_sp;
-			 $derf=$totalRows_sp2;
+			$totalRows_sp2=$totalRows_sp;
+			$derf=$totalRows_sp2;
 			$date=date_create($row_sspro1['sty_date']);
 			date_add($date,date_interval_create_from_date_string($totalRows_sp2." days"));
 			
@@ -426,9 +449,9 @@ $html.= $row_hotell['hotel_name']."&nbsp;";
 		$agent = $conn->prepare("SELECT * FROM agent_pro where agent_id =?");
 		$agent->execute(array($row_orders['agent_id']));
 		$row_agent = $agent->fetch(PDO::FETCH_ASSOC);
-		$totalRows_agent =$agent->rowCount();
+		$totalRows_agent = $agent->rowCount();
 
-		$html.= "24*7 @ All India Customer Care - 9047776899";
+		$html.= "24*7 @ All India Customer Care - 9843288844";
 		$html.='</td>
       </tr>
       <tr>
@@ -442,7 +465,6 @@ $html.= $row_hotell['hotel_name']."&nbsp;";
         <td style="border:none"><p style="font-weight: bold; font-family:; font-size: 14px; text-align: right; margin-right:10px;">Authorised Signatory,</p></td>
       </tr>
       <tr>
-        
         <td colspan="2" style="border:none"><p style="font-family: ; text-align: right;"><strong style="font-size:10px">(System generated voucher. No signature required.)</strong></p></td>
       </tr>
       
@@ -452,8 +474,8 @@ $html.= $row_hotell['hotel_name']."&nbsp;";
 		$html.='<b>General Policies</b><br>
                                 <b>As per Government of India rules, it is mandatory for all guests over the age of 18 years to present a valid photo identification ( ID ) on check-in.</b><br>
                                 <b>Entry to the hotel is at the sole discretion of the hotel authority. If the address on the photo identification card matches the city where the hotel is located, the hotel may refuse to provide accommodation.</b><br>
-                                <b>Dvi will not be responsible for any check-in denied by the hotel due to the aforesaid reasons. Due to any natural or political or local issues if there is any damage to personal or tour, DVI may not take the responsibility.</b><br>
-                                <b>If the booking includes the extra bed it is facilitated with a folding cot or a mattress as an extra bed, as per the hotel policy.</b><br>';
+                                <b>Dvi will not be responsible for any check-in denied by the hotel due to the aforesaid reasons. Due to any natural or political or local issues if there is any damage to personal or tour DVI may not take the responsibility.</b><br>
+                                <b>If the booking includes the extra bed it is facilitated with a folding cot or a mattress as an extra bed, as pert eh hotel policy.</b><br>';
 		$html.='</td>
       </tr>
     </table></td>
@@ -474,6 +496,7 @@ $html.= $row_hotell['hotel_name']."&nbsp;";
 </body>
 <html>';
 
+//echo $html;
 $fnfile=$row_orders['tr_name'].'_'.$_GET['planid']."'s_hotel_voucher.pdf";
 $dompdf = new DOMPDF();
 $dompdf->load_html($html);

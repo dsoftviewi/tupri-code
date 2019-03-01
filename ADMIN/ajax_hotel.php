@@ -445,7 +445,7 @@ if(isset($_GET['type']) && $_GET['type']==10)
 	foreach($row_hotelroom_main as $row_hotelroom)
 	{	?>	
     
-    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
+    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>&room_type=<?php echo $row_hotelroom['room_type']; ?>"><i class="fa fa-tags"></i>&nbsp;<?php echo $row_hotelroom['room_type']; ?></a>
     <br />	
 <?php    }
 	}else{ //if end
@@ -963,7 +963,7 @@ name="hprior_<?php echo $h; ?>" id="hprior_<?php echo $h; ?>"onchange="fun_prior
                                      </td>
                                     <td  width="15%" style="word-wrap:break-word">
 									<?php
-	$hotelroom = $conn->prepare("SELECT * FROM hotel_season where status = '0' and hotel_id=?");
+	$hotelroom = $conn->prepare("SELECT * FROM hotel_season where status = '0' and hotel_id=? group by room_type");
 	$hotelroom->execute(array($row_hotelpro['hotel_id']));
 	$tot_room=$hotelroom->rowCount();
 	$row_hotelroom_main=$hotelroom->fetchAll();
@@ -971,7 +971,7 @@ name="hprior_<?php echo $h; ?>" id="hprior_<?php echo $h; ?>"onchange="fun_prior
 	foreach($row_hotelroom_main as $row_hotelroom)
 	{	?>	
     
-    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=76a732673da97ccc606eb6482d25f298&sm=28b5856335dedd80e0dd2bf5915448e0"><i class="fa fa-tags"></i>&nbsp;<?php
+    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=76a732673da97ccc606eb6482d25f298&sm=28b5856335dedd80e0dd2bf5915448e0&room_type=<?php echo $row_hotelroom['room_type']; ?>"><i class="fa fa-tags"></i>&nbsp;<?php
 	if(strlen($row_hotelroom['room_type'])<24)
 	{
 		echo $row_hotelroom['room_type']; 

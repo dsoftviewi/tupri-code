@@ -1028,10 +1028,7 @@ function set_cate(categ)
 
 function manage_status(sts)
 {
-	var pid = $('#clicked_pid').val().trim();
 	var spid=$('#clicked_pid').val().trim().split('#');
-	
-	
 	if(sts=='cancel')
 	{
 		$.get('AGENT/ajax_agent.php?spid1='+spid[0]+'&spid2='+spid[1]+'&type=27',function(result)
@@ -1045,27 +1042,11 @@ function manage_status(sts)
 	{
 		if($('#prev_catg').val()!='')
 		{
-			var cities = $("#"+spid[0]+"\\#"+spid[1]+"_city_ids_pow").val();
-			var cities_arr = cities.split(",");
-			var hotelId;
-			var Continue = 1;
-			for(var ct=0;ct<cities_arr.length;ct++){
-				 hotelId = $("#"+spid[0]+"\\#"+spid[1]+"_hid_"+$('#prev_catg').val()+"_"+ct).val();
-				 if(hotelId == ""){
-					 Continue=0;
-					 break;
-				 }
-			}
-			if(Continue){
-				$('#resume_modal_body').hide();
-				$('#resume_tab_footer').hide();
-				$('#resume_modal_body_confirm').show();
-				$('#conform_head').show();
-				$('#resume_confirm_footer').show();
-			}
-			else{
-				alert("Some Hotels are unavailable, hence you can't choose this option.. ");
-			}
+			$('#resume_modal_body').hide();
+			$('#resume_tab_footer').hide();
+			$('#resume_modal_body_confirm').show();
+			$('#conform_head').show();
+			$('#resume_confirm_footer').show();
 		}else{
 			alert('Please select any option ..');
 		}
@@ -1176,7 +1157,7 @@ function manage_status1(sts)
 		$.get('AGENT/ajax_agent.php?spid1='+spid[0]+'&spid2='+spid[1]+'&type=26'+'&gname='+gnamme+'&gmobi='+$('#mobil').val()+'&garrdet='+$('#arrdet').val()+'&gdepdet='+$('#depdet').val(),function(result)
 		{
 			$('#resume_transmodal').modal('hide');
-			alert(gnamme+' - We are please to accept your request for reservation.If urgent please get in touch with your tour manager @ 9047776899/9047776849');
+			alert(gnamme+' - Itinerary Plan Successfully Sent To Administrator');
 			location.reload();
 					});
 		}

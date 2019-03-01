@@ -265,19 +265,16 @@ $row_count=$totalRows_sspro;
 $trv_future = $conn->prepare("SELECT * FROM travel_sched where travel_id =?");
 $trv_future->execute(array($_GET['planid']));
 //$row_trv_future = mysql_fetch_assoc($trv_future);
+$row_trv_future_main=$trv_future->fetchAll();
 $area_arr=array();
 $gv=0;
-$dt_cnt_arr=array();
-while($row_trv_future = $trv_future->fetch(PDO::FETCH_ASSOC))
+foreach($row_trv_future_main as $row_trv_future)
 {
 	$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
-	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid']){
-		$dt_cnt_arr[]=$gv;
-	}
 	$gv++;
-	
 }
 $area_cnt = array_count_values($area_arr);
+print_r($area_cnt);
 $area_cnt1=$area_cnt;
 $copy_area_arr=$area_cnt;
 
@@ -406,20 +403,8 @@ $totalRows_via_cty = $via_cty->rowCount();
 									//travel via end
 									if($row_trv['tr_dist_ss']>0)
 									{
-										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $chn!=0 && in_array($chn,$dt_cnt_arr)){
-											 $distanc = $conn->prepare("SELECT * FROM dvi_citydist where (from_cityid =? and to_cityid =?) or (from_cityid =? and to_cityid =?)");
-$distanc->execute(array($row_cityy1['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$row_cityy1['id']));
-$row_distanc= $distanc->fetch(PDO::FETCH_ASSOC);					
-$totalRows_distanc = $distanc->rowCount();	
- $daytravel_dist=$row_distanc['dist']*2;
-echo " (".$daytravel_dist." Kms)";
-									 
-								 
-									 }
-									 else{
 									echo " (".$row_trv['tr_dist_ss']." Kms)";
 									$today_dist=$row_trv['tr_dist_ss'];
-									}
 									}else{
 $ss_dist = $conn->prepare("SELECT * FROM dvi_cities where id=?");
 $ss_dist->execute(array($row_cityy_to['id']));
@@ -709,32 +694,6 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 									}//for first day
 									else // for other days
 									{
-										if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr))
-								 {
-									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
-									 {
-										
-
-
-
-			echo "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
-
-
-$dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");
-$dayhpot->execute(array($dt_arr[$row_trv['tr_from_cityid']]['id']));
-//$row_dayhpot = mysql_fetch_assoc($dayhpot);
-$row_dayhpot_main=$dayhpot->fetchAll();
-$totalRows_dayhpot = $dayhpot->rowCount();
-
-foreach($row_dayhpot_main as $row_dayhpot)
-{
-		echo  $row_dayhpot['spot_name'];
-}
-										 unset($dt_arr[$row_trv['tr_from_cityid']][0]);
-										 $dt_arr[$row_trv['tr_from_cityid']] = array_values($dt_arr[$row_trv['tr_from_cityid']]);
-									 }
-									 
-								 }else{
 										if($row_trv['tr_from_cityid'] == $row_trv['tr_to_cityid'])
 										{
 											echo "After breakfast ";
@@ -870,7 +829,7 @@ $totalRows_hot1 = $hot1->rowCount();
 								 }
 							}else{
 								 echo "and later proceed to ".$row_trv['tr_to_cityid'].". Overnight stay at ".$row_hotel2['hotel_name']." hotel. ";
-								 }	}
+							}
 										?>
                                         <?php }//fot other days else end?>
                                     </div>
@@ -1057,7 +1016,7 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 						</div>
                    <div class="jumbotron jumbotron-sm " style="background-color:rgba(225, 220, 247, 0.24); color:#8388A9;">
 								<strong>Address: </strong><strong style="color:#F00;"><?php echo $row_you['comp_name']; ?></strong><strong><?php echo " - ".$row_you['agent_addr'];?></strong><br />
-                              <strong>Help Line : 27 * 7@ All India Customer Care : 9047776899 </strong><br />
+                              <strong>Help Line : 27 * 7@ All India Customer Care : 9843288844 </strong><br />
 							</div>
                             
                             <!-- Voucher start in -->
@@ -1068,13 +1027,13 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 $sspro1 = $conn->prepare("SELECT * FROM stay_sched where stay_id =? ORDER BY sno ASC ");
 $sspro1->execute(array($_GET['planid']));
 //$row_sspro1 = mysql_fetch_assoc($sspro1);
-//$row_sspro1_main =$sspro1->fetchAll();
+$row_sspro1_main =$sspro1->fetchAll();
 $totalRows_sspro1 = $sspro1->rowCount();
 if($totalRows_sspro1>0)
 {
 	$first_day=0;
 	$last_day=1;
-while($row_sspro1 = $sspro1->fetch(PDO::FETCH_ASSOC))
+foreach($row_sspro1_main as $row_sspro1)
 {
 ?>
                             <div class="row">
@@ -1273,7 +1232,7 @@ $row_agent = $agent->fetch(PDO::FETCH_ASSOC);
 $totalRows_agent = $agent->rowCount();
 
 			    //echo "24*7 @ Mr/Mrs. ".$row_agent['agent_fname']." ".$row_agent['agent_lname']."<br>".$row_agent['mobile_no']." / ".$row_agent['land_line']; 
-				echo "24*7 @ All India Customer Care - 9047776899";?></td></tr>
+				echo "24*7 @ All India Customer Care - 9843288844";?></td></tr>
                <tr><td width="50%" colspan="2" class="tdstyle"><center>DVI Holidays wishes you a pleasant stay</center></td></tr>
                </table>
                                 </div>
@@ -1291,14 +1250,14 @@ $totalRows_agent = $agent->rowCount();
                                 <b>General Policies</b><br>
                                 <b>As per Government of India rules, it is mandatory for all guests over the age of 18 years to present a valid photo identification ( ID ) on check-in.</b><br>
                                 <b>Entry to the hotel is at the sole discretion of the hotel authority. If the address on the photo identification card matches the city where the hotel is located, the hotel may refuse to provide accommodation.</b><br>
-                                <b>Dvi will not be responsible for any check-in denied by the hotel due to the aforesaid reasons. Due to any natural or political or local issues if there is any damage to personal or tour, DVI ma not take the responsibility.</b><br>
-                                <b>If the booking includes the extra bed it is facilitated with a folding cot or a mattress as an extra bed, as per the hotel policy.</b><br>
+                                <b>Dvi will not be responsible for any check-in denied by the hotel due to the aforesaid reasons. Due to any natural or political or local issues if there is any damage to personal or tour DVI ma not take the responsibility.</b><br>
+                                <b>If the booking includes the extra bed it is facilitated with a folding cot or a mattress as an extra bed, as pert eh hotel policy.</b><br>
                                 </div>
                                 
                                 <div class="col-sm-12 " style="background-color:rgba(234, 234, 236, 0.24); color:#8388A9; border-top:#666 solid 2px; border-bottom:#000 solid 2px; margin-top:15px; margin-bottom:20px;">
                                 <br>
 								<strong>Address: </strong><strong style="color:#F00;"><?php echo $row_you['comp_name']; ?></strong><strong><?php echo " - ".$row_you['agent_addr'];?></strong><br />
-                              <strong>Help Line : 27 * 7@ All India Customer Care : 9047776899 </strong><br />
+                              <strong>Help Line : 27 * 7@ All India Customer Care : 9843288844 </strong><br />
 							</div>              
 							</div><!-- /.row -->
                             <?php 
@@ -1368,7 +1327,7 @@ $totalRows_sy_scd = $sy_scd->rowCount();
                                 <span>Greetings from DVI Holidays !!!</span><br><br>
                                 <span>Thank you for your choice to use DVI Holidays! <br><br> The Motto of our company is to provide satisfactory services to our entire guest. In order to achieve this aim we need to know your opinion on it. Praise would be a motivation for us to continue our services. And any critic would naturally be a reason for us to improve our services according to the requirements and desires of our Guests.</span><br><br>
                                 <span>Please tell YOUR FRIENDS what you like about us! <br><br> Please tell US what you dislike.<br><br></span>
-                                <p style="margin-left:20px;">Tell us about the vehicles and its drivers for your whole trip?<br>Vehicle Provided :<br><br>Is the vehicle is on Time at the airport on your arrival?<br>Vehicle Provided :<br><br>How about the driver's services to you?<br>Driver Name :<br><br></p>
+                                <p style="margin-left:20px;">Tell us about the vehicles and its drivers for your whole trip?<br>Vehicle Provided :<br>Is the vehicle is on Time at the airport on your arrival?<br>Vehicle Provided :<br>How about the driver's services to you?<br>Driver Name :<br><br></p>
                                 <span>Tell us about the hotels which you have been used for your whole trip.</span>
                                 </div>
                                 
@@ -1378,20 +1337,20 @@ $trl_scd1 = $conn->prepare("SELECT * FROM travel_sched where travel_id =? ORDER 
 $trl_scd1->execute(array($_GET['planid']));
 //$row_trl_scd1 = mysql_fetch_assoc($trl_scd1);
 //$row_trl_arr1 = mysql_fetch_array($trl_scd1);
-//$row_trl_scd1_main =$trl_scd1->fetchAll();
+$row_trl_scd1_main =$trl_scd1->fetchAll();
 $totalRows_trl_scd1 = $trl_scd1->rowCount();
 
 
 $sy_scd1 = $conn->prepare("SELECT * FROM stay_sched where stay_id =?");
 $sy_scd1->execute(array($_GET['planid']));
 //$row_sy_scd1 = mysql_fetch_assoc($sy_scd1);
-//$row_sy_scd1_main=$sy_scd1->fetchAll();
+$row_sy_scd1_main=$sy_scd1->fetchAll();
 $totalRows_sy_scd1 =$sy_scd1->rowCount();
 								$i=0;
-								while($totalRows_sy_scd1>0)
+								foreach($row_sy_scd1_main as $row_sy_scd1)
 								{
-									$row_sy_scd1 = $sy_scd1->fetch(PDO::FETCH_ASSOC);
-									$row_trl_scd1 =$trl_scd1->fetch(PDO::FETCH_ASSOC);
+									
+									$row_trl_scd1=$row_trl_scd1_main[$i];
 									//$row_trl_scd1 =$trl_scd1->fetch(PDO::FETCH_ASSOC);
 									if($row_sy_scd1['sty_date'] == $row_trl_scd1['tr_date'])
 									{
@@ -1472,7 +1431,7 @@ echo $next_datt=date_format($date,"d-M-Y");
                                </div>
                                 <div class="jumbotron jumbotron-sm " style=" border-top:2px solid #666;background-color:rgba(225, 220, 247, 0.24); color:#8388A9;">
 								<strong>Address: </strong><strong style="color:#F00;"><?php echo $row_you['comp_name']; ?></strong><strong><?php echo " - ".$row_you['agent_addr'];?></strong><br />
-                              <strong>Help Line : 27 * 7@ All India Customer Care : 9047776899 </strong><br />
+                              <strong>Help Line : 27 * 7@ All India Customer Care : 9843288844 </strong><br />
 							</div>
 							</div><!-- /.row -->
 							</div>
@@ -1497,13 +1456,14 @@ echo $next_datt=date_format($date,"d-M-Y");
                                 	<b>Package  Includes: </b><br>
                                     Transfers and sightseeing  by  deluxe  tourists vehicle <span style="color:#F00">(Vehicles up hill driving on the hills would be on Non AC) </span> <br>
                                     Toll & Parking <br>
-                                    GST <br>
-                                    All local sight-seeing in the same vehicle, every day after breakfast till sunset. <br><br>
-                                    <span style="color:#F00">If staying in the House boat </span> <br>
+                                    All Hotel Taxes & Service Taxes <br>
+                                    All local sightseeing in the same vehicle, every day after breakfast till sunset. <br><br>
+                                    <span style="color:#F00">If staying IN the House boat </span> <br>
                                     House Boat with all Meals and Ac In the house boat operates from 09 PM to 06 Am only.<br><br>
                                     <span style="color:#F00">If the booking includes the extra bed it is facilitated with a folding cot or a mattress as an extra bed, as per the hotel policy. </span> <br><br>
-                                                                        
-                                    <b> Package does not include </b><br><br>
+                                    <span style="color:#F00; font-weight:bold">Hotel Check in and check out time at Hotel is 1200 Noon </span> <br><br>
+                                    
+                                    <b> Rate does not include </b><br>
                                     Any international / Domestic Air Fare if any quoted separately <br>
                                     English speaking guide / escort charges Airport Tax <br>
                                     Extra bed All meals (other than above mentioned ones) <br>
@@ -1513,11 +1473,11 @@ echo $next_datt=date_format($date,"d-M-Y");
                                     Insurance. <br>
                                     Any Porterage services at Airport / Railway station. <br>
                                     Any other expenses not mentioned in the above cost. <br>
-                                   <span style="color:#F00">24th December gala dinner </span> <br>
-								   <span style="color:#F00">31st December gala dinner </span> <br><br>
+                                    Rates are subject to change in case of inflation or tax hikes, rates based on currently applicable taxes. <br> <br>
+                                    <b>IMPORTANT: </b> Kindly note that names of hotels mentioned above only indicate that our rates have been based on usage of these hotels and it is not to be construed that accommodation is confirmed at these hotels until and unless we convey such confirmation to you. In the event of any of the above mentioned hotels not becoming available we shall book alternate accommodation at a similar or next best available hotel and shall pass on the difference of rates (supplement/reduction whatever applicable) <br><br>
 
 									<span style="color:#F00">Cancellation policy </span><br>
-                                    CANCELLATION 30% of Package cost, if the cancellation is made 30 days prior to the departure. 50% of package cost, if the cancellation is made between 30-14 days prior to the departure.    |   70% of package cost, if the cancellation is made between 17-7 days prior to the departure.     |     100% of package cost, if the cancellation is made 7 days or less prior to the departure. <br><br>
+                                    CANCELLATION 30% of Package cost, if the cancellation is made 30 days prior to the departure. 50% of package cost, if the cancellation is made between 30-14 days prior to the departure.    |   70% of package cost, if the cancellation is made between 17-7 days prior to the departure.     |     100% of package cost, if the cancellation is made 7 days or less prior to the departure. <br>
                                     
                                     <b>General  Policy</b><br>
 Child cost depends upon hotels rule which may vary from one hotel to another. The most common rules are as under: <br>
@@ -1536,7 +1496,7 @@ To request for an early check-in or late check-out, kindly contact the hotel dir
                             </div>
                             <div class="jumbotron jumbotron-sm " style=" border-top:#333 2px solid; ackground-color:rgba(225, 220, 247, 0.24); color:#8388A9;">
 								<strong>Address: </strong><strong style="color:#F00;"><?php echo $row_you['comp_name']; ?></strong><strong><?php echo " - ".$row_you['agent_addr'];?></strong><br />
-                              <strong>Help Line : 27 * 7@ All India Customer Care : 9047776899 </strong><br />
+                              <strong>Help Line : 27 * 7@ All India Customer Care : 9843288844 </strong><br />
 							</div>
                         
                         
