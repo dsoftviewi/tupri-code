@@ -194,6 +194,11 @@ body {
 								$this_city = $row_vocity['name'];
 							?>
                             <p style="background-color:#F6F8F9"> Return distance (kms): <span class="badge badge-primary"><?php echo $row_citywise_main[0]['return_dist']; ?></span></p>
+							
+							<?php $transfers=0; $transfer_rent = 0; $is_arr_transfer=check_arrival_transfer($row_orders['plan_id']); 
+							                    $is_dep_transfer=check_departure_transfer($row_orders['plan_id']); 
+												$transfers= $transfers+$is_arr_transfer+$is_dep_transfer; ?>
+												
                             <div class="table-responsive" style="overflow-x:scroll; width:100%;">
 								<table  class="table table-bordered table-th-block table-<?php if($colrnum == 0) { echo 'warning'; } elseif($colrnum == 1) { echo 'info'; }  elseif($colrnum == 2) { echo 'primary'; } elseif($colrnum == 3) { echo 'danger'; } elseif($colrnum == 4) { echo 'success'; } ?>">
 									<thead>
@@ -201,8 +206,14 @@ body {
                                         	<th>From city</th>
                                             <th>Type</th>
                                             <th>Total driven distance (kms)</th>
+											<?php if($transfers) {?>
+											<th> Transfer Rental (&#8377;)</th>
+											
+											<th> Rental for <?php $row_orders['arr_day']= $transfers; echo $row_orders['arr_day']; ?> Transfer (&#8377;)</th> 
+							<?php }; ?>
                                             <th> Per day rental (&#8377;)</th>
-                                            <th> Rental for <?php echo $row_orders['tr_days']; ?> days (&#8377;)</th>
+                                            <th> Rental for <?php $row_orders['tr_days']= $row_orders['tr_days']-$transfers;  
+											     echo $row_orders['tr_days'];  ?> days (&#8377;)</th>
                                             <th> Per km rental (&#8377;)</th>
                                             <th>Max allowed kms (per day)</th>
                                             <th>Max allowed kms (journey) - <?php echo $row_orders['tr_days']; ?> day(s)</th>
@@ -227,6 +238,12 @@ body {
                                              <?php if ($num == 1) { ?> <td rowspan="3"  style="transform:rotate(-90deg); font-weight:bold; color:#000"><?php echo $row_vocity['name']; ?></td> <?php } ?>
 											<td style="word-wrap:break-word;"><?php echo $row_vtyp1['vehicle_type']; ?></td>
                                             <td><?php echo $row_citywise['tot_dist']; ?></td>
+											<?php if($transfers) {?>
+											<td><?php echo $row_citywise['rent_transfer']; ?></td>
+											
+											<td width="30%"><?php $transfer_rent=$row_orders['arr_day'] * $row_citywise['rent_transfer']; echo $row_orders['arr_day'].' * ' .$row_citywise['rent_transfer'].' = '; echo $transfer_rent; ?></td>
+											<?php }; ?>
+				
 											<td><?php echo $row_citywise['rent_day']; ?></td>
                                             <td width="30%"><?php $allday_rent = $row_orders['tr_days'] * $row_citywise['rent_day']; echo $row_orders['tr_days'].' * '.$row_citywise['rent_day'].' = '; echo $allday_rent; ?></td>
                                             <td><?php echo $row_citywise['rent_per_km']; ?></td>
@@ -235,7 +252,8 @@ body {
                                             <td><?php echo $row_citywise['exceed_km']; ?></td>
                                             <td width="30%"><?php echo $row_citywise['rent_per_km'].' * '.$row_citywise['exceed_km'].' = '; echo $extr_chrg; ?></td>
                                             <td><?php echo $row_citywise['permit_amt']; ?></td>
-											<td><?php echo $row_citywise['rent_amt']; ?></td>
+											<td><?php $row_citywise['rent_amt']=$transfer_rent+$allday_rent+$extr_chrg+$row_citywise['permit_amt']; 
+											          echo $row_citywise['rent_amt']; ?></td>
 										</tr>
                                         <?php
 										$veh_citycost+= $row_citywise['rent_amt'];

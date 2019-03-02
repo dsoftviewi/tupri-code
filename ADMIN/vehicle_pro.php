@@ -194,11 +194,13 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 							$city='';
 							$perkl='';
 							$rents='';
+							$trans='';
 							$maxkl='';
 							
 							$ecity='';
 							$eperkl='';
 							$erents='';
+							$etrans='';
 							$emaxkl='';
 							
 							foreach($row_vehipro_main as $row_vehipro){
@@ -216,6 +218,8 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 		
 		$rents.=$row_vehitab2['rent_day'].',';
 		
+		$trans.=$row_vehitab2['rent_transfer'].',';
+		
 		$maxkl.=$row_vehitab2['maxkm_perday'].',';
 		
 		}
@@ -225,6 +229,8 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 		$eperkl=explode(',',substr($perkl,0,-1));
 		
 		$erents=explode(',',substr($rents,0,-1));
+		
+		$etrans=explode(',',substr($trans,0,-1));
 		
 		$emaxkl=explode(',',substr($maxkl,0,-1));
 							?>
@@ -258,8 +264,8 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 									<strong><i class="fa  fa-bar-chart-o"></i> Click</strong> <span class="caret"></span>
 								  </a>
                                   <ul class="dropdown-menu margin-list-rounded info with-triangle pull-right" role="menu" style=" text-align:left;" >
-								 <table class="table table-striped table-hover " style="width:350px; overflow-y:scroll;">
-                                 <thead class="the-box dark full"><th>City</th><th>Per day</th><th>Per km</th><th>Max km</th></thead>
+								 <table class="table table-striped table-hover " style="width:420px; overflow-y:scroll;">
+                                 <thead class="the-box dark full"><th>City</th><th>Transfer</th><th>Per day</th><th>Per km</th><th>Max km</th></thead>
                                  <tbody>
                                   <?php $ijw=1; $ik=0; foreach($ecity as $ecty){
 										
@@ -268,7 +274,7 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 		$row_cname = $cname->fetch(PDO::FETCH_ASSOC);
 		
 		?>
-        <tr class="even gradeA"><td><?php if(strlen($row_cname['name'])>14){?><span data-toggle="tooltip" data-original-title="<?php echo $row_cname['name'];?>"><?php echo substr($row_cname['name'],0,10).'&hellip;';?></span><?php }else { echo $row_cname['name']; }?></td><td ><i class="fa fa-inr"></i> <?php echo $erents[$ik];?></td><td><i class="fa fa-inr"></i> <?php echo $eperkl[$ik];?></td><td><?php echo $emaxkl[$ik].' km';?></td></tr>
+        <tr class="even gradeA"><td><?php if(strlen($row_cname['name'])>14){?><span data-toggle="tooltip" data-original-title="<?php echo $row_cname['name'];?>"><?php echo substr($row_cname['name'],0,10).'&hellip;';?></span><?php }else { echo $row_cname['name']; }?></td><td ><i class="fa fa-inr"></i> <?php echo $erents[$ik];?></td><td ><i class="fa fa-inr"></i> <?php echo $etrans[$ik];?></td><td><i class="fa fa-inr"></i> <?php echo $eperkl[$ik];?></td><td><?php echo $emaxkl[$ik].' km';?></td></tr>
         <?php $ijw++; $ik++;}?></tbody>
                                  </table>
                                  </ul>
@@ -297,6 +303,7 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 							   $city='';
 							$perkl='';
 							$rents='';
+							$trans='';
 							$maxkl='';
 							 } ?>
                                 </tbody>

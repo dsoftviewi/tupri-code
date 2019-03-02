@@ -50,6 +50,7 @@ if((isset($_POST["MM_insertupd"])) && ($_POST["MM_insertupd"] == "updatefrm"))
 			  $insertSQLupd->execute(array($row_vehitime['datetime'],$_POST['vehiname'],$_POST['occu'],$_POST['vid']));				
 				
 		
+				$trans='';
 				$to='';
 				$prch='';
 				$prmkl='';
@@ -60,6 +61,14 @@ if((isset($_POST["MM_insertupd"])) && ($_POST["MM_insertupd"] == "updatefrm"))
 				for($i=1;$i<=$_POST['updcnt'];$i++)
 				{
 					
+					if(isset($_POST['transfer'.$i]) && $_POST['transfer'.$i]!='')
+					{
+						$trans=$_POST['transfer'.$i];
+					}
+					else
+					{
+						$trans=0;
+					}
 					if(isset($_POST['perday'.$i]) && $_POST['perday'.$i]!='')
 					{
 						$to=$_POST['perday'.$i];
@@ -96,16 +105,16 @@ if((isset($_POST["MM_insertupd"])) && ($_POST["MM_insertupd"] == "updatefrm"))
 						
 						$snn.=$_POST['sno'.$i].',';
 						
-				$insertSQLupd123=$conn->prepare('update vehicle_rent set city=?, rent_day=?,charge_perkm =?, maxkm_perday=? where sno=? and vehicle_id =?');
-				$insertSQLupd123->execute(array($_POST['city'.$i],$to,$prch,$prmkl,$_POST['sno'.$i],$_POST['vid']));
+				$insertSQLupd123=$conn->prepare('update vehicle_rent set city=?, rent_transfer=?,rent_day=?,charge_perkm =?, maxkm_perday=? where sno=? and vehicle_id =?');
+				$insertSQLupd123->execute(array($_POST['city'.$i],$trans,$to,$prch,$prmkl,$_POST['sno'.$i],$_POST['vid']));
 						}
 						else
 						{
 							
 							//this is for table 2
 					
-					 $insert_distrb = $conn->prepare("INSERT INTO  vehicle_rent (vehicle_id,city,rent_day,charge_perkm,maxkm_perday) VALUES (?,?,?,?,?)");
-					 $insert_distrb->execute(array($_POST['vid'],$_POST['city'.$i],$to,$prch,$prmkl));
+					 $insert_distrb = $conn->prepare("INSERT INTO  vehicle_rent (vehicle_id,city,rent_transfer,rent_day,charge_perkm,maxkm_perday) VALUES (?,?,?,?,?,?)");
+					 $insert_distrb->execute(array($_POST['vid'],$_POST['city'.$i],$trans,$to,$prch,$prmkl));
 					
 						$vehdesno = $conn->prepare("SELECT sno FROM vehicle_rent where vehicle_id=? ORDER BY sno DESC limit 1");
 						$vehdesno->execute(array($_POST['vid']));
@@ -255,7 +264,8 @@ body {
                                         <small class="help-block" id="cityserr" style="color:#E9573F;" ></small>
                                         </div>
                                         </div>
-                                        <div class="col-sm-6">
+																			   										
+                                        <div class="col-sm-5">
                                     <div class="form-group">
                                     <div class="input-group">
 										<span class="input-group-addon tooltips" data-original-title="Per day rental"><i class="fa fa-inr fa-fw"></i></span>
@@ -265,9 +275,19 @@ body {
                                         </div>
                                         </div>
                                     
+                                        
+                                         
+										 <div class="col-sm-5">
+                                    <div class="form-group">
+                                    <div class="input-group">
+										<span class="input-group-addon tooltips" data-original-title="Per day Transfer"><i class="fa fa-inr fa-fw"></i></span>
+										  <input type="text" autocomplete="off" class="form-control" id="totamt" name="transfer<?php echo $iv;?>" value="<?php echo $row_updcity['rent_transfer'];?>" placeholder="Per day transfer">
+										</div>
+                                        <small class="help-block" id="totamterr" style="color:#E9573F;" ></small>
                                         </div>
-                                         <div class="col-sm-6">
-								
+                                        </div>
+								</div>
+									<div class="col-sm-5">
                                     <div class="col-sm-5">
                                     <div class="form-group">
                                     <div class="input-group">
