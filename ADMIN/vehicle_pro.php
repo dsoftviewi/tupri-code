@@ -265,7 +265,7 @@ $totalRows_vehifilt = $vehifilt->rowCount();
 								  </a>
                                   <ul class="dropdown-menu margin-list-rounded info with-triangle pull-right" role="menu" style=" text-align:left;" >
 								 <table class="table table-striped table-hover " style="width:420px; overflow-y:scroll;">
-                                 <thead class="the-box dark full"><th>City</th><th>Transfer</th><th>Per day</th><th>Per km</th><th>Max km</th></thead>
+                                 <thead class="the-box dark full"><th>City</th><th>Per day</th><th>Transfer</th><th>Per km</th><th>Max km</th></thead>
                                  <tbody>
                                   <?php $ijw=1; $ik=0; foreach($ecity as $ecty){
 										
