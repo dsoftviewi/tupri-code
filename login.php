@@ -72,9 +72,6 @@ video {
   float: right;
   font-size: 1.2rem;
 }
-@media (max-width:820px){
-	#polina { width: 90%; }
-}
 h1 {
   font-size: 3rem;
   text-transform: uppercase;
@@ -107,7 +104,7 @@ a {
 }
 
 @media screen and (max-width: 500px) { 
-  div{width:100%;} 
+  div{width:70%;} 
 }
 @media screen and (max-device-width: 800px) {
   html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
@@ -508,11 +505,14 @@ var uname=document.getElementById('uname').value;
 				 }
 				 else
 				 {
+          window.location.href='dashboard_maintain.php';
+          return false;
 					if(check == 'AGENT')
 					{
 						window.location.href='agent_manaorder.php?mm=23311f54cbcb20fd815e2574e8b07b39&sm=f0e2efabf331f439ad99596cea1accf3';	
-					}else{
-						window.location.href='dashboard.php';	
+        
+      }else{
+						window.location.href='dashboard1.php';	
 					}
 				 }
 			}  

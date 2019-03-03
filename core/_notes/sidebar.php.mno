@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_mainmenu" value="name:sno;datatype:int,name:grpid;datatype:blob,name:iconimg;datatype:blob,name:mainlabel;datatype:blob,name:mid;datatype:blob,name:smenu;datatype:blob,name:url;datatype:blob,name:morder;datatype:int,name:status;datatype:int" />
+	<infoitem key="UD_submenu" value="name:sno;datatype:int,name:grpid;datatype:blob,name:iconimg;datatype:blob,name:mainlabel;datatype:blob,name:mid;datatype:blob,name:smenu;datatype:blob,name:url;datatype:blob,name:morder;datatype:int,name:status;datatype:int" />
+</info>
