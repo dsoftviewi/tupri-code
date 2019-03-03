@@ -1,4 +1,7 @@
 <?php include("core/session.php");?>
+<?php	if($_SESSION['grp'] == 'ADMIN'){
+	header('location:dashboard.php');
+}          ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -65,7 +68,6 @@
 	</head>
 	
  <body class="tooltips">
-			          
 			<div class="wrapper">
             
 			<?php include("core/topbar_maintain.php");?>
