@@ -512,7 +512,7 @@ var uname=document.getElementById('uname').value;
 						window.location.href='agent_manaorder.php?mm=23311f54cbcb20fd815e2574e8b07b39&sm=f0e2efabf331f439ad99596cea1accf3';	
         
       }else{
-						window.location.href='dashboard1.php';	
+						window.location.href='dashboard.php';	
 					}
 				 }
 			}  
