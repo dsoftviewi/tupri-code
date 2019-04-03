@@ -1386,7 +1386,7 @@ if(!isset($expl_season9[$type_cnt]))
                                      </td>
                                     <td  width="15%" style="word-wrap:break-word">
 									<?php
-	$hotelroom = $conn->prepare("SELECT * FROM hotel_season where status = '0' and hotel_id='$row_hotelpro[hotel_id]'");
+	$hotelroom = $conn->prepare("SELECT * FROM hotel_season where status = '0' and hotel_id='$row_hotelpro[hotel_id]' group by room_type");
 	$hotelroom->execute(array($row_hotelpro['hotel_id']));
 	$tot_room=$hotelroom->rowCount();
 	$row_hotelroom_main=$hotelroom->fetchAll();
@@ -1394,7 +1394,7 @@ if(!isset($expl_season9[$type_cnt]))
 	foreach($row_hotelroom_main as $row_hotelroom)
 	{	?>	
     
-    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>"><i class="fa fa-tags"></i>&nbsp;<?php
+    <a class="view_season btn default" style="color:#656D78;"  href="<?php echo $_SESSION['grp'];?>/view_season.php?sno=<?php echo $row_hotelroom['sno'];?>&hid=<?php echo $row_hotelpro['hotel_id'];?>&mm=<?php echo $_GET['mm'];?>&sm=<?php echo $_GET['sm'];?>&room_type=<?php echo $row_hotelroom['room_type']; ?>"><i class="fa fa-tags"></i>&nbsp;<?php
 	if(strlen($row_hotelroom['room_type'])<24)
 	{
 		echo $row_hotelroom['room_type']; 

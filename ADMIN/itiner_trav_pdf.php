@@ -353,17 +353,28 @@ $totalRows_spro = $spro->rowCount();
 $trv_future = $conn->prepare("SELECT * FROM travel_sched where travel_id =?");
 $trv_future->execute(array($_GET['planid']));
 //$row_trv_future = mysql_fetch_assoc($trv_future);
-$row_trv_future_main=$trv_future->fetchAll();
+//$row_trv_future_main=$trv_future->fetchAll();
 $area_arr=array();
 $gv=0;
 $dt_cnt_arr=array();
-foreach($row_trv_future_main as $row_trv_future)
+while($row_trv_future = $trv_future->fetch(PDO::FETCH_ASSOC))
 {
-	$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
-	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid']){
+	if(!isset($dt_exists[$row_trv_future['tr_to_cityid']]))
+	$dt_exists[$row_trv_future['tr_to_cityid']]=0;
+$sql_travel_daytrip = $conn->prepare("SELECT COUNT(*) as cnt  FROM dvi_cities dc,travel_daytrip td where dc.id=td.orig_cid and name=? and travel_id = ?");
+$sql_travel_daytrip->execute(array($row_trv_future['tr_to_cityid'],$_GET['planid']));
+$row_sql_travel_daytrip = $sql_travel_daytrip->fetch(PDO::FETCH_ASSOC);
+//print_r($row_trv_future);
+	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid'] && $row_trv_future['via_cities'] =='-' && $row_sql_travel_daytrip['cnt'] && $dt_exists[$row_trv_future['tr_to_cityid']] == 0 && $gv >0){
+			$dt_exists[$row_trv_future['tr_to_cityid']]=1;
 		$dt_cnt_arr[]=$gv;
 	}
+	else{
+		
+$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
+	}
 	$gv++;
+	
 }
 $area_cnt = array_count_values($area_arr);
 $area_cnt1=$area_cnt;
@@ -920,7 +931,7 @@ else
 								 {
 									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
-		$html.=  "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
+		$html.=  "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");
 $dayhpot->execute(array($dt_arr[$row_trv['tr_from_cityid']]['id']));
@@ -1109,7 +1120,7 @@ $totalRows_hot1 = $hot1->rowCount();
 		{
 			if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 			{
-				$html.= "<br><br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]."</span>";
+				$html.= "<br><br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]."</span>";
 
                        
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");

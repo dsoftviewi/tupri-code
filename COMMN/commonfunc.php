@@ -126,16 +126,18 @@ if(!function_exists('check_departure_transfer')){
 if(!function_exists('get_transfer_days')){
 	function get_transfer_days($plan_id){
 		global $conn;
-		print $plan_id;
 		$dep_trns = $conn->prepare("SELECT arr_day  FROM travel_vehicle WHERE travel_id = ? limit 1");
 		$dep_trns->execute(array($plan_id));
-		
 		$row_dep_trns = $dep_trns->fetch(PDO::FETCH_ASSOC);
-		print_r($row_dep_trns);
 		//$total_dep_trns = $dep_trns->rowCount();
 		return ($row_dep_trns['arr_day']);
 		
 	}
 }
 
+	function decode_unserialize($str){
+		return unserialize(base64_decode($str));
+		
+	}
+}
 ?>

@@ -1,22 +1,131 @@
- <?php 
+<?php
+
+$timezone = new DateTimeZone("Asia/Kolkata" );
+  $date = new DateTime();
+  $date->setTimezone($timezone );
+  $mm=$date->format('m');
+  $mm1=$date->format('M');
+  $yy=$date->format('Y');
+  $dd=$date->format('d');
+  $time=date("H:i:s");
+  $today=date('d.m.Y');
+
 session_start();
-// echo "good".$_GET['planid']; 
 require_once('../Connections/divdb.php');
-
-//$_GET['planid']=$_GET['planid1'].'#'.$_GET['planid2'];
-$_GET['planid']=$_SESSION['com_plan_id'];
-
 $idd=explode('#',$_GET['planid']);
 $str=$idd[0];
-//print_r($idd);
 
-//breakup start 
+$orders = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
+$orders->execute(array($_GET['planid']));
+$row_orders = $orders->fetch(PDO::FETCH_ASSOC);
+$totalRows_orders = $orders->rowCount();
+
+
+
+$you = $conn->prepare("SELECT * FROM agent_pro where agent_id =?");
+$you->execute(array($_SESSION['uid']));
+$row_you = $you->fetch(PDO::FETCH_ASSOC);
+$totalRows_you = $you->rowCount();
+
+if(trim($row_you['comp_name'])=='' || trim($row_you['comp_name'])=='-')
+{
+	$comp_myname="DVI Holidays";
+}else{
+	$comp_myname=$row_you['comp_name'];
+}
+//echo $row_you['comp_logo'];
+
+?>
+
+<html>
+<head>
+		<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../core/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../core/assets/css/style.css" rel="stylesheet">
+		<link href="../core/assets/css/style-responsive.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../core/assets/plugins/Tags/jquery.tagsinput.css" />
+      <!--  <link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css'>-->
+        <script src="../core/assets/js/jquery.min.js"></script>
+        <style>
+		
+		.loader_ax{
+position: fixed;
+left: 0px;
+top: 0px;
+width: 100%;
+height: 100%;
+z-index: 9999;
+background: url('../images/ajax_loader.gif') center no-repeat ;
+background-size:120px;
+background-color:rgba(0, 0, 0, 0.5);
+}
+
+.f_weight
+{
+	font-weight:600;
+}
+
+@font-face {
+    font-family: Calibri;
+   /* src: url('../ADMIN/Calibri.ttf');*/
+    src: url('https://fonts.googleapis.com/css?family=Calibri');
+}
+
+body {
+    background-position: 50% 50%;
+    margin:0px;
+    padding:0px !important;
+	font-family:Calibri;
+	font-size: 14px;
+	color:#083B6F !important;
+}
+
+table td{
+	padding:3px;
+}
+
+table td.tdstyle{
+	padding:4px;
+	border:#666 solid 1px;
+}
+</style>
+        </head>
+        <body class="div-nicescroller" style="font-family:Calibri;">
+        <div class="loader_ax" style="display:none"></div>
+        <div class="row">
+        <div class="col-sm-12">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+<div id="mail_me">  
+<!--<link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css'>-->
+<table style="border:#60B0FF groove; padding:6px; vertical-align: text-middle; " width="100%">
+ <tr><td>
+           <table style="" width="100%" >
+                  <tr>
+                      <td width="80%" style="font-family:Calibri; font-size: 16px;">
+                          <strong><?php  if(trim($row_you['comp_name'])!=''){ echo $row_you['comp_name']; }else{ echo "DVI Holidays";} ?></strong><br>
+                          <strong><?php echo $row_you['agent_addr'];?></strong><br />
+                          <strong>Help Line : 27 * 7@ All India Customer Care : 9047776899 </strong><br />
+                      </td>
+                      <td width="20%">
+                      <?php if($row_you['comp_logo']!=''){?>
+                           <img  src="http://dvi.co.in/img_upload/agent_img/logo/<?php echo $row_you['comp_logo']; ?>"  height="75px" width="75px" alt="Your Logo"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <?php }else{ ?>
+                           <img  src="http://dvi.co.in/img_upload/agent_img/logo/logo.png"  height="75px" width="75px" alt="DVI Logo"/>
+                           <?php } ?>
+                      </td>
+                   </tr>
+           </table>
+ </td></tr>
+ <tr><td><hr style="border:1px solid #039;margin-top: 10px;margin-bottom: 10px; "></td></tr>
+ <?php
+                      //breakup start 
 
 $breakup = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
 $breakup->execute(array($_GET['planid']));
 $row_breakup = $breakup->fetch(PDO::FETCH_ASSOC);
 $totalRows_breakup = $breakup->rowCount();
-
+$customer_name=$row_breakup['tr_name'];
 $break_arr=array();
 //echo "Breakup =".$row_breakup['sub_paln_id'];
 if(trim($row_breakup['sub_paln_id'])!='')//not empty
@@ -26,135 +135,79 @@ if(trim($row_breakup['sub_paln_id'])!='')//not empty
 }
 //print_r($break_arr);
 //breakup end 
-
-$addi_addons_check=0;
-foreach($break_arr as $breakup_cal)
-{
-	
-	$totcal_trav = $conn->prepare("SELECT * FROM travel_sched where travel_id =? and addi_cost_for!='' and addi_amount!=''");
-	$totcal_trav->execute(array($breakup_cal));
-	$totalrows_totcal_trav =$totcal_trav->rowCount();
-	if($totalrows_totcal_trav>0)
-	{
-		$addi_addons_check=1;
-	}
-}
-
-
-
-$orders = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
-$orders->execute(array($_GET['planid']));
-$row_orders = $orders->fetch(PDO::FETCH_ASSOC);
-$totalRows_orders = $orders->rowCount();
-
-
-$you = $conn->prepare("SELECT * FROM agent_pro where agent_id =?");
-$you->execute(array($_SESSION['uid']));
-$row_you = $you->fetch(PDO::FETCH_ASSOC);
-$totalRows_you = $you->rowCount();
 ?>
-<style>
-body {
-    background-position: 50% 50%;
-    margin:0px;
-    padding:0px !important;
-	font-family:Roboto;
-}
+<tr><td align="center">
+	<table border="1" width="85%" style="border-collapse: collapse;">
+	<tr><th colspan="5" style="text-align: center;background-color: rgb(39, 96, 146);
+color: whitesmoke;padding: 5px;"><?php echo "Guest Name : ".$customer_name; ?></th></tr>
+		<tr>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">S.No</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">Travelling Date</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">Total Pax</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">Vehicle Information</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">Cost</th>
+		</tr>
+		<?php 
+		$rno=1;
+		$whole_pakcost=0;
+		foreach($break_arr as $breakup1)
+		{
+			
+			$or = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
+			$or->execute(array($breakup1));
+			$row_or = $or->fetch(PDO::FETCH_ASSOC);
+			$totalRows_or = $or->rowCount();
+		?>
+		
 
-table td{
-	padding:3px;
-}
-</style>
-             <?php if($addi_addons_check==0){ ?>      
-       <div id="addi_cost_toggle"  onclick="addi_cost_toggle_click()" style="border:1px solid #666; padding:6px; background-color:#205c82; text-align:center; color:#FFF; cursor:pointer;text-decoration: underline;" > <i class="fa fa-hand-o-right" style="color:#FFF"></i>&nbsp;&nbsp;&nbsp;Click here to adding special add-ons to this itinerary</div>
-                     <div id="addi_cost_load_div" style="display:none; background-color:rgb(255, 252, 247); border:1px solid #CCC"> addi_cost_load_div </div>
-                     <br />
-			<?php }?>
+		<tr>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;"><?php echo $rno; ?></th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">
+				<?php echo date('d-M-Y',strtotime($row_or['tr_arr_date'])); 
 
-                        <div style="vertical-align: text-middle; ">
-                        <?php
-						//main break stay for
-$break_chk=0;
-foreach($break_arr as $breakup)
-{
-							$_GET['planid']=$breakup;
-							
-							$orders = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
-							$orders->execute(array($_GET['planid']));
-							$row_orders = $orders->fetch(PDO::FETCH_ASSOC);
-							$totalRows_orders = $orders->rowCount();
+				$date=date_create($row_or['tr_arr_date']);
+				date_add($date,date_interval_create_from_date_string($row_or['tr_days']." days"));
+				echo " - ".date_format($date,"d-M-Y");?>
+			</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">
+				<?php echo $row_or['pax_cnt']."&nbsp;Person(s)"; ?>
+			</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">
+			<?php
+								$vah=explode(',',$row_or['tr_vehids']);
+								for($r=0;$r<count($vah);$r++)
+								{
+									if(trim($vah[$r]) != '')
+									{
+						    
+							$vpro = $conn->prepare("SELECT * FROM vehicle_pro where vehi_id =?");
+						    $vpro->execute(array($vah[$r]));
+							$row_vpro =$vpro->fetch(PDO::FETCH_ASSOC);
+							$totalRows_vpro = $vpro->rowCount();
+							if(isset($vah[$r+1]) && $vah[$r+1] != '')
+							{
+								 echo $row_vpro['vehicle_type'].",&nbsp;";
+							}else
+							{
+								echo $row_vpro['vehicle_type'];
+							}
+									}
+								}
+								  ?>
+			</th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;">
+					<?php echo 	convert_currency_text("Rs",$breakup1)." ".number_format(convert_currency($row_or['agnt_grand_tot'],$breakup1),2); 
+					$whole_pakcost=$whole_pakcost+(float)$row_or['agnt_grand_tot']; ?>
+			</th>
+		</tr>
+		<?php $rno++; } ?>
+		<tr>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;text-align:center" colspan="4">Total Package Cost </th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;background-color: rgb(227, 241, 254);"><?php echo convert_currency_text("Rs",$breakup1)." ".number_format(convert_currency($whole_pakcost,$breakup1),2)." /-"; ?></th>
+		</tr>
+	</table>
 
-							//////////
-							if($break_chk!=0)
-							{?>
-								<div class="row" style="padding:6px; text-align:center; border-top: 2px solid #EFB662;">
-                                	<strong style="color:#C75A18"> Your Itinerary - will bypassing to below mentioned days [ Break-Stay ] </strong>
-                                </div>
-							<?php }
-							//////////
-							?>
-                        
-							<div class="row">
-
-
-<?php if($break_chk==0)
-								{ ?>
-	<div class="col-sm-12" style="padding:6px">
-			<!--<center><strong style="color:#6B4D1E; font-size: 22px;">
-					Overall Package Cost : <?php echo $whole_itin_amt."/- Only"; ?>
-			</strong></center>-->
-		<center>
-			<table style='width:94%; border:1px solid #256582;' border='1'>
-				<tr style='background-color: #2369A0; color:#FFF'>
-					<th style='padding:6px; width:3%'>Sno</th>
-					<th style='padding:6px; width:15%; text-align:center'>Date of Travel</th>
-					<th style='padding:6px; width:4%; text-align:center'>Pax</th>
-					<th style='padding:6px; width:22%; text-align:center'>Vehicle Taken</th>
-					<th style='padding:6px; width:8%; text-align:center'>Kms</th>
-				</tr>
-				<?php 
-				$iv=1;
-				foreach($break_arr as $inv)
-				{
-							
-							$invoice = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
-							$invoice->execute(array($inv));
-							$row_invoice = $invoice->fetch(PDO::FETCH_ASSOC);
-							$totalRows_invoice = $invoice->rowCount();
-					?>
-				<tr>
-					<th style='padding:6px;'><?php echo $iv++; ?></th>
-					<th style='padding:6px; text-align:center'>
-						<?php 
-						echo date("d-M-Y", strtotime($row_invoice['tr_arr_date']))." - ";
- 
-$date=date_create($row_invoice['tr_arr_date']);
-date_add($date,date_interval_create_from_date_string(($row_invoice['tr_days']-1)." days"));
-echo date_format($date,"d-M-Y");	
-						?>
-					</th>
-					<th style='padding:6px; text-align:center'>
-						<?php
-						echo $row_invoice['pax_cnt'];
-						?>
-						</th>
-					<th style='padding:6px; text-align:center'>
-						<?php
-						$vegh_arr=explode(',',$row_invoice['tr_vehname']);
-						foreach($vegh_arr as $vha)
-						{
-							echo $vha."<br>";
-						}
-						?>
-						</th>
-					<th style='padding:6px; text-align:center'>
-						<?php echo $row_invoice['tot_tr_dist']; ?>
-					</th>
-					</tr>
-				<?php } ?>
-				
-			</table>
-			<?php 
+	<?php 
 	$addon_arr=array();
 	$addon_det=array();
 		foreach($break_arr as $breakup2)
@@ -176,103 +229,205 @@ echo date_format($date,"d-M-Y");
 				}
 		}
 
-        //print_r($addon_arr);
+//print_r($addon_arr);
 		if(count($addon_arr)>0)
 		{
-		?>
-	    <div style="margin-left:30px;border-bottom: 2px dotted;">
-		<p align="left" style="margin-top:5px"><strong style="font-size: 12px;color: #0700;"> Including Special Add-ons On : </strong></p>
+			
+	?>
+	<div style="margin-left:60px">
+		<p align="left" style="margin-top:5px"><strong style="font-size: 12px;color: #32648f;"> Total Cost Including Special Add-ons On : </strong></p>
 		<ul style="text-align: -moz-left;">
 			<?php foreach($addon_arr as $spl){ ?>
-			  <li style="font-size: 12px;"><?php //print_r($spl); 
+			  <li style="font-size: 12px;text-align:left"><?php //print_r($spl); 
 		echo date("d-M-Y",strtotime($spl['sdate']))." - ".$spl['sname']." [ * ".$spl['sqnty']." ]";
 			   ?> </li>
 			<?php } ?>
 		</ul></div>
-	    <?php  } ?>
+	<?php  } ?>
 
-		</center>
-	</div>
-								<?php } ?>
+<tr><td><hr style="border:1px dotted #039;margin-top: 10px;margin-bottom: 10px; "></td></tr>
 
-
-
-                  <?php if($break_chk==0){?><input type="hidden" value="<?php echo $_GET['planid']; ?>" id='sub_planid' name="sub_planid" /><?php }
-				   $break_chk++;?>
-
-                               <?php /* <center><table style="width:95%; border:#DA832D 2px solid; background-color:#FFF7E9; color:#6B4D1E" class="table">
-                                <tr><td width="18%">&nbsp;Guest Name</td><td width="3%">:</td><td width="25%"><?php echo $row_orders['tr_name']; ?></td>
-                                <td width="20%">&nbsp;Pax Count</td><td width="3%">:</td><td width="20%"><?php echo $row_orders['pax_cnt']."&nbsp;Person(s)"; ?></td></tr>
-                                <tr><td width="18%" >&nbsp;Total Traveling Days</td><td width="3%">:</td><td width="25%"><?php echo $row_orders['tr_days']; ?></td>			<td width="18%">&nbsp;Vehicle Infomation</td><td width="3%">:</td>
-                                <td width="25%"><?php
-								if($row_orders['tr_vehname'] == '')
-								{
-									$vah=explode(',',$row_orders['tr_vehids']);
-									for($r=0;$r<count($vah);$r++)
+</td></tr>
+<?php
+						//main break stay for
+$break_chk=0;
+foreach($break_arr as $breakup)
+{
+	$_GET['planid']=$breakup;
+	
+	
+	$orders = $conn->prepare("SELECT * FROM travel_master where plan_id =?");
+	$orders->execute(array($_GET['planid']));
+	$row_orders = $orders->fetch(PDO::FETCH_ASSOC);
+	$totalRows_orders = $orders->rowCount();
+                      
+ 
+			$grand_ttotal=0; $transfers=0; $transfer_rent = 0; 
+							//$is_arr_transfer=check_arrival_transfer($row_orders['plan_id']); 
+							//$is_dep_transfer=check_departure_transfer($row_orders['plan_id']); 
+						
+							$tr_days = $row_orders['tr_days'];
+							?>
+                            <div class="table-responsive" style="width:100%; ">
+								
+							<table border="1" width="85%" style="border-collapse: collapse;">
+							<thead>
+	<tr><th colspan="12" style="text-align: center;background-color: rgb(39, 96, 146);
+color: whitesmoke;padding: 5px;">Vehicle Information</th></tr>
+								
+										<tr>
+                                        	<th>#</th>
+                                            <th>Type</th>
+                                            <th> Per day rental (&#8377;)</th>
+                                            <th> Rental for <?php $tr_days= $tr_days-$transfers;  
+											     echo $tr_days;  ?> days (&#8377;)</th>
+                                            <th> Per km rental (&#8377;)</th>
+                                            <th>Max allowed kms (per day)</th>
+                                            <th>Max allowed kms (journey) - <?php echo $tr_days; ?> day(s)</th>
+                                            <th>Extra kms (journey)</th>
+                                            <th>Charge for extra kms (&#8377;)</th>
+                                            <th> Permit charge (&#8377;)</th>
+                                            <th> Total charge (&#8377;)</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    <?php
+									$rent_amt=0;
+									$num = 1;
+									$trvrent = $conn->prepare("SELECT * FROM travel_vehicle where travel_id =?");
+									$trvrent->execute(array($breakup));
+									$row_trvrent_main = $trvrent->fetchAll();
+									$totalRows_trvrent = $trvrent->rowCount();
+									foreach($row_trvrent_main as $row_trvrent)
 									{
-										if(trim($vah[$r]) != '')
-										{
-									  		
-											$query_vpro = "SELECT * FROM vehicle_pro where vehi_id = '".$vah[$r]."'";
-											$vpro = mysql_query($query_vpro, $divdb) or die(mysql_error());
-											$row_vpro = mysql_fetch_assoc($vpro);
-											$totalRows_vpro = mysql_num_rows($vpro);
-											if(isset($vah[$r+1]) && $vah[$r+1] != '')
-											{
-												 echo $row_vpro['vehicle_type'].",&nbsp;";
-											}else
-											{
-												echo "&nbsp;".$row_vpro['vehicle_type'];
-											}
-										}
+										
+										$vtyp1 = $conn->prepare("SELECT * FROM vehicle_pro where vehi_id =?");
+										$vtyp1->execute(array($row_trvrent['vehicle_id']));
+										$row_vtyp1 = $vtyp1->fetch(PDO::FETCH_ASSOC);
+										
+										$extr_chrg = $row_trvrent['rent_per_km'] * $row_trvrent['exceed_km'];
+										?>
+										<tr>
+                                            <td><?php echo $num; ?></td>
+											<td style="word-wrap:break-word"><?php echo $row_vtyp1['vehicle_type']; ?></td>
+                                           <td><?php echo $row_trvrent['rent_day']; ?></td>
+                                            <td><?php $allday_rent = $tr_days * $row_trvrent['rent_day']; echo $tr_days.' * '.$row_trvrent['rent_day'].' = '; echo $allday_rent; ?></td>
+                                            <td><?php echo $row_trvrent['rent_per_km']; ?></td>
+                                            <td><?php echo $row_trvrent['max_km_day']; ?></td>
+											<td><?php echo $row_trvrent['max_allwd_km']; ?></td>
+                                            <td><?php echo $row_trvrent['exceed_km']; ?></td>
+                                    		<td><?php echo $row_trvrent['rent_per_km'].' * '.$row_trvrent['exceed_km'].' = '; echo $extr_chrg; ?></td>
+                                            <td><?php echo $row_trvrent['permit_amt']; ?></td>
+											<td><?php echo $row_trvrent['rent_amt']; ?></td>
+										</tr>
+                                        <?php
+									$num++; 
+									$rent_amt+= $row_trvrent['rent_amt'];
+									
 									}
-								}
-								else
+										?>
+									</tbody>
+								</table>
+							</div>
+							<div class="row">
+                                <div class="col-sm-12">
+                                <div class="the-box" style=" text-align:left; background-color:#E6ECF2;"><strong  style="font-size: x-large;">Total amount chargeable for transport:  <?php echo  convert_currency_text("&#8377;",$breakup)." ".convert_currency($row_orders['tr_net_amt'],$breakup);  $grand_ttotal=$grand_ttotal+$row_orders['tr_net_amt']; ?></strong>
+						        </div>
+                                    
+                                </div>
+                        	</div>
+							
+ 
+ <!-- <tr><td>
+ 			<table>
+                 <tr><td style="font-family:Calibri font-size: 14px; font-weight:600">&nbsp;Guest Name</td><td>:</td><td style="font-family:Calibri; font-size: 14px; font-weight:600"><?php echo $customer_name; ?></td></tr>
+                 <tr><td style="font-family:Calibri; font-family:Calibri; font-size: 14px; font-weight:600">&nbsp;Pax Count</td><td>:</td><td style="font-family:Calibri; font-size: 14px; font-weight:600"><?php echo $row_orders['pax_cnt']."&nbsp;Person(s)"; ?></td></tr>
+                 <tr><td style="font-family:Calibri; font-size: 14px; font-weight:600">&nbsp;Total Traveling days</td><td>:</td><td style="font-family:Calibri; font-size: 14px; font-weight:600"><?php echo $row_orders['tr_days']; ?></td></tr>
+                 <tr><td style="font-family:Calibri; font-size: 14px; font-weight:600">&nbsp;Vehicle Infomation</td><td>:</td>
+                                <td style="font-family:Calibri; font-size: 14px; font-weight:600"><?php
+								$vah=explode(',',$row_orders['tr_vehids']);
+								for($r=0;$r<count($vah);$r++)
 								{
-									$veh_arrs=explode(',',$row_orders['tr_vehname']);
-									for($v=0;$v<count($veh_arrs);$v++)
+									if(trim($vah[$r]) != '')
 									{
-										echo $veh_arrs[$v];
-											if(isset($veh_arrs[$v+1]))
-											{
-												echo "<br>";
-											}
+								  
+											$vpro = $conn->prepare("SELECT * FROM vehicle_pro where vehi_id =?");
+											$vpro->execute(array($vah[$r]));
+											$row_vpro =$vpro->fetch(PDO::FETCH_ASSOC);
+											$totalRows_vpro = $vpro->rowCount();
+if(isset($vah[$r+1]) && $vah[$r+1] != '')
+{
+	 echo $row_vpro['vehicle_type'].",&nbsp;";
+}else
+{
+	echo $row_vpro['vehicle_type'];
+}
+								
 									}
 								}
 								  ?></td></tr>
-                                  <tr>
-                                  <td> Total Travel Distance</td><td>:</td><td><?php echo $row_orders['tot_tr_dist']." Kms"; ?></td>
-                                  <td> <!--Transport Charge--></td><td><!--:--></td><td><?php echo $row_orders['agnt_grand_tot']."/- Rupees"; ?></td></tr>
-                                </table></center> 
-                                    <!--New code for itinerary --><?php */ ?>
-                                    <div>
-                                    <br />
-                                     <?php
+         </table>
+ </td></tr> -->
+ <tr><td>&nbsp;</td></tr>
+ <tr><td align="center">
+ 	<?php 
+	
+	$trvscd = $conn->prepare("SELECT * FROM  travel_sched where travel_id =? ORDER BY sno ASC");
+	$trvscd->execute(array($_GET['planid']));
+	//$row_trvscd = mysql_fetch_assoc($trvscd);
+	$row_trvscd_main=$trvscd->fetchAll();
+	$totalRows_trvscd = $trvscd->rowCount();
+	?>
+    <table border="1" width="" style="border-collapse: collapse;" >
+    	<tr ><th colspan="5" style="text-align:center; padding:10px; font-family:Calibri; font-size: 14px;"> 
+        		<strong style="color:#CE7708;">Travel - Information </strong></th></tr>
+    	<tr><th style="padding:6px; font-family:Calibri; font-size: 14px;">&nbsp; S.No &nbsp;</th>
+        <th  style="padding:6px; font-family:Calibri; font-size: 14px;">&nbsp; Date &nbsp;</th>
+        <th  style="padding:6px; font-family:Calibri; font-size: 14px;">&nbsp; Travelling Cities &nbsp;</th>
+        <th  style="padding:6px; font-family:Calibri; font-size: 14px;">&nbsp; Distance &nbsp;</th>
+        <th  style="padding:6px; font-family:Calibri; font-size: 14px;">&nbsp; Travalling Time &nbsp;</th>
+        </tr>
+        <?php $ts=1; foreach($row_trvscd_main as $row_trvscd){?>
+        	<tr>
+            <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo $ts; ?>&nbsp;</td>
+            <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo date('d-M-Y',strtotime($row_trvscd['tr_date'])); ?>&nbsp;</td>
+			<td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php 
+			if($row_trvscd['via_cities'] != '-'){
+				$via_cities_arr = explode("-",$row_trvscd['via_cities']);
+				$middleElem = floor(count($via_cities_arr) / 2);
+				$via_cities = $conn->prepare("SELECT * FROM dvi_cities where id =?");
+				$via_cities->execute(array($via_cities_arr[$middleElem]));
+				$row_via_cities = $via_cities->fetch(PDO::FETCH_ASSOC);
+				echo $row_trvscd['tr_from_cityid'].' TO '.$row_trvscd['tr_to_cityid'].' via '.$row_via_cities['name'];
+				
+			}else{
+				 echo $row_trvscd['tr_from_cityid'].' TO '.$row_trvscd['tr_to_cityid'];
+				}
+			 ?>&nbsp;</td>
+            <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php  if($row_trvscd['tr_dist_ess']!='0') { echo $row_trvscd['tr_dist_ess']." Kms."; }else { echo $row_trvscd['tr_dist_ss']." Kms.";}?>&nbsp;</td>
+            <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo $row_trvscd['tr_time']; ?>&nbsp;</td>
+            </tr>
+        <?php $ts++; }//while end?>
+    </table>
+ </td></tr>
+ 
+ <tr><td>&nbsp;  </td></tr>
+ 
+ <tr><td>
+ 	      <?php
 //my start
-
 
 $trv_future = $conn->prepare("SELECT * FROM travel_sched where travel_id =?");
 $trv_future->execute(array($_GET['planid']));
 //$row_trv_future = mysql_fetch_assoc($trv_future);
-//$row_trv_future_main=$trv_future->fetchAll();
 $area_arr=array();
 $gv=0;
 $dt_cnt_arr=array();
 while($row_trv_future = $trv_future->fetch(PDO::FETCH_ASSOC))
 {
-	if(!isset($dt_exists[$row_trv_future['tr_to_cityid']]))
-	$dt_exists[$row_trv_future['tr_to_cityid']]=0;
-$sql_travel_daytrip = $conn->prepare("SELECT COUNT(*) as cnt  FROM dvi_cities dc,travel_daytrip td where dc.id=td.orig_cid and name=? and travel_id = ?");
-$sql_travel_daytrip->execute(array($row_trv_future['tr_to_cityid'],$_GET['planid']));
-$row_sql_travel_daytrip = $sql_travel_daytrip->fetch(PDO::FETCH_ASSOC);
-//print_r($row_trv_future);
-	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid'] && $row_trv_future['via_cities'] =='-' && $row_sql_travel_daytrip['cnt'] && $dt_exists[$row_trv_future['tr_to_cityid']] == 0 && $gv >0){
-			$dt_exists[$row_trv_future['tr_to_cityid']]=1;
+	$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
+	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid']){
 		$dt_cnt_arr[]=$gv;
-	}
-	else{
-		
-$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
 	}
 	$gv++;
 	
@@ -285,7 +440,7 @@ foreach($area_cnt1 as $key => $ac1)
 {
 	$rem_area_cnt[$key]=0;
 }
-$totaltrv_future =$trv_future->rowCount();
+$totaltrv_future = $trv_future->rowCount();
 
 //daytrip here
 
@@ -311,45 +466,49 @@ if($totalRows_dtrip > 0)
 		$row_dtcity2 = $dtcity2->fetch(PDO::FETCH_ASSOC);
 		$totalRows_dtcity2 = $dtcity2->rowCount();
 		
-		$dt_arr[$row_dtcity1['name']][] = $row_dtcity2['name'];
+		$dt_arr[$row_dtcity1['name']][0] = $row_dtcity2['name'];
 		$dt_arr[$row_dtcity1['name']]['id'] = $row_dtcity2['id'];
 	}
 	
 }
 //daytrip end
 //my end
-			
 					            
 
 $trv = $conn->prepare("SELECT * FROM travel_sched where travel_id =? ORDER BY sno ASC");
 $trv->execute(array($_GET['planid']));
 //$row_trv = mysql_fetch_assoc($trv);
-//$row_trv_main =$trv->fetchAll();
+$row_trv_main =$trv->fetchAll();
 $totalRows_trv = $trv->rowCount();
 $chn=0; 
-$trv_cnt_1 = $totalRows_trv - 1;
-								if($totalRows_trv>0){	?>
-                             <span style="color:#005598; font-weight:600; font-size:18px; text-align:center"><center><u>Tour Itinerary Plan (Program schedule)</u></center></span><span><center>Specially prepared for <?php echo $row_orders['tr_name'];?></center></span>
-                                    <br />
-                                    <?php  }?>
-                                    <div class="col-sm-12">
-                                     <?php while($totalRows_trv>0){
-										$row_trv = $trv->fetch(PDO::FETCH_ASSOC);
-										
-										
-										if($trv_cnt_1>0)
-										{//for stay table - aft end day calculation
+$trv_cnt_1 = $totalRows_trv - 1;?>
+					<table width="97%">
+                    <?php
+                    if($totalRows_trv>0){	?>
+                    <tr><td colspan="3" style="text-align:center">
+                                    <strong>Tour Itinerary Plan (Program schedule)</strong>
+                                    <br><small>Specially prepared for you</small>
+                    </td></tr>
+                                    <?php }?>
+                                   
+                                     <?php foreach($row_trv_main as $row_trv)
+									 {
 										
 										?>
-                                    <div class="col-sm-2" style="margin-top:15px; border-top:solid #DADADA 1px">
-                                   
-                                    <span style="color:#005598; font-weight:600;">
+                                       
+                                        <?php
+										if($trv_cnt_1>0)
+										{//for stay table - aft end day calculation
+										?>
+                                        <tr>
+                                        <td class="f_weight" style="font-family:Calibri; font-size: 14px;  padding:5px" width="17%">
                                     <?php
-										echo date('d-M-Y D',strtotime(str_replace('-','/',$row_trv['tr_date'])));
+										echo date('d-M-Y',strtotime(str_replace('-','/',$row_trv['tr_date'])));
+										echo '<br>'.date('l',strtotime(str_replace('-','/',$row_trv['tr_date'])));
 									?>
-                                    </span>
-                                    </div>
-                                    <div class="col-sm-10" style="margin-top:15px; border-top:solid #DADADA 1px; text-align:justify">
+                                    	</td>
+                                        <td class="f_weight" style="font-family:Calibri; font-size: 14px;  padding:5px" width="3%"></td>
+                                        <td class="f_weight" style="font-family:Calibri; font-size: 14px;  padding:5px; text-align:justify" width="78%">
                                           <?php
 
 $cityy1 = $conn->prepare("SELECT * FROM dvi_cities where name LIKE ?");
@@ -371,16 +530,18 @@ $row_hot_main=$hot->fetchAll();
 $totalRows_hot = $hot->rowCount();
 									
 //calculate distance
-	
+
 $distanc = $conn->prepare("SELECT * FROM dvi_citydist where (from_cityid =? and to_cityid =?) or (from_cityid =? and to_cityid =?)");
 $distanc->execute(array($row_cityy1['id'],$row_cityy_to['id'],$row_cityy_to['id'],$row_cityy1['id']));
 $row_distanc= $distanc->fetch(PDO::FETCH_ASSOC);
 $totalRows_distanc = $distanc->rowCount();									
 									?>
                                     
-                                    <span style="color:#005598;  font-size:14px; font-weight:600"> <?php if($chn=='0'){?>Arrival - <?php }?> <?php echo $row_trv['tr_from_cityid'];if($chn=='0'){echo " [ ".$row_orders['tr_arrdet']." @".$row_orders['tr_arr_time']." ]";}
+                                    <font style="color:#B16505;  font-size:14px; font-weight:600"> <?php if($chn=='0'){?>Arrival - <?php }?> <?php echo $row_trv['tr_from_cityid'];if($chn=='0'){echo " [ ".$row_orders['tr_arrdet']." @".$row_orders['tr_arr_time']." ]";}
 									
 									//via edit start
+										if(trim($row_trv['via_cities'])!='')
+										{
 									$via_cities_arr=explode('-',$row_trv['via_cities']);
 									for($ci=0;$ci<count($via_cities_arr);$ci++)
 									{
@@ -388,26 +549,21 @@ $totalRows_distanc = $distanc->rowCount();
 										{
 											if(trim($via_cities_arr[$ci])!='-')
 											{
-												
 												$via_cty = $conn->prepare("SELECT * FROM dvi_cities where id=?");
 $via_cty->execute(array($via_cities_arr[$ci]));
 $row_via_cty= $via_cty->fetch(PDO::FETCH_ASSOC);
 $totalRows_via_cty = $via_cty->rowCount();	
-												
 												echo "&nbsp;&nbsp;-&nbsp;&nbsp;".$row_via_cty['name'];
-												
 											}
 										}
 									}
+										}//no empty via
 									//via edit end
+									
 									echo "&nbsp;&nbsp;-&nbsp;&nbsp;".$row_trv['tr_to_cityid'];
 									if($row_trv['tr_dist_ss']>0)
 									{
-										$dt_city_name_int=1;
-										if(isset($dt_arr[$row_trv['tr_from_cityid']][0])){
-										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
-										}
-										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $dt_city_name_int ==0 && $chn!=0 && in_array($chn,$dt_cnt_arr)){
+										if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && $chn!=0 && in_array($chn,$dt_cnt_arr)){
 											 $distanc = $conn->prepare("SELECT * FROM dvi_citydist where (from_cityid =? and to_cityid =?) or (from_cityid =? and to_cityid =?)");
 $distanc->execute(array($row_cityy1['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$dt_arr[$row_trv['tr_from_cityid']]['id'],$row_cityy1['id']));
 $row_distanc= $distanc->fetch(PDO::FETCH_ASSOC);					
@@ -418,8 +574,8 @@ echo " (".$daytravel_dist." Kms)";
 								 
 									 }
 									 else{
-									echo " (".$row_trv['tr_dist_ss']." Kms)";
-									$today_dist=$row_trv['tr_dist_ss'];
+									 echo " (".$row_trv['tr_dist_ss']." Kms)";
+										$today_dist=$row_trv['tr_dist_ss'];
 									}
 									}else{
 $ss_dist = $conn->prepare("SELECT * FROM dvi_cities where id=?");
@@ -427,9 +583,9 @@ $ss_dist->execute(array($row_cityy_to['id']));
 $row_ss_dist=$ss_dist->fetch(PDO::FETCH_ASSOC);
 $totalRows_ss_dist = $ss_dist->rowCount();	
 									//echo " (".$row_ss_dist['ss_dist']." Kms)";
-									$today_dist=$row_trv['ss_dist'];
 									echo "";
-									}?></span><br /><span><?php //echo $totalRows_hot; 
+									$today_dist=$row_trv['ss_dist'];
+									}?></font><br /><br /><span><?php //echo $totalRows_hot; 
 //hotel chng new place
 									//echo $chn;
 									if($chn=='0'){
@@ -448,7 +604,7 @@ if($totalRows_trv_new>0)
 	$arr_date_time=$row_orders['tr_arr_date'].' '.$row_orders['tr_arr_time'];//$row_orders['tr_arr_time']
 	$arr_date_tstmp=date('U',strtotime($arr_date_time));
 	
-	$arr_timenxday=date('Y-m-d', strtotime($row_orders['tr_arr_date']. ' +1 day')); 
+	$arr_timenxday=date('Y-m-d', strtotime($row_orders['tr_arr_date']. ' +1 day'));
 	$arr_timenx6am=date('U',strtotime($arr_timenxday.' 06:00 AM'));//for next day morning - arrival
 	
 	$time6am=date('U',strtotime($row_orders['tr_arr_date'].' 06:00 AM'));
@@ -460,7 +616,7 @@ if($totalRows_trv_new>0)
 						if($time6am <= $arr_date_tstmp && $arr_date_tstmp <= $time3pm)
 						{//between 6am to 3pm ( over night in same city)
 					
-							echo "Greet and meet on arrival at ".$row_trv['tr_from_cityid'].". Check in ( 12:00 noon - standard time) at hotel, refresh and later proceed to Sight-seeing including - ";
+							echo "Greet and meet on arrival at ".$row_trv['tr_from_cityid'].". Check in ( 12:00 noon - standard time) at hotel, refresh and later proceed to sight-seeing including - ";
 						$hots_array=array();
 									$vg=0;
 									foreach($row_hot_main as $row_hot){
@@ -510,6 +666,8 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 									}
 										}
 									//via edit end
+										
+
 							
 							echo " and later return to hotel and overnight stay at hotel.";
 						}else if($time3pm <= $arr_date_tstmp && $arr_date_tstmp <= $time6pm)
@@ -544,39 +702,7 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 										$rem_area_cnt[$row_trv['tr_from_cityid']]=$rem_area_cnt[$row_trv['tr_from_cityid']]+$tot_div_hot;
 										$copy_area_arr[$row_trv['tr_from_cityid']]=$copy_area_arr[$row_trv['tr_from_cityid']]-1;
 										
-										//via edit start
-										if(trim($row_trv['via_cities'])!='')
-										{
-									$via_cities_arr=explode('-',$row_trv['via_cities']);
-									for($ci=0;$ci<count($via_cities_arr);$ci++)
-									{
-										if($ci != 0 && ($ci != count($via_cities_arr)-1))
-										{
-											if(trim($via_cities_arr[$ci])!='-')
-											{
-												if($today_dist>=250)//if total dist >250 means show hotspots prior 1 and 2 only
-												{
-$via_hspots = $conn->prepare("SELECT * FROM hotspots_pro where spot_city=? and (spot_prior='1' || spot_prior='2')");
-												}else{//if total dist <250 means show hotspots prior 1,2,3 & 4 only
-$via_hspots = $conn->prepare("SELECT * FROM hotspots_pro where spot_city=? and (spot_prior='1' || spot_prior='2' || spot_prior='3' || spot_prior='4')");
-												}
-$via_hspots->execute(array($via_cities_arr[$ci]));
-//$row_via_hspots= mysql_fetch_assoc($via_hspots);
-$row_via_hspots_main=$via_hspots->fetchAll();
-$totalRows_via_hspots =$via_hspots->rowCount();	
-
-												if($totalRows_via_hspots>0)
-												{
-													foreach($row_via_hspots_main as $row_via_hspots)
-													{
-														echo $row_via_hspots['spot_name'];
-													}
-												}
-											}
-										}
-									}
-										}
-									//via edit end
+										
 									//for first day - in diff city within 180km means show hotspots if the arrival time inbetween 11 clock
 									
 								$time11am=date('U',strtotime($row_orders['tr_arr_date'].' 11:00 AM'));	
@@ -611,7 +737,41 @@ $totalRows_hot1 = $hot1->rowCount();
 							}
 								}//within 11:00AM arrival means if- end
 									
-									echo "and later drive to ".$row_trv['tr_to_cityid'].", check-in and overnight stay at hotel.";
+									//via edit start
+										if(trim($row_trv['via_cities'])!='')
+										{
+									$via_cities_arr=explode('-',$row_trv['via_cities']);
+									for($ci=0;$ci<count($via_cities_arr);$ci++)
+									{
+										if($ci != 0 && ($ci != count($via_cities_arr)-1))
+										{
+											if(trim($via_cities_arr[$ci])!='-')
+											{
+												if($today_dist>=250)//if total dist >250 means show hotspots prior 1 and 2 only
+												{
+$via_hspots = $conn->prepare("SELECT * FROM hotspots_pro where spot_city=? and (spot_prior='1' || spot_prior='2')");
+												}else{//if total dist <250 means show hotspots prior 1,2,3 & 4 only
+$via_hspots = $conn->prepare("SELECT * FROM hotspots_pro where spot_city=? and (spot_prior='1' || spot_prior='2' || spot_prior='3' || spot_prior='4')");
+												}
+$via_hspots->execute(array($via_cities_arr[$ci]));
+//$row_via_hspots= mysql_fetch_assoc($via_hspots);
+$row_via_hspots_main=$via_hspots->fetchAll();
+$totalRows_via_hspots =$via_hspots->rowCount();	
+
+												if($totalRows_via_hspots>0)
+												{
+													foreach($row_via_hspots_main as $row_via_hspots)
+													{
+														echo $row_via_hspots['spot_name'];
+													}
+												}
+											}
+										}
+									}
+										}
+									//via edit end
+									
+							echo "and later drive to ".$row_trv['tr_to_cityid'].", check-in and overnight stay at hotel.";
 	
 						}else if($time3pm <= $arr_date_tstmp && $arr_date_tstmp <= $time6pm)
 						{//between 3pm to 6pm ( over night in diff city)
@@ -696,23 +856,15 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 									}//for first day
 									else // for other days
 									{
-										//print_r($dt_cnt_arr);
-										$dt_city_name_int= -1;
-										$dt_arr[$row_trv['tr_from_cityid']][0];
-										if(isset($dt_arr[$row_trv['tr_from_cityid']]))
-										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
-											if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && $dt_city_name_int == 0)
+										if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr))
 								 {
-									//print "DT";
-
-									
 									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
 										
 
 
 
-			echo "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
+			echo "<br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]." (".$daytravel_dist." kms) : </span>";
 
 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");
@@ -736,7 +888,6 @@ foreach($row_dayhpot_main as $row_dayhpot)
 										}else{//different ending city means show the ending city hotspot
 											echo "After breakfast check out hotel and";
 										}
-									 
 									
 									if($totalRows_hot>0){ 
 									echo " proceed to sight-seeing including - ";
@@ -784,7 +935,7 @@ $via_hspots = $conn->prepare("SELECT * FROM hotspots_pro where spot_city=? and (
 $via_hspots->execute(array($via_cities_arr[$ci]));
 //$row_via_hspots= mysql_fetch_assoc($via_hspots);
 $row_via_hspots_main=$via_hspots->fetchAll();
-$totalRows_via_hspots =$via_hspots->rowCount();	
+$totalRows_via_hspots =$via_hspots->rowCount();		
 
 												if($totalRows_via_hspots>0)
 												{
@@ -815,6 +966,7 @@ $totalRows_hot1 = $hot1->rowCount();
 										   $vg++;
 										} 
 								
+								
 								$area_cnt[$row_trv['tr_to_cityid']]=$area_cnt[$row_trv['tr_to_cityid']]+1;
 								$copy_area_arr[$row_trv['tr_to_cityid']]=$copy_area_arr[$row_trv['tr_to_cityid']]+1;
 										if(isset($show_in_next_day) && $show_in_next_day==2)
@@ -844,7 +996,9 @@ $totalRows_hot1 = $hot1->rowCount();
 											echo $hots_array[$hs].', ';//for final day
 				}
 							}
-										} ?></span>
+										}else{
+										echo " spending day to shopping ";	
+										}?></span>
                                       
                                         <?php
 							if($row_trv['tr_from_cityid'] == $row_trv['tr_to_cityid'])
@@ -853,11 +1007,11 @@ $totalRows_hot1 = $hot1->rowCount();
 								 // daytrip goes here
 								 if(!empty($dt_arr))
 								 {
-									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]) && !is_numeric($dt_arr[$row_trv['tr_from_cityid']][0]))
+									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
-			echo "<br><span style='font-weight:bold; color:green'>"."After Breakfast,Full DAYTRIP to ".$dt_arr[$row_trv['tr_from_cityid']][0]." : </span>";
+		 echo "<br><br><span style='font-weight:bold; color:green'>"."DAYTRIP applicable to ".$dt_arr[$row_trv['tr_from_cityid']][0]."</span>";
 
-
+		 										 
 $dayhpot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? and status='0'");
 $dayhpot->execute(array($dt_arr[$row_trv['tr_from_cityid']]['id']));
 //$row_dayhpot = mysql_fetch_assoc($dayhpot);
@@ -868,6 +1022,7 @@ foreach($row_dayhpot_main as $row_dayhpot)
 {
 		echo  $row_dayhpot['spot_name'];
 }
+
 										 unset($dt_arr[$row_trv['tr_from_cityid']][0]);
 										 $dt_arr[$row_trv['tr_from_cityid']] = array_values($dt_arr[$row_trv['tr_from_cityid']]);
 									 }
@@ -875,8 +1030,8 @@ foreach($row_dayhpot_main as $row_dayhpot)
 								 
 							}else{
 								 echo "and later proceed to ".$row_trv['tr_to_cityid'].". Overnight stay at hotel. ";
-							}
-								 }		?>
+								 }		}
+										?>
                                         <?php }//fot other days else end
 										
 										//additional cost - addons
@@ -894,41 +1049,37 @@ foreach($row_dayhpot_main as $row_dayhpot)
                                         <?php }?>
                                         </ul>
                                         </div>
-                                        <?php } 
-										?>
-                                    </div>
-                                  
+                                        <?php } ?>
+                               </td>
+                               </tr>
+                               <tr><td colspan="3"><hr style="margin-top: 10px;margin-bottom: 10px;"></td></tr>
                                      <?php
-									
 									 $chn++;
 										}//inner hotel while end
 										else{ ?>
-											<div class="col-sm-2" style="margin-top:15px; border-top:solid #DADADA 1px">
-                                   
-                                    <span style="color:#005598; font-weight:600;">
+                                        <tr><td  class="f_weight" style="font-family:Calibri; font-size: 14px;  padding:5px;" width="17%">
                                     <?php
 									if($row_trv['tr_date'] != '')
 									{
-										echo date('d-M-Y D',strtotime(str_replace('-','/',$row_trv['tr_date'])));
+										echo date('d-M-Y',strtotime(str_replace('-','/',$row_trv['tr_date'])));
+										echo '<br>'.date('l',strtotime(str_replace('-','/',$row_trv['tr_date'])));
 									}
 									?>
-                                    </span>
-                                    </div>
-                                    <div class="col-sm-10" style="margin-top:15px; border-top:solid #DADADA 1px; text-align:justify">
+                                    </td>
+                                    <td class="f_weight" style="font-family:Calibri; font-size: 14px;  padding:5px;" width="3%"></td>
+                                    <td  class="f_weight" style="font-family:Calibri; font-size: 14px;  padding:5px; text-align:justify" width="78%">
                                           <?php
-									
+
 $cityy1 = $conn->prepare("SELECT * FROM dvi_cities where name LIKE ?");
 $cityy1->execute(array($row_trv['tr_from_cityid']));
 $row_cityy1 = $cityy1->fetch(PDO::FETCH_ASSOC);
 $totalRows_cityy1 = $cityy1->rowCount();
 
 
-								
 $cityy_to = $conn->prepare("SELECT * FROM dvi_cities where name LIKE ?");
 $cityy_to->execute(array($row_trv['tr_to_cityid']));
 $row_cityy_to = $cityy_to->fetch(PDO::FETCH_ASSOC);
 $totalRows_cityy_to = $cityy_to->rowCount();
-
 			
 //calculate distance
 	
@@ -939,18 +1090,18 @@ $totalRows_distanc = $distanc->rowCount();
 
 
 
-
-
-$hot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =? ORDER BY spot_prior ASC");
+$hot= $conn->prepare("SELECT * FROM hotspots_pro where spot_city =?");
 $hot->execute(array($row_cityy1['id']));
 //$row_hot = mysql_fetch_assoc($hot);
 $row_hot_main=$hot->fetchAll();
 $totalRows_hot = $hot->rowCount();
 									?>
                                     
-                                    <span style="color:#005598; font-size:14px; font-weight:600"> <?php echo $row_trv['tr_from_cityid']."&nbsp;&nbsp;";
+                                    <span style="color:#B16505;  font-size:14px; font-weight:600"> <?php echo $row_trv['tr_from_cityid']."&nbsp;&nbsp;-&nbsp;&nbsp;".$row_trv['tr_to_cityid'];
 									
 									//via edit start
+										if(trim($row_trv['via_cities'])!='')
+										{
 									$via_cities_arr=explode('-',$row_trv['via_cities']);
 									for($ci=0;$ci<count($via_cities_arr);$ci++)
 									{
@@ -958,35 +1109,32 @@ $totalRows_hot = $hot->rowCount();
 										{
 											if(trim($via_cities_arr[$ci])!='-')
 											{
-												
 												$via_cty = $conn->prepare("SELECT * FROM dvi_cities where id=?");
 $via_cty->execute(array($via_cities_arr[$ci]));
 $row_via_cty= $via_cty->fetch(PDO::FETCH_ASSOC);
 $totalRows_via_cty = $via_cty->rowCount();	
-												
 												echo "&nbsp;&nbsp;-&nbsp;&nbsp;".$row_via_cty['name'];
-												
 											}
 										}
 									}
+										}//no empty via
 									//via edit end
-									
-									echo "-&nbsp;&nbsp;".$row_trv['tr_to_cityid']."&nbsp;( Departure )  [ ".$row_orders['tr_depdet']."&nbsp; @".$row_orders['trv_depatr_time']." ]";
+									echo "&nbsp;( Departure )  [ ".$row_orders['tr_depdet']."&nbsp; @".$row_orders['trv_depatr_time']." ]";
 									
 									if($row_trv['tr_dist_ss']>0)
 									{
-									echo " (".$row_trv['tr_dist_ss']." Kms)";
+									//echo " (".$row_trv['tr_dist_ss']." Kms)";
 									$today_dist=$row_trv['tr_dist_ss'];
 									}else{
 $ss_dist = $conn->prepare("SELECT * FROM dvi_cities where id=?");
 $ss_dist->execute(array($row_cityy_to['id']));
-$row_ss_dist=$ss_dist->fetch(PDO::FETCH_ASSOC);
+$row_ss_dist= $ss_dist->fetch(PDO::FETCH_ASSOC);
 $totalRows_ss_dist = $ss_dist->rowCount();	
 									//echo " (".$row_ss_dist['ss_dist']." Kms)";
 									echo "";
 									$today_dist=$row_trv['ss_dist'];
 									}
-									?></span><br />
+									?></span><br /><br />
                                     
                                     <?php echo "After breakfast check out hotel"; 
 									//time calculation 
@@ -1071,7 +1219,7 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 											$addi_cost_name=explode('/',$row_trv['addi_cost_for']);
 										?>
                                         <div class="col-sm-12" style="color: #7A7FA2; margin-top:10px; border: 1px dashed #5F83DE; padding:5px;" >
-                                        <style="color:#AB5B14;" >* Special Add-ons to this date: 
+                                        <strong style="color:#AB5B14;" >* Special Add-ons to this date: </strong>
                                         <small style="color:#900; font-weight:600">( Additional cost added for this add-ons )</small>
                                         <ul style=" list-style-type:circle; ">
                                         <?php foreach($addi_cost_name as $acnam)
@@ -1081,60 +1229,115 @@ $totalRows_via_hspots =$via_hspots->rowCount();
                                         </ul>
                                         </div>
                                         <?php } 
-									?>
-                                    </div>
+										?>
+                                   </td></tr>
+                                   <tr><td colspan="3"><hr style="margin-top: 10px;margin-bottom: 10px;"></td></tr>
 										<?php }
 										 
 										$trv_cnt_1--;
 									$totalRows_trv--;
 									//$row_count--;
-									 }
-									//print_r($rem_area_cnt); ?>
-                                    </div>
-                                    
-                                    </div>
-							</div><!-- /.row -->
-                             <hr />
-                            <?php } //main for loop?>
-                            
-                            <div  style="border-top:#999 solid 1px; margin-top:20px; text-align:justify" >
-                            <br>
-                                	<p style="color:#F00; font-weight:600; text-align:justify">Package Includes: </p>
-                                    Transfers and sight-seeing  by  deluxe  tourists vehicle A/C <span style="color:#F00">(Vehicles up hill driving on the hills would be on Non AC) </span> <br>
-                                    Toll & Parking <br>
-                                    GST <br>
-                                    All local sight-seeing in the same vehicle, every day after breakfast till sunset ( 0700 AM to 08PM)<br><br>
-									
-									                                   
-                                    
-                                    <b> Package does not include </b><br><br>
-						            Any international / Domestic Air Fare if any quoted separately <br>
-                                    English speaking guide / escort charges Airport Tax <br>
-                                    Extra bed All meals (other than above mentioned ones) <br>
-                                    Personal nature expenses such as telephone calls, Laundry, soft / hard drinks, lunch tipping etc., <br>
-                                    Camera fee at monuments. <br>
-                                    Monument / TEMPLE Entrance Fees / Boat ride<br>
-                                    Insurance. <br>
-                                    Any Porterage services at Airport / Railway station. <br>
-                                    Any other expenses not mentioned in the above cost. <br>
-									<span style="color:#F00">24th December gala dinner </span> <br>
-									<span style="color:#F00">31st December gala dinner </span> <br><br>
-                                    
-                                    <b>IMPORTANT: </b> Kindly note that  vehicles  mentioned above only indicate that our rates have been based on usage of the locations and Kilometres  and it is not to be construed that the same vehicles will be provided if the vehicles are not available in the selected locations we shall provide from the different neareast availble location for the same rate may change (supplement/reduction whatever applicable). Unless until we  Dvi Holidays sends you the written confirmation from reservation the quote is not final. <br><br>
-									
-									<hr style="margin-top:10px; margin-bottom:10px;">
-									<p style="color:#F00; ">Cancellation policy </p>
-                                    CANCELLATION 30% of Package cost, if the cancellation is made 30 days prior to the departure. 50% of package cost, if the cancellation is made between 30-14 days prior to the departure.    |   70% of package cost, if the cancellation is made between 17-7 days prior to the departure.     |     100% of package cost, if the cancellation is made 7 days or less prior to the departure. <br><br>
-                                    
-                                    <b>General  Policy</b><br>
-Child cost depends upon hotels rule which may vary from one hotel to another. The most common rules are as under: <br>
-Child up to 5 years is free. Child above 5 years to 12 will be charged as per hotel rule. Child above 12 years will be charged as adult. <br>
-If your reservation at hotels includes an extra bed, most hotels provide a folding cot or a mattress on floor as an extra bed. <br>
-Check in and check out in most of the hotels at 1200 noon in the cities, In Hill stastions check in 1400 hrs check out 11 hrs. <br>
-Early check-in or late check-out is subject to availability and may be chargeable by the hotel. <br>
-To request for an early check-in or late check-out, kindly contact the hotel directly or inform us prior. <br>
-									
-                                    
-                                </div>
-                            
-						</div>
+									?>
+                                    <?php
+									 } ?>
+                    
+                    </table>
+ </td></tr>
+ 
+ <?php }//main for loop?>
+ </table>
+<div style="display:none; margin-top:10px;" id="dis_play">
+ <?php
+  $pers1 = $conn->prepare("SELECT * FROM login_secure where uid=?");
+		$pers1->execute(array($_SESSION['uid']));
+		$row_pers1=$pers1->fetch(PDO::FETCH_ASSOC);
+		$totalRows_pers1  = $pers1->rowCount();
+ ?>
+ 
+ <strong> Suggestion From DVI Holidays ( <?php echo $row_pers1['email_id']; ?> ) </strong><br>
+     <div id="text_res_ar_div" style="margin-top:10px;">
+     
+     </div>
+ </div>
+ </div><!-- mail me div -->
+ 
+  <?php if($_SESSION['grp']=="ADMIN" || $_SESSION['grp']=="DISTRB") {
+	 
+	 $pers = $conn->prepare("SELECT * FROM login_secure where uid=?");
+		$pers->execute(array($_SESSION['uid']));
+		$row_pers= $pers->fetch(PDO::FETCH_ASSOC);
+		$totalRows_pers  = $pers->rowCount();
+	 ?>
+ <div align="center" id="hi_de">
+      <strong> Suggestion From DVI Holidays ( <?php echo $row_pers['email_id']; ?> ) </strong>
+ <div align="center" style=" margin-top:10px" id="text_ar_div">
+     <textarea id="text_ar" style="border:#06C solid 2px; resize:vertical; min-height:100px; max-height:300px" 
+     cols="120" rows="8" data-placeholder="Give some suggestion">
+     Give Some Suggestion...
+     </textarea>
+ </div>
+ 
+ </div>
+ <?php }?>
+ 
+ </div>
+ <div class="col-sm-2"></div>
+ </div>
+ </div>
+ <div class="row " style="margin-top:20px; margin-bottom:20px;">
+ 	<div class="col-sm-12" style="text-align:center">
+ 		<div class="col-sm-4"></div>
+        <div class=" col-sm-3"><input type="email" name="mailtome" id="mailtome" class="form-control" ></div><div class="col-sm-1"><button class="btn-info btn btn-sm" name="mail_btn" id="mail_btn" onClick="mail_to_me_fun()"> Send Mail </button></div><div class="col-sm-4"></div>
+ 	</div>
+ </div>
+
+                    </body>
+                    </html>
+					
+		<script src="../core/assets/js/bootstrap.min.js"></script>
+		<script src="../core/assets/plugins/retina/retina.min.js"></script>
+		<script src="../core/assets/plugins/backstretch/jquery.backstretch.min.js"></script>
+        
+		<script src="../core/assets/js/apps.js"></script>
+		<script src="../core/assets/js/demo-panel-1.js"></script>
+        <script src="../core/assets/js/moment.js"></script>
+		<script>
+	
+	function mail_to_me_fun()
+	{
+		var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		
+		var mailtome=$('#mailtome').val().trim();
+		if(mailtome=='')
+		{
+			alert('Mail Id cannot be empty !');
+			$('#mailtome').focus();
+		}else if(!expr.test(mailtome)){
+			alert('Please Enter Valid Mail ID !');
+			$('#mailtome').focus();
+		}else{
+			
+			if($('#text_ar').length>0)
+			{
+				var tx=$('#text_ar').val();
+				$('#text_res_ar_div').empty().text(tx);
+				$('#dis_play').show();
+				$('#hi_de').hide();
+			}
+			
+			var cont=$('#mail_me').html();
+			$('.loader_ax').fadeIn();
+			$.post('ajax_mail.php?type=5&emname='+mailtome,{ content : cont },function(con){ 
+					$('.loader_ax').fadeOut(); 
+					alert('Mail sent successfully to '+con.trim()); 
+					if($('#text_ar').length>0)
+					{
+						$('#dis_play').hide();
+						$('#hi_de').show();
+					}
+				});
+		}
+	}
+</script>
+
+	

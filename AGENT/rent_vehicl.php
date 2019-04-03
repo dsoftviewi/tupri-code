@@ -134,6 +134,7 @@ for ($q=0;$q<$cnt_cities;$q++)
 		$vehics = $conn->prepare("SELECT * FROM vehicle_rent where vehicle_id =? and city =?");
 		$vehics->execute(array($vehid,$cityid));
 		$row_vehics = $vehics->fetch(PDO::FETCH_ASSOC);
+	//	print_r($row_vehics);
 		$totalRows_vehics = $vehics->rowCount();
 		
 		

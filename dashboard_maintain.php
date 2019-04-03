@@ -1,4 +1,8 @@
 <?php include("core/session.php");?>
+
+<?php	if($_SESSION['uid'] == 'DSR243'){
+	header('location:agent_manaorder.php?mm=23311f54cbcb20fd815e2574e8b07b39&sm=f0e2efabf331f439ad99596cea1accf3');
+}          ?>
 <?php	if($_SESSION['grp'] == 'ADMIN'){
 	header('location:dashboard.php');
 }          ?>

@@ -328,7 +328,8 @@ if(isset($_SESSION['com_plan_id']))
 				
 				echo "HOUSEBOAT".$h1;	
 		
-			print	$loop=$_POST[$frm.'_tr_cnt_'.$h1];
+			
+			$loop=$_POST[$frm.'_tr_cnt_'.$h1];
 				for($hb=0;$hb<=$loop;$hb++)
 				{
 						//echo "Room".$h3."=".$_POST['hot_rm_id'.$h1.'_'.$h3];
@@ -839,7 +840,7 @@ $currency_rate = $row_currencydb['currency_rate'];
 								//finding room name to add table
 									$ridd_arr=explode(',',$_POST[$frm.'_rmid_'.$sctg.'_'.$h1]);
 //echo " ---------------------- "; 
-									print_r($ridd_arr[0]);
+									//print_r($ridd_arr[0]);
                                     
 //echo "%%%%% HB -1";
 									for($y=0;$y<count($ridd_arr);$y++)
@@ -984,16 +985,15 @@ if($rm_snumber != '') {
 							$shfood="";
 							$ffood='0';
 						}
-						
+						 
 						$_POST[$frm.'_others_rate'.$h1]=0;
 						$indu_rent=$indu_room_rent.'-'.$rate_for_child_bed.','.$_POST[$frm.'_chwithbed_'.$sctg.'_'.$h1].','.$_POST[$frm.'_chwithoutbed_'.$sctg.'_'.$h1].'-'.$ffood.'-'.$_POST[$frm.'_others_rate'.$h1];
 						
 						//total amount calculation
 						$totalday_amtcal=$totalday_amtcal+$perday_amtcal;
-						//echo "SEEEEEEEE ";
 						//$perday_amount=$_POST['perdayid'.$h1];
-						 $HotelSQL = $conn->prepare("INSERT INTO stay_sched (stay_id, hotel_id, sty_date, sty_city, sty_room_type, sty_room_name, sty_adults, sty_512child, sty_child, sty_child_bed, sty_food, sty_extra, sty_indu_rent, sys_amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '0')");
-						 $HotelSQL->execute(array($com_plan_id,$shotel,$shdate,$shcity,$shroom,$shroom_names,$shadult,$shchild512,$shchild,$shextra,$shfood,$sh_extra,$indu_rent,$perday_amtcal));
+						 $HotelSQL = $conn->prepare("INSERT INTO stay_sched (stay_id, hotel_id, sty_date, sty_city, sty_room_type, sty_room_name, sty_adults, sty_512child, sty_child, sty_child_bed, sty_food, sty_extra, sty_indu_rent, sys_amount, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,'0')");
+		      $HotelSQL->execute(array($com_plan_id,$shotel,$shdate,$shcity,$shroom,$shroom_names,$shadult,$shchild512,$shchild,$shextra,$shfood,$sh_extra,$indu_rent,$perday_amtcal)); 
 						
 						//echo "<br>Perday_amtcal=".$perday_amtcal;
 				}//for end
@@ -1505,6 +1505,7 @@ $spro = $conn->prepare("SELECT * FROM stay_sched where stay_id =? ORDER BY sno A
 $spro->execute(array($_GET['planid']));
 //$row_spro = mysql_fetch_assoc($spro);
 $row_spro_main=$spro->fetchAll();
+//print_r($row_spro_main);
 $totalRows_spro = $spro->rowCount();
 $scnt=1;	
 									?>
@@ -1640,11 +1641,11 @@ $row_count=$totalRows_sspro;
 $trv_future = $conn->prepare("SELECT * FROM travel_sched where travel_id =?");
 $trv_future->execute(array($_GET['planid']));
 //$row_trv_future = mysql_fetch_assoc($trv_future);
-$row_trv_future_main=$trv_future->fetchAll();
+//$row_trv_future_main=$trv_future->fetchAll();
 $area_arr=array();
 $gv=0;
 $dt_cnt_arr=array();
-foreach($row_trv_future_main as $row_trv_future)
+while($row_trv_future = $trv_future->fetch(PDO::FETCH_ASSOC))
 {
 	if(!isset($dt_exists[$row_trv_future['tr_to_cityid']]))
 	$dt_exists[$row_trv_future['tr_to_cityid']]=0;
@@ -2099,6 +2100,9 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 										$dt_city_name_int = (int) $dt_arr[$row_trv['tr_from_cityid']][0];
 											if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && $dt_city_name_int == 0)
 								 {
+									//print "DT";
+
+									
 									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {
 										

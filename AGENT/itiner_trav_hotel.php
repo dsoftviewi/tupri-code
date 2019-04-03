@@ -301,7 +301,9 @@ $dt_cnt_arr=array();
 foreach($row_trv_future_main as $row_trv_future)
 {
 	$area_arr[$gv]=$row_trv_future['tr_from_cityid'];
-	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid']){
+
+
+	if($row_trv_future['tr_from_cityid']==$row_trv_future['tr_to_cityid'] && $row_trv_future['via_cities'] =='-'){
 		$dt_cnt_arr[]=$gv;
 	}
 	$gv++;
@@ -811,7 +813,7 @@ $totalRows_via_hspots =$via_hspots->rowCount();
 									}//for first day
 									else // for other days
 									{
-										if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr))
+										if(!empty($dt_arr) && $chn != 0 && in_array($chn,$dt_cnt_arr) && isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 								 {
 									 if(isset($dt_arr[$row_trv['tr_from_cityid']][0]))
 									 {

@@ -143,6 +143,8 @@ if(isset($_POST['faq_forms']) && $_POST['faq_forms']=='faq_forms_val')
                                 <li><a href="#contact_us" data-toggle="tab"><i class="fa fa-user"></i>&nbsp; Contact Us</a></li>
                                  <li><a href="#feedbacks" data-toggle="tab"><i class="fa fa-envelope "></i>&nbsp; Feedbacks</a></li>
 								 <li><a href="#currency" data-toggle="tab"><i class="fa fa-user"></i>&nbsp; Currency</a></li>
+								 <li><a href="#timings" data-toggle="tab"><i class="fa fa-user"></i>&nbsp; Arr/Dep Timings</a></li>
+								 
 							
 							</ul>
                             
@@ -470,6 +472,44 @@ $total_cnt = $cnt->rowCount();
                                            
                                              <hr />
                                            
+                                            <br />
+                                       </div>
+                                       
+                                       
+										</div>
+										                                        <div class="tab-pane fade" id="timings">
+                                                              <?php 
+
+$cnt= $conn->prepare("SELECT * FROM dvi_front_settings where status='0'");
+$cnt->execute();
+$row_cnt = $cnt->fetch(PDO::FETCH_ASSOC);
+$total_cnt = $cnt->rowCount();
+?>
+										<div class="col-sm-12" id="" style="border:1px rgb(245, 241, 241) solid; margin:20px;background-color:#F7F7F7;">
+                                    
+                                                                                     
+                                            <p align="center" style="font-weight:600; color:#CCC">Arrival/Departure Information 
+                                             <a id="timing_edit_btn" class="btn btn-default pull-right" onclick="show_timing_edit()"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                                         <a id="timing_cancel_btn" class="btn btn-default pull-right" style="display:none;" onclick="cancel_timing_edit()"><i class="fa fa-times"></i></a>
+                                         <a id="timing_upd_btn" class="btn btn-default pull-right" style="display:none;" onclick="upload_timing_dvi('AD')"><i class="fa fa-upload"></i></a>
+                                            </p>
+                                            <div class="row" style="margin-top:20px">
+                                            <div class="col-sm-3" align="right" style="color:##1F469B; font-weight:600">
+                                            Arrival Time : </div>
+                                            <div class="col-sm-9">
+                                            <p id="arr_time_view" style="border:1px solid #CCC; height:30px"><?php if(trim($row_cnt['arr_time'])!=''){ echo "<strong>".$row_cnt['arr_time']."</strong>"; }else {?> <strong style="text-align:center; font-size:15px; color:#CCC;">Not given</strong><?php } ?></p>
+                                            <input id="arr_time_tarea" type="text" class="form-control" style="display:none; " value="<?php echo $row_cnt['arr_time']; ?>" /></div>
+                                            </div>
+											 <div class="row" style="margin-top:20px">
+                                            <div class="col-sm-3" align="right" style="color:##1F469B; font-weight:600">
+                                            Departure Time : </div>
+                                            <div class="col-sm-9">
+                                            <p id="dep_time_view" style="border:1px solid #CCC; height:30px"><?php if(trim($row_cnt['dep_time'])!=''){ echo "<strong>".$row_cnt['dep_time']."</strong>"; }else {?> <strong style="text-align:center; font-size:15px; color:#CCC;">Not given</strong><?php } ?></p>
+                                            <input id="dep_time_tarea" type="text" class="form-control" style="display:none; " value="<?php echo $row_cnt['dep_time']; ?>" /></div>
+                                            </div>
+                                            
+                                            </div>
+                                            
                                             <br />
                                        </div>
                                        
@@ -843,6 +883,29 @@ function cancel_mail_edit()
 	$('#mail_desctarea').hide();
 }
 
+function show_timing_edit()
+{
+	$('#timing_edit_btn').hide();	
+	$('#timing_upd_btn').show();
+	$('#timing_cancel_btn').show();
+	
+	$('#arr_time_view').hide();
+	$('#dep_time_view').hide();
+	$('#arr_time_tarea').show();
+	$('#dep_time_tarea').show();
+}
+
+function cancel_timing_edit()
+{
+	$('#timing_edit_btn').show();	
+	$('#timing_upd_btn').hide();
+	$('#timing_cancel_btn').hide();
+	
+	$('#arr_time_view').show();
+	$('#dep_time_view').show();
+	$('#arr_time_tarea').hide();
+	$('#dep_time_tarea').hide();
+}
 //contact help line 
 function show_help_edit()
 {
@@ -869,7 +932,37 @@ function cancel_help_edit()
 }
 
 
-
+function upload_timing_dvi(str){
+	var str1,tarea1,tarea2,field1,field2,id;
+	if(str=='AD')
+	{
+		field1='arr_time';
+		field2='dep_time';
+		
+		tarea1=$('#arr_time_tarea').val();
+		tarea2=$('#dep_time_tarea').val();
+		id='timing';
+	}
+	
+	var ty=3;
+$.post('<?php echo $_SESSION['grp'];?>/ajax_front_end.php?type='+ty,{'field1':field1,'field2':field2,'tarea1':tarea1,'tarea2':tarea2,},function(result)
+	{
+		$('#arr_time_tarea').hide();
+		$('#dep_time_tarea').hide();
+		
+		$('#'+id+'_upd_btn').hide();
+		$('#'+id+'_cancel_btn').hide();
+		$('#'+id+'_edit_btn').show();
+		
+		
+		$('#arr_time_view strong').empty().prepend(tarea1);
+		$('#arr_time_view').show();
+		$('#dep_time_view strong').empty().prepend(tarea2);
+		$('#dep_time_view').show();
+		alert("Updated Successfully..");
+		
+	});
+}
 function upload_contact_dvi(str)
 {
 	var str1,tarea1,tarea2,field1,field2,id;
@@ -909,6 +1002,7 @@ function upload_contact_dvi(str)
 		tarea2=0;
 		id='currency';
 	}
+	
 	
 	var ty=3;
 $.post('<?php echo $_SESSION['grp'];?>/ajax_front_end.php?type='+ty,{'field1':field1,'field2':field2,'tarea1':tarea1,'tarea2':tarea2,},function(result)

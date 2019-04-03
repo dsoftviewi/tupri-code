@@ -197,7 +197,7 @@ $totalRows_retrav = $retrav->rowCount();
 			$row_hotel = $hotel->fetch(PDO::FETCH_ASSOC);
 			$tot_hotel= $hotel->rowCount();
 			
-			$season_id=$row_season['season_id'];
+			$ses_id=$row_season['sno'];
 			if($tot_hotel>0)
 			{
 			//echo $row_hotel['hotel_name'];
@@ -237,30 +237,56 @@ $totalRows_retrav = $retrav->rowCount();
 			$hfood->execute(array($row_hotel['hotel_id']));
 			$row_hfood = $hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -311,30 +337,56 @@ $totalRows_retrav = $retrav->rowCount();
 			$hfood->execute(array($row_hotel1['hotel_id']));
 			$row_hfood =$hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -401,26 +453,26 @@ $totalRows_retrav = $retrav->rowCount();
 						$num_fpaxs=$tot_fpax;
 						if($num_fpaxs==2)
 						{
-							$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type='01 Bed Room - Premium' ORDER BY $season_id ASC");
-									$hrooom->execute(array($hotl_id));
+							$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type='01 Bed Room - Premium' and season_sno = ?  ORDER by season_rate ASC");
+									$hrooom->execute(array($hotl_id,$ses_id));
 									$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 									$tot_hrooom= $hrooom->rowCount();
 									//echo $row_hrooom['room_type'].'- With extra bed';
 									echo $row_hrooom['room_type'];
 									$room_sno=$row_hrooom['sno'];
-									$room_rent=$row_hrooom[$season_id];
+									$room_rent=$row_hrooom['season_rate'];
 									$total_amount=$total_amount+($room_rent);
 									//echo "01 Bed Room - Premium";
 							
 						}else if($num_fpaxs==3)
 						{
-									$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type='01 Bed Room - Premium' ORDER BY $season_id ASC");
-									$hrooom->execute(array($hotl_id));
+									$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type='01 Bed Room - Premium' and season_sno = ?  ORDER by season_rate ASC");
+									$hrooom->execute(array($hotl_id,$ses_id));
 									$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 									$tot_hrooom= $hrooom->rowCount();
 									echo $row_hrooom['room_type'].'- With extra bed';
 									$room_sno=$row_hrooom['sno'];
-									$room_rent=$row_hrooom[$season_id];
+									$room_rent=$row_hrooom['season_rate'];
 									echo "LOLO=".$total_amount;
 									echo "BT=".$total_amount=$total_amount+$room_rent;
 								echo "chbed=".$chwithbedrate;
@@ -434,13 +486,13 @@ $totalRows_retrav = $retrav->rowCount();
 							 $tempMod = (float)($num_fpaxs / 2);
   							 $tempMod = ($tempMod - (int)$tempMod)*2;
 							
-									$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type='02 Bed Room - Premium' ORDER BY $season_id ASC");
-									$hrooom->execute(array($hotl_id));
+									$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type='02 Bed Room - Premium' and season_sno = ?  ORDER by season_rate ASC");
+									$hrooom->execute(array($hotl_id,$ses_id));
 									$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 									$tot_hrooom= $hrooom->rowCount();
 									//echo $row_hrooom['room_type'].'- With extra bed';
 									$room_sno=$row_hrooom['sno'];
-									$room_rent=$row_hrooom[$season_id];
+									$room_rent=$row_hrooom['season_rate'];
 									$total_amount=$total_amount+($room_rent*$no_rrs);
 									$rom_rent_tt=$room_rent*$no_rrs;
 									//to input below
@@ -456,13 +508,13 @@ $totalRows_retrav = $retrav->rowCount();
 							
 						}
 				}else{
-					$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? ORDER BY $season_id ASC");
-					$hrooom->execute(array($hotl_id));
+					$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and season_sno = ? ORDER by season_rate ASC");
+					$hrooom->execute(array($hotl_id,$ses_id));
 					$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 					$tot_hrooom= $hrooom->rowCount();
 					echo $row_hrooom['room_type'];
 					$room_sno=$row_hrooom['sno'];
-					$room_rent=$row_hrooom[$season_id];
+					$room_rent=$row_hrooom['season_rate'];
 					$total_amount=$total_amount+($room_rent*$troom);
 				}
 			}else{
@@ -688,7 +740,7 @@ $totalRows_retrav = $retrav->rowCount();
 			$season->execute();
 			$row_season =$season->fetch(PDO::FETCH_ASSOC);
 			$tot_season= $season->rowCount();
-			$season_id=$row_season['season_id'];
+			$ses_id=$row_season['sno'];
 		if($tot_season>0)
 		{
 			if($flag==0)
@@ -731,30 +783,56 @@ $totalRows_retrav = $retrav->rowCount();
 						$hfood->execute(array($row_hotel['hotel_id']));
 						$row_hfood = $hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -805,30 +883,56 @@ $totalRows_retrav = $retrav->rowCount();
 						$hfood->execute(array($row_hotel2['hotel_id']));
 						$row_hfood = $hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -993,8 +1097,8 @@ $totalRows_retrav = $retrav->rowCount();
 						if($rm_sel_name1!='-')
 						{
 							
-							$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type=? ORDER BY $season_id ASC");
-									$hrooom->execute(array($hotl_id,$rm_sel_name1));
+							$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type=? and season_sno = ?  ORDER by season_rate ASC");
+									$hrooom->execute(array($hotl_id,$rm_sel_name1,$ses_id));
 									$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 									$tot_hrooom= $hrooom->rowCount();
 									//echo $row_hrooom['room_type'].'- With extra bed';
@@ -1061,15 +1165,15 @@ $totalRows_retrav = $retrav->rowCount();
 								 			$with_extra='yes';
 										}
 									}
-									 $hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type=? ORDER BY $season_id ASC");
-									$hrooom->execute(array($hotl_id,$rm_sel_name1));
+									 $hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type=?  and season_sno = ?  ORDER by season_rate ASC");
+									$hrooom->execute(array($hotl_id,$rm_sel_name1,$ses_id));
 									$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 									$tot_hrooom= $hrooom->rowCount();
 									
 									}//if trible bedroom is unavailable
 									
 									$room_sno=$row_hrooom['sno'];
-									$room_rent=$row_hrooom[$season_id];
+									$room_rent=$row_hrooom['season_rate'];
 									if($dvn==0)
 									{
 										
@@ -1090,15 +1194,15 @@ $totalRows_retrav = $retrav->rowCount();
 						}
 						if($rm_sel_name2!='-')
 						{
-									$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type=? ORDER BY $season_id ASC");
-									$hrooom->execute(array($hotl_id,$rm_sel_name2));
+									$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? and room_type=?  and season_sno = ?  ORDER by season_rate ASC");
+									$hrooom->execute(array($hotl_id,$rm_sel_name2,$ses_id));
 									$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 									$tot_hrooom= $hrooom->rowCount();
 									echo ", ".$row_hrooom['room_type'];
 									$room_snoo=$row_hrooom['sno'];
 									$room_sno=$room_sno.','.$room_snoo;
 									
-									$room_rento=$row_hrooom[$season_id];
+									$room_rento=$row_hrooom['season_rate'];
 									$room_rent=$room_rent.','.$room_rento;
 									$total_amount=$total_amount+$room_rento;
 						}
@@ -1143,13 +1247,13 @@ $totalRows_retrav = $retrav->rowCount();
                         <input type="hidden" value="<?php echo $bet; ?>" name="<?php echo $fr.'_rmextr_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_rmextr_'.$categ.'_'.$ct; ?>"  />
                         <?php
 				}else{
-					$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? ORDER BY $season_id ASC");
-					$hrooom->execute(array($hotl_id));
+					$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=?  and season_sno = ?  ORDER by season_rate ASC");
+					$hrooom->execute(array($hotl_id,$ses_id));
 					$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 					$tot_hrooom= $hrooom->rowCount();
 					echo $row_hrooom['room_type'];
 					$room_sno=$row_hrooom['sno'];
-					$room_rent=$row_hrooom[$season_id];
+					$room_rent=$row_hrooom['season_rate'];
 					$total_amount=$total_amount+($room_rent*$troom);
 				}
 			}else{
@@ -1366,7 +1470,7 @@ $totalRows_retrav = $retrav->rowCount();
 			$season->execute();
 			$row_season =$season->fetch(PDO::FETCH_ASSOC);
 			$tot_season= $season->rowCount();
-			$season_id=$row_season['season_id'];
+			$ses_id=$row_season['sno'];
 		if($tot_season>0)
 		{
 			if($flag==0)
@@ -1433,30 +1537,56 @@ $totalRows_retrav = $retrav->rowCount();
 						$hfood->execute(array($row_hotel1['hotel_id']));
 						$row_hfood =$hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -1504,30 +1634,56 @@ $totalRows_retrav = $retrav->rowCount();
 						$hfood->execute(array($row_hotel2['hotel_id']));
 						$row_hfood = $hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -1573,13 +1729,13 @@ $totalRows_retrav = $retrav->rowCount();
         <td class="ss"><?php
 			if($hotl_id != '-')
 			{
-			$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? ORDER BY $season_id ASC");
-			$hrooom->execute(array($hotl_id));
+			$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=?  and season_sno = ?  ORDER by season_rate ASC");
+			$hrooom->execute(array($hotl_id,$ses_id));
 			$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 			$tot_hrooom= $hrooom->rowCount();
 			echo $row_hrooom['room_type'];
 			$room_sno=$row_hrooom['sno'];
-			$room_rent=$row_hrooom[$season_id];
+			$room_rent=$row_hrooom['season_rate'];
 			$total_amount=$total_amount+($room_rent*$troom);
 			}else{
 			echo " - ";	
@@ -1850,30 +2006,56 @@ $totalRows_retrav = $retrav->rowCount();
 						$hfood->execute(array($row_hotel['hotel_id']));
 						$row_hfood = $hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -1920,30 +2102,56 @@ $totalRows_retrav = $retrav->rowCount();
 						$hfood->execute(array($row_hotel3['hotel_id']));
 						$row_hfood =$hfood->fetch(PDO::FETCH_ASSOC);
 			
-									$ss=substr($season_id, -6, 1);
-									$lunchrate_arr=explode('\\',$row_hfood['lunch_rate']);
+									$ss=$ses_id+1;
+									$lunchrate_arr=decode_unserialize($row_hfood['lunch_rate']);
+									//print_r($lunchrate_arr);
+									if(isset($lunchrate_arr[$ss-1]))
 									$lunchrate=$lunchrate_arr[$ss-1];
+									else
+									$lunchrate=$lunchrate_arr[0];
 									
-									$dinnerrate_arr=explode('\\',$row_hfood['dinner_rate']);
+									$dinnerrate_arr=decode_unserialize($row_hfood['dinner_rate']);
+									if(isset($dinnerrate_arr[$ss-1]))
 									$dinnerrate=$dinnerrate_arr[$ss-1];
+									else
+									$dinnerrate=$dinnerrate_arr[0];
 									
-									$chwithbed_arr=explode('\\',$row_hfood['child_with_bed']);
+									$chwithbed_arr=decode_unserialize($row_hfood['child_with_bed']);
+										if(isset($chwithbed_arr[$ss-1]))
 									$chwithbedrate=$chwithbed_arr[$ss-1];
+									else
+									$chwithbedrate=$chwithbed_arr[0];
 									
-									$chwithoutbed_arr=explode('\\',$row_hfood['child_without_bed']);
+									$chwithoutbed_arr=decode_unserialize($row_hfood['child_without_bed']);
+										if(isset($chwithoutbed_arr[$ss-1]))
 									$chwithoutbedrate=$chwithoutbed_arr[$ss-1];
+									else
+									$chwithoutbedrate=$chwithoutbed_arr[0];
 									
-									$flowerbed_arr=explode('\\',$row_hfood['flower_bed']);
+									$flowerbed_arr=decode_unserialize($row_hfood['flower_bed']);
+										if(isset($flowerbed_arr[$ss-1]))
 									$flowerbedrate=$flowerbed_arr[$ss-1];
+									else
+									$flowerbedrate=$flowerbed_arr[0];
 									
-									$candle_arr=explode('\\',$row_hfood['candle_light']);
+									$candle_arr=decode_unserialize($row_hfood['candle_light']);
+										if(isset($candle_arr[$ss-1]))
 									$candlerate=$candle_arr[$ss-1];
+									else
+									$candlerate=$candle_arr[0];
 									
-									$cake_arr=explode('\\',$row_hfood['cake_rate']);
+									$cake_arr=decode_unserialize($row_hfood['cake_rate']);
+										if(isset($cake_arr[$ss-1]))
 									$cakerate=$cake_arr[$ss-1];
+									else
+									$cakerate=$cake_arr[0];
 									
-									$fruit_arr=explode('\\',$row_hfood['fruit_basket']);
-									$fruitrate=$cake_arr[$ss-1];
+									$fruit_arr=decode_unserialize($row_hfood['fruit_basket']);
+										if(isset($fruit_arr[$ss-1]))
+									$fruitrate=$fruit_arr[$ss-1];
+									else
+									$fruitrate=$fruit_arr[0];
+								
 									?>
 <input type="hidden" value="<?php echo $chwithbedrate; ?>" name="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithbed_'.$categ.'_'.$ct; ?>"/>
 <input type="hidden" value="<?php echo $chwithoutbedrate; ?>" name="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>" id="<?php echo $fr.'_chwithoutbed_'.$categ.'_'.$ct; ?>"/>
@@ -1980,7 +2188,7 @@ $totalRows_retrav = $retrav->rowCount();
 			
 			
 			}
-			$season_id=$row_season['season_id'];
+			$ses_id=$row_season['sno'];
 		}else{
 			echo " Locked ";	//season lock
 			$hotl_id='-';
@@ -1991,13 +2199,13 @@ $totalRows_retrav = $retrav->rowCount();
         <td class="ss"><?php
 			if($hotl_id != '-')
 			{
-			$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=? ORDER BY $season_id ASC");
-			$hrooom->execute(array($hotl_id));
+			$hrooom=$conn->prepare("select * from hotel_season where status='0' and hotel_id=?  and season_sno = ?  ORDER by season_rate ASC");
+			$hrooom->execute(array($hotl_id,$ses_id));
 			$row_hrooom = $hrooom->fetch(PDO::FETCH_ASSOC);
 			$tot_hrooom= $hrooom->rowCount();
 			echo $row_hrooom['room_type'];
 			$room_sno=$row_hrooom['sno'];
-			$room_rent=$row_hrooom[$season_id];
+			$room_rent=$row_hrooom['season_rate'];
 			$total_amount=$total_amount+($room_rent*$troom);
 			}else{
 			echo " - ";	

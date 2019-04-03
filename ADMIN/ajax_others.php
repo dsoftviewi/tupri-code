@@ -611,5 +611,88 @@ if(isset($_GET['type']) && $_GET['type']==15)
 										  </div>
 <?php	
 }
-
+if(isset($_GET['type']) && $_GET['type']==16)
+{
+	
+	$fromTimeStamp = strtotime($_GET['from_date']);
+	$toTimeStamp = strtotime($_GET['from_date']);
+	if($fromTimeStamp <= $toTimeStamp){
+	$setting = $conn->prepare("SELECT * FROM setting_season where from_date =? and  to_date = ? ");
+	$setting->execute(array($_GET['from_date'],$_GET['to_date']));
+	$row_setting= $setting->fetch(PDO::FETCH_ASSOC);
+	$totalRows_setting= $setting->rowCount();
+	$insertHotel=0; $updateHotel = 0;
+	$season_rate=0;
+	//print_r($row_setting);
+	$setting_hotel = $conn->prepare("SELECT * FROM hotel_season where season_sno =? and room_type = ? and hotel_id = ? ");
+				$setting_hotel->execute(array($row_setting['sno'],$_GET['room_type'],$_GET['hid']));
+				$row_setting_hotel= $setting_hotel->fetch(PDO::FETCH_ASSOC);
+				$totalRows_setting_hotel= $setting_hotel->rowCount();
+				$sno = $row_setting['sno'];
+				//print_r($row_setting_hotel);
+		if($totalRows_setting){
+			//print "KKK";
+			$season_rate = $row_setting_hotel['season_rate'];
+			
+				if($_GET['rate'] > 0){
+				
+					if($totalRows_setting_hotel){
+						$updateHotel=1;
+						
+					}
+					else
+					{
+						$insertHotel=1;
+	
+					}
+				}
+			
+		}
+		else{
+						if($_GET['action'] == 'Set'){
+							//print "KIRAN";
+							$insert_setting=$conn->prepare("INSERT into setting_season set from_date =? ,	to_date = ?,status=0");
+							$insert_setting->execute(array($_GET['from_date'],$_GET['to_date']));
+							$stmt = $conn->query("SELECT LAST_INSERT_ID()");
+							$sno = $stmt->fetchColumn();
+							 
+							$season_id = "season".$sno."_id";
+							$season_name = date("d M Y", strtotime($_GET['from_date']))." TO ".date("d M Y", strtotime($_GET['to_date']));
+							$up_agent=$conn->prepare("UPDATE setting_season set season_id=?,season_name=?,datetime=now() where sno =?");
+							$up_agent->execute(array($season_id,$season_name,$sno));
+							$insertHotel=1;
+						}
+						
+			
+		}
+		
+						if($_GET['action'] == 'Get'){
+							echo 	$sno.'|'.$_GET['from_date'].'|'.$_GET['to_date'].'|'.$season_rate;
+						}
+			
+						if($_GET['action'] == 'Set'){
+							//print "KKK";
+							if($insertHotel){
+								$insert_agent=$conn->prepare("INSERT into hotel_season set season_rate=?,season_sno =?,room_type = ?,hotel_id = ?,datetime=now(),status=0");
+								$insert_agent->execute(array($_GET['rate'],$sno,$_GET['room_type'],$_GET['hid']));
+							}
+							elseif($updateHotel){
+								$up_agent=$conn->prepare("UPDATE hotel_season set season_rate=? where season_sno =? and room_type = ? and hotel_id = ?");
+								$up_agent->execute(array($_GET['rate'],$sno,$_GET['room_type'],$_GET['hid']));
+							}
+						}
+	
+		}
+		else
+		{
+			echo "please Pick Right Dates";
+		}
+	
+}
+if(isset($_GET['type']) && $_GET['type']==17)
+{
+								$del_agent=$conn->prepare("delete from  hotel_season where season_sno =?");
+								$del_agent->execute(array($_GET['hotel_season_no']));
+	
+}
 ?>

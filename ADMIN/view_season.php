@@ -26,7 +26,7 @@ body {
 		<!-- MAIN CSS (REQUIRED ALL PAGE)-->
 		<link href="../core/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<link href="../core/assets/css/style.css" rel="stylesheet">
-		<link href="../core/assets/css/style-responsive.css" rel="stylesheet">
+		<link href="../core/assets/css/style-responsive.css" rel="stylesheetr
 </head>        
       <body class="">
 
@@ -35,16 +35,19 @@ require_once('../Connections/divdb.php');
 $sno=$_GET['sno'];
 $hotel_id=$_GET['hid'];
 
-	$season = $conn->prepare("SELECT * FROM hotel_season where sno=? and status = '0' and hotel_id=?");
-	$season->execute(array($sno,$hotel_id));
+
+	$season = $conn->prepare("SELECT * FROM hotel_season where sno=? and status = '0' and hotel_id=? and  room_type = ?");
+	$season->execute(array($sno,$hotel_id,str_replace(" ","_",$_GET['room_type'])));
 	$row_season = $season->fetch(PDO::FETCH_ASSOC);
 	
 	$hotel = $conn->prepare("SELECT * FROM hotel_pro where status = '0' and hotel_id=?");
 	$hotel->execute(array($hotel_id));
 	$row_hotel = $hotel->fetch(PDO::FETCH_ASSOC);
 	
-	$seashotel = $conn->prepare("SELECT * FROM setting_season");
-	$seashotel->execute();
+	$seashotel = $conn->prepare("SELECT * FROM setting_season ss,hotel_season hs where ss.sno = hs.season_sno and hs.hotel_id=? and hs.room_type = ?");
+	$seashotel->execute(array($hotel_id,str_replace(" ","_",$_GET['room_type'])));
+	
+	//$seashotel->debugDumpParams();
 	//$row_seashotel = mysql_fetch_assoc($seashotel);
 	//$row_seashotel=$seashotel->fetch(PDO::FETCH_ASSOC);
 	
@@ -73,22 +76,57 @@ echo "<script>parent.document.location.href='../admin_manahotel.php?&mm=".$_GET[
 	
 								
 ?>
+<?php echo $row_hotel['hotel_name']." - ".$row_season['room_type']; ?>&nbsp; details 
+ <table class="table table-striped table-hover datatable-example" >
+							<thead class="the-box dark full">
+								<tr>
+									
+                                <th width="25%" ><center><i class="fa fa-calendar-o "></i>&nbsp; From Date</center></th>
+                                <th width="25%" ><center><i class="fa fa-calendar "></i>&nbsp; To Date</center></th>
+                                 <th width="25%" ><center><i class="fa fa-calendar "></i>&nbsp;Rate</th>
+								</tr>
+							</thead>
+							<tbody>
+                            
+<tr class="even gradeA">
+
+<td><center>
+<input type="text" data-date-format="yyyy-mm-dd"  id="ed_fdate" class="datepick11 form-control " value="" name="ed_fdate"  /></center></td>
+<td><center><label id="td_label"></label>
+<input type="text" data-date-format="yyyy-mm-dd"  id="ed_tdate" class="datepick11 form-control " value="" name="ed_tdate"   /></center>
+</td>
+<td>
+<input type="submit" name="submitDate" id="submitDate" class="form-control"  value="Get" onClick="getSeasonRate('Get')">
+</td>
+
+</tr>
+
+<tr class="even gradeA">
+
+
+<td>
+<input type="text" name="season_rate" id="season_rate" class="form-control" placeholder="Rate" value="" onchange="changeButton(this)">
+<input type="hidden" name="hid" id="hid" value = '<?php echo $_GET['hid'];?>' />
+<input type="hidden" name="room_type" id="room_type" value = '<?php echo str_replace(" ","_",$_GET['room_type']);?>' />
+</td>
+<td>
+<input type="submit" name="submitDate" id="submitDate" class="form-control"  value="Set" onClick="getSeasonRate('Set')">
+</td>
+<td>
+<input type="hidden" name="hotel_season_no" id="hotel_season_no" value = '' />
+<input type="submit" name="submitDate" id="deleteDate" class="form-control"  value="Delete" onClick="deleteSeasonRate()" style="display:none">
+</td>
+</tr>
+                               
+                                </tbody>
+                                </table>
 <div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-primary">
 							 <div class="panel-heading">
 								<h3 class="panel-title">
 									<?php echo $row_hotel['hotel_name']." - ".$row_season['room_type']; ?>&nbsp; details 
-									<span class="right-content">
-									<button id="edit_id" class="btn btn-primary  btn-rounded-lg dropdown-toggle" onClick="edit_fun()" data-toggle="dropdown">
-										<i class="fa fa-cog"></i>&nbsp;Edit
-										</button>
-                                        <form name="remove_room" method="post">
-                                         <button id="remove_id"  type="submit" style="display:none;"  class="btn btn-primary  btn-rounded-lg dropdown-toggle"  name="remove_room" value="remove_room_val" >
-										<i class="fa fa-trash-o"></i>&nbsp;Remove
-										</button>
-                                        	</form>								
-                                        </span>
+									
 								
 								</h3>
 							  </div> 
@@ -96,192 +134,31 @@ echo "<script>parent.document.location.href='../admin_manahotel.php?&mm=".$_GET[
 							  <div class="panel-body">
 								<div class="row">
 							<div class="col-sm-12">
+							<?php $i =1; while($row_seashotel =$seashotel->fetch(PDO::FETCH_ASSOC)){ 
+									$key = 'season'.$i.'_rate';
+									//echo $row_seashotel['season_id']; ?>
                                     <div class="row">
 									<div class="col-sm-3">
                                     <div class="form-group">
                                     <div class="input-group" align="center">
-                                    <?php $row_seashotel =$seashotel->fetch(PDO::FETCH_ASSOC); 
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" >Season 1 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
+                                    
+										  <label class="tooltips" data-toggle="tooltip" >Season <?php echo $i;?> Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
 										</div>
                                         </div>
                                         </div>
                                         <div class="col-sm-3">
                                         <div class="form-group">
                                     <div class="input-group">
-                               <label id="season1_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season1_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season1" id="edit_season1" class="form-control"  placeholder="Season 1 Rate" value="<?php echo $row_season['season1_rate']; ?>" style="display:none;">
+                               <label id="season<?php echo $i;?>_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_seashotel['season_rate']." Rupee(s)" ; ?></label>
+					
 										</div>
                                         <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
                                         </div>
 									</div>
-                                    
-                                    <div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-                                     <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									///echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 2 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season2_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season2_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season2" id="edit_season2" class="form-control"  placeholder="Season 2 Rate" value="<?php echo $row_season['season2_rate']; ?>" style="display:none;">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
 									</div>
-                                    </div>
+							<?php $i++;} ?>
                                     
-                                    <div class="row">
-									<div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-										   <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 3 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small> </label>
-										</div>
-                                        </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season3_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season3_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season3" id="edit_season3" class="form-control"  placeholder="Season 3 Rate" value="<?php echo $row_season['season3_rate']; ?>" style="display:none;">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    
-                                    <div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-										  <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 4 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                      <label id="season4_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season4_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season4" id="edit_season4" class="form-control"  placeholder="Season 4 Rate" value="<?php echo $row_season['season4_rate']; ?>" style="display:none;">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    </div>
-                                    
-                                    
-                                    <div class="row">
-									<div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center" >
-										   <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 5 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season5_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season5_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season5" id="edit_season5" class="form-control"  placeholder="Season 5 Rate" value="<?php echo $row_season['season5_rate']; ?>" style="display:none;">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    
-                                    <div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-										   <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 6 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season6_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season6_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season6" id="edit_season6" class="form-control"  placeholder="Season 6 Rate" value="<?php echo $row_season['season6_rate']; ?>" style="display:none">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    </div>
-                                    
-                                    <div class="row">
-									<div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-										  <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 7 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season7_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season7_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season7" id="edit_season7" class="form-control"  placeholder="Season 7 Rate" value="<?php echo $row_season['season7_rate']; ?>" style="display:none;">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    
-                                    <div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-										  <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 8 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season8_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season8_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season8" id="edit_season8" class="form-control"  placeholder="Season 8 Rate" value="<?php echo $row_season['season8_rate']; ?>" style="display:none">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                    <div class="col-sm-3">
-                                    <div class="form-group">
-                                    <div class="input-group" align="center">
-										   <?php $row_seashotel = $seashotel->fetch(PDO::FETCH_ASSOC);
-									//echo $row_seashotel['season_id']; ?>
-										  <label class="tooltips" data-toggle="tooltip" title="<?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?>">Season 9 Rate <br><small style="font-size: 12px;color: #F70909;"><?php echo date("d-M-Y",strtotime($row_seashotel['from_date'])).' - '.date("d-M-Y",strtotime($row_seashotel['to_date'])); ?></small></label>
-										</div>
-                                        </div>
-                                        </div>
-                                        
-                                        <div class="col-sm-3">
-                                        <div class="form-group">
-                                    <div class="input-group">
-                                     <label id="season9_id" style="color:#C63">=&nbsp;&nbsp;&nbsp;<?php echo $row_season['season9_rate']." Rupee(s)" ; ?></label>
-					<input type="text" name="season9" id="edit_season9" class="form-control"  placeholder="Season 9 Rate" value="<?php echo $row_season['season9_rate']; ?>" style="display:none">
-										</div>
-                                        <!--<small class="help-block" id="vnumerr" style=" display:none; color:#E9573F;" ></small>-->
-                                        </div>
-									</div>
-                                    </div>
+                                  
                                     
                                  <div class="row">
                                  <div class="col-sm-8" >
@@ -312,9 +189,7 @@ echo "<script>parent.document.location.href='../admin_manahotel.php?&mm=".$_GET[
  </html>    
  
  <script>
- $(document).ready(function(e) {
-    $('.tooltips').tooltip();
-});
+
 
  
  function edit_fun()
@@ -439,3 +314,70 @@ echo "<script>parent.document.location.href='../admin_manahotel.php?&mm=".$_GET[
 		<script src="../core/assets/js/apps.js"></script>
 		<script src="../core/assets/js/demo-panel-1.js"></script>
          <script src="../core/assets/plugins/jQuery1/form-validator/jquery.form-validator.js"></script>
+		 
+		 <script>
+		  $(document).ready(function(e) {
+    $('.tooltips').tooltip();
+	 $('.datepick11').datepicker();
+	 
+});
+ 
+
+function changeButton(obj){
+	var rate = parseInt(obj.value);
+	if(rate == 'NaN'){
+		$('#season_rate').val(0);
+	}
+	
+	if(rate >0 && rate != 'NaN'){
+	//$('#submitDate').val('Set');
+	}
+
+}
+function getSeasonRate(action){
+	var rate = parseInt($('#season_rate').val());
+	
+	 var from_date = $('#ed_fdate').val();
+	 var to_date = $('#ed_tdate').val();
+	 var hid = $('#hid').val();
+	 var room_type = $('#room_type').val();
+	 $.get('ajax_others.php?from_date='+from_date+'&to_date='+to_date+'&action='+action+'&rate='+rate+'&hid='+hid+'&room_type='+room_type+'&type=16',function(result)
+	{
+		
+		if(action == "Get"){
+			response = result.trim();
+			resp_arr = response.split('|');
+			var hotel_rate = resp_arr[3];
+			
+			if(hotel_rate == ''){
+					hotel_rate = 0;
+			}
+			$('#season_rate').val(hotel_rate);
+			if(hotel_rate > 0){
+				$('#hotel_season_no').val(resp_arr[0]);
+				$('#deleteDate').show();
+			}
+			else{
+				$('#deleteDate').hide();
+			}
+		}
+		else{
+			//$.fancybox.close();
+		}
+		
+	});
+}
+
+function deleteSeasonRate(){
+	
+	var confirmFlag = confirm("Are you sure. You want to delete");
+	var hotel_season_no = $('#hotel_season_no').val();
+	
+	if(confirmFlag){
+		$.get('ajax_others.php?hotel_season_no='+hotel_season_no+'&type=17',function(result)
+			{
+				$('#deleteDate').hide();
+			});
+	}
+}
+</script>
