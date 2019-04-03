@@ -210,7 +210,19 @@ if(!empty($row_orders['sub_paln_id'])){
                                              </td>
                                              <td>
 												<p class="text-muted">
-												<?php echo $row_routes['tr_from_cityid'].' TO '.$row_routes['tr_to_cityid']; ?>
+												<?php 
+												if($row_routes['via_cities'] != '-'){
+													$via_cities_arr = explode("-",$row_routes['via_cities']);
+													$middleElem = floor(count($via_cities_arr) / 2);
+													$via_cities = $conn->prepare("SELECT * FROM dvi_cities where id =?");
+													$via_cities->execute(array($via_cities_arr[$middleElem]));
+													$row_via_cities = $via_cities->fetch(PDO::FETCH_ASSOC);
+													echo $row_routes['tr_from_cityid'].' TO '.$row_routes['tr_to_cityid'].' via '.$row_via_cities['name'];
+													
+												}else{
+													 echo $row_routes['tr_from_cityid'].' TO '.$row_routes['tr_to_cityid'];
+													}
+												?>
 												</p>
                                              </td>
                                              
@@ -380,6 +392,13 @@ if(!empty($row_orders['sub_paln_id'])){
                             
                            <center> <h4 class="text"><strong> Vehicle rental split-up : </strong><a class="fancybox badge badge-danger tooltips" title="View rent details of vehicles from all cities" data-type="iframe" href="../ADMIN/all_veh_rpt.php?mm=<?php echo $_GET['mm']; ?>&sm=<?php echo $_GET['sm'];?>&planid=<?php echo urlencode($row_orders['plan_id']); ?>"><i class="fa fa-taxi"></i>&nbsp; Details </a></h4></center>
                             
+							
+							<?php $transfers=0; $transfer_rent = 0; 
+							//$is_arr_transfer=check_arrival_transfer($row_orders['plan_id']); 
+							//$is_dep_transfer=check_departure_transfer($row_orders['plan_id']); 
+							$transfers= get_transfer_days($row_orders['plan_id']); 
+							$tr_days = $row_orders['tr_days'];
+							?>
                             <div class="table-responsive" style="overflow-x:scroll; width:100%; ">
 								<table class="table table-th-block  table-dark" >
 									<thead>
@@ -387,11 +406,17 @@ if(!empty($row_orders['sub_paln_id'])){
                                         	<th>#</th>
                                             <th>Type</th>
                                             <th>Total driven distance (kms)</th>
+											<?php if($transfers) {?>
+											<th> Transfer Rental (&#8377;)</th>
+											
+											<th> Rental for <?php $row_orders['arr_day']= $transfers; echo $row_orders['arr_day']; ?> Transfer (&#8377;)</th> 
+							<?php }; ?>
                                             <th> Per day rental (&#8377;)</th>
-                                            <th> Rental for <?php echo $row_orders['tr_days']; ?> days (&#8377;)</th>
+                                            <th> Rental for <?php $tr_days= $tr_days-$transfers;  
+											     echo $tr_days;  ?> days (&#8377;)</th>
                                             <th> Per km rental (&#8377;)</th>
                                             <th>Max allowed kms (per day)</th>
-                                            <th>Max allowed kms (journey) - <?php echo $row_orders['tr_days']; ?> day(s)</th>
+                                            <th>Max allowed kms (journey) - <?php echo $tr_days; ?> day(s)</th>
                                             <th>Extra kms (journey)</th>
                                             <th>Charge for extra kms (&#8377;)</th>
                                             <th> Permit charge (&#8377;)</th>
@@ -400,6 +425,7 @@ if(!empty($row_orders['sub_paln_id'])){
 									</thead>
 									<tbody>
                                     <?php
+									$rent_amt=0;
 									$num = 1;
 									foreach($row_trvrent_main as $row_trvrent)
 									{
@@ -414,8 +440,13 @@ if(!empty($row_orders['sub_paln_id'])){
                                             <td><?php echo $num; ?></td>
 											<td style="word-wrap:break-word"><?php echo $row_vtyp1['vehicle_type']; ?></td>
                                             <td><?php  echo $row_trvrent['tot_dist'];  //echo  $tt_dist_cal;?></td>
+											<?php if($transfers) {?>
+											<td><?php echo $row_trvrent['rent_transfer']; ?></td>
+											
+											<td width="30%"><?php $transfer_rent=$row_orders['arr_day'] * $row_trvrent['rent_transfer']; echo $row_orders['arr_day'].' * ' .$row_trvrent['rent_transfer'].' = '; echo $transfer_rent; ?></td>
+											<?php }; ?>
 											<td><?php echo $row_trvrent['rent_day']; ?></td>
-                                            <td width="30%"><?php $allday_rent = $row_orders['tr_days'] * $row_trvrent['rent_day']; echo $row_orders['tr_days'].' * '.$row_trvrent['rent_day'].' = '; echo $allday_rent; ?></td>
+                                            <td width="30%"><?php $allday_rent = $tr_days * $row_trvrent['rent_day']; echo $tr_days.' * '.$row_trvrent['rent_day'].' = '; echo $allday_rent; ?></td>
                                             <td><?php echo $row_trvrent['rent_per_km']; ?></td>
                                             <td><?php echo $row_trvrent['max_km_day']; ?></td>
 											<td><?php echo $row_trvrent['max_allwd_km']; ?></td>
@@ -426,7 +457,9 @@ if(!empty($row_orders['sub_paln_id'])){
 										</tr>
                                         <?php
 									$num++; 
-									} 
+									$rent_amt+= $row_trvrent['rent_amt'];
+									
+									}
 										?>
 									</tbody>
 								</table>

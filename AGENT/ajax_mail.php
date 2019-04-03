@@ -35,7 +35,7 @@ if(isset($_GET['type']) && $_GET['type']==1)
 
 		$dis = $conn->prepare("SELECT * FROM distributor_pro where distr_id=?");
 		$dis->execute(array($row_pers['distr_id']));
-		$row_dis= $dis->fetch(PDO::FETCH_ASSOC);
+		$row_dis= $dis->fetch(PDO::FETCH_ASSOC);row_pers
 		$totalRows_dis  =$dis->rowCount();
 
 		$namee=$row_pers['agent_fname'].' '.$row_pers['agent_lname'].', Mobile : '.$row_pers['mobile_no'];

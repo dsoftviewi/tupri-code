@@ -4568,7 +4568,7 @@ function trv_via_fun(nos,vias)
 				$('.loader_ax').fadeIn();
 				$.ajax({
 						type: 'POST',
-						url: "AGENT/ajax_via_modal1.php",
+						url: "AGENT/ajax_via_modal.php",
 						data: "nos="+nos+"&vias="+vias+"&from_city_selt_txt="+from_city_selt_txt+"&frm_cy="+frm_cy+"&to_cy="+to_cy+"&to_city_selt_txt="+to_city_selt_txt,
 							success: function(da)
 							{

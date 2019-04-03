@@ -131,6 +131,7 @@ body {
 							$row_vcity = $vcity->fetch(PDO::FETCH_ASSOC);
 							
 							?>
+							
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h3 class="text"><strong> Journey info: </strong></h3>
@@ -173,7 +174,9 @@ body {
                         	</div>
                             
                             <h3 class="text"><strong> Vehicle rental split-up (City-wise): </strong></h3>
-                                                        
+							<?php $transfers=0; $transfer_rent = 0; $is_arr_transfer=check_arrival_transfer($row_orders['plan_id']); 
+							                    $is_dep_transfer=check_departure_transfer($row_orders['plan_id']); 
+												$transfers= $transfers+$is_arr_transfer+$is_dep_transfer; ?>                         
 
                             <?php
 							$colrnum=0; $veh_citycost = 0;
@@ -194,11 +197,6 @@ body {
 								$this_city = $row_vocity['name'];
 							?>
                             <p style="background-color:#F6F8F9"> Return distance (kms): <span class="badge badge-primary"><?php echo $row_citywise_main[0]['return_dist']; ?></span></p>
-							
-							<?php $transfers=0; $transfer_rent = 0; $is_arr_transfer=check_arrival_transfer($row_orders['plan_id']); 
-							                    $is_dep_transfer=check_departure_transfer($row_orders['plan_id']); 
-												$transfers= $transfers+$is_arr_transfer+$is_dep_transfer; ?>
-												
                             <div class="table-responsive" style="overflow-x:scroll; width:100%;">
 								<table  class="table table-bordered table-th-block table-<?php if($colrnum == 0) { echo 'warning'; } elseif($colrnum == 1) { echo 'info'; }  elseif($colrnum == 2) { echo 'primary'; } elseif($colrnum == 3) { echo 'danger'; } elseif($colrnum == 4) { echo 'success'; } ?>">
 									<thead>
@@ -212,11 +210,10 @@ body {
 											<th> Rental for <?php $row_orders['arr_day']= $transfers; echo $row_orders['arr_day']; ?> Transfer (&#8377;)</th> 
 							<?php }; ?>
                                             <th> Per day rental (&#8377;)</th>
-                                            <th> Rental for <?php $row_orders['tr_days']= $row_orders['tr_days']-$transfers;  
-											     echo $row_orders['tr_days'];  ?> days (&#8377;)</th>
+                                            <th> Rental for <?php $travel_days = $row_orders['tr_days']-$transfers;   echo  $travel_days; ?> days (&#8377;)</th>
                                             <th> Per km rental (&#8377;)</th>
                                             <th>Max allowed kms (per day)</th>
-                                            <th>Max allowed kms (journey) - <?php echo $row_orders['tr_days']; ?> day(s)</th>
+                                            <th>Max allowed kms (journey) - <?php echo  $travel_days; ?> day(s)</th>
                                             <th>Extra kms (journey)</th>
                                             <th>Charge for extra kms (&#8377;)</th>
                                             <th> Permit charge (&#8377;)</th>
@@ -228,7 +225,7 @@ body {
 									
 									foreach($row_citywise_main as $row_citywise)
 									{
-										
+										$travel_days = $row_orders['tr_days']-$transfers;
 										$vtyp1 = $conn->prepare("SELECT * FROM vehicle_pro where vehi_id =?");
 										$vtyp1->execute(array($row_citywise['vehicle_id']));
 										$row_vtyp1 = $vtyp1->fetch(PDO::FETCH_ASSOC);
@@ -243,17 +240,15 @@ body {
 											
 											<td width="30%"><?php $transfer_rent=$row_orders['arr_day'] * $row_citywise['rent_transfer']; echo $row_orders['arr_day'].' * ' .$row_citywise['rent_transfer'].' = '; echo $transfer_rent; ?></td>
 											<?php }; ?>
-				
 											<td><?php echo $row_citywise['rent_day']; ?></td>
-                                            <td width="30%"><?php $allday_rent = $row_orders['tr_days'] * $row_citywise['rent_day']; echo $row_orders['tr_days'].' * '.$row_citywise['rent_day'].' = '; echo $allday_rent; ?></td>
+                                            <td width="30%"><?php $allday_rent = $travel_days * $row_citywise['rent_day']; echo $travel_days.' * '.$row_citywise['rent_day'].' = '; echo $allday_rent; ?></td>
                                             <td><?php echo $row_citywise['rent_per_km']; ?></td>
                                             <td><?php echo $row_citywise['max_km_day']; ?></td>
 											<td><?php echo $row_citywise['max_allwd_km']; ?></td>
                                             <td><?php echo $row_citywise['exceed_km']; ?></td>
                                             <td width="30%"><?php echo $row_citywise['rent_per_km'].' * '.$row_citywise['exceed_km'].' = '; echo $extr_chrg; ?></td>
                                             <td><?php echo $row_citywise['permit_amt']; ?></td>
-											<td><?php $row_citywise['rent_amt']=$transfer_rent+$allday_rent+$extr_chrg+$row_citywise['permit_amt']; 
-											          echo $row_citywise['rent_amt']; ?></td>
+											<td><?php echo $row_citywise['rent_amt']; ?></td>
 										</tr>
                                         <?php
 										$veh_citycost+= $row_citywise['rent_amt'];

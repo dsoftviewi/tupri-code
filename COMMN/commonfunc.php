@@ -85,4 +85,57 @@ if(!function_exists('convert_currency_text')){
 		return $priceText;
 	}
 }
+
+if(!function_exists('get_timings')){
+	function get_timings(){
+		global $conn;
+		$timing_settings = $conn->prepare("SELECT arr_time,dep_time  FROM dvi_front_settings WHERE sno =1");
+		$timing_settings->execute();
+		$row_timing_settings = $timing_settings->fetch(PDO::FETCH_ASSOC);
+		return $row_timing_settings;
+		
+	}
+}
+
+if(!function_exists('check_arrival_transfer')){
+	function check_arrival_transfer($plan_id){
+		global $conn;
+		$row_timing_settings = get_timings();
+		$arr_trns = $conn->prepare("SELECT *  FROM travel_master WHERE substring_index(STR_TO_DATE(tr_arr_time, '%l:%i %p'),':',1) >= ? and plan_id = ? ORDER BY sno DESC");
+		$arr_trns->execute(array($row_timing_settings['arr_time'],$plan_id));
+		$row_arr_trns = $arr_trns->fetch(PDO::FETCH_ASSOC);
+		$total_arr_trns = $arr_trns->rowCount();
+		return ($total_arr_trns);
+		
+	}
+}
+
+if(!function_exists('check_departure_transfer')){
+	function check_departure_transfer($plan_id){
+		global $conn;
+		$row_timing_settings = get_timings();
+		$dep_trns = $conn->prepare("SELECT *  FROM travel_master WHERE substring_index(STR_TO_DATE(trv_depatr_time, '%l:%i %p'),':',1) <= ? and plan_id = ? ORDER BY sno DESC");
+		$dep_trns->execute(array($row_timing_settings['dep_time'],$plan_id));
+		$row_dep_trns = $dep_trns->fetch(PDO::FETCH_ASSOC);
+		$total_dep_trns = $dep_trns->rowCount();
+		return ($total_dep_trns);
+		
+	}
+}
+
+if(!function_exists('get_transfer_days')){
+	function get_transfer_days($plan_id){
+		global $conn;
+		print $plan_id;
+		$dep_trns = $conn->prepare("SELECT arr_day  FROM travel_vehicle WHERE travel_id = ? limit 1");
+		$dep_trns->execute(array($plan_id));
+		
+		$row_dep_trns = $dep_trns->fetch(PDO::FETCH_ASSOC);
+		print_r($row_dep_trns);
+		//$total_dep_trns = $dep_trns->rowCount();
+		return ($row_dep_trns['arr_day']);
+		
+	}
+}
+
 ?>

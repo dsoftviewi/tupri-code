@@ -2,11 +2,13 @@
 session_start();
 // echo "good".$_GET['planid']; 
 require_once('../Connections/divdb.php');
+//print_r($_SESSION);
 
 if(isset($_GET['res']) && $_GET['res']=='show')
 {
 	$_GET['planid']=$_GET['plan_id1'].'#'.$_GET['plan_id2'];
 }else{
+
 	$_GET['planid']=$_SESSION['com_plan_id'];
 	$sub_plan_id=$_SESSION['com_sub_plan_id'];
 }
@@ -194,13 +196,30 @@ echo date_format($date,"d-M-Y");
 						?>
 						</th>
 					<th style='padding:6px; text-align:center'>
-						<?php
-						$vegh_arr=explode(',',$row_invoice['tr_vehname']);
-						foreach($vegh_arr as $vha)
-						{
-							echo $vha."<br>";
-						}
-						?>
+					<?php
+								$vah=explode(',',$row_invoice['tr_vehids']);
+								for($r=0;$r<count($vah);$r++)
+								{
+									if(trim($vah[$r]) != '')
+									{
+						    
+							$vpro = $conn->prepare("SELECT * FROM travel_vehicle tv,vehicle_pro vp where tv.vehicle_id=vp.vehi_id and tv.travel_id = ? and tv.vehicle_id=?");
+						    $vpro->execute(array($inv,$vah[$r]));
+							$row_vpro =$vpro->fetch(PDO::FETCH_ASSOC);
+							$totalRows_vpro = $vpro->rowCount();
+							$travel_amount =  $row_vpro['rent_amt'] +($row_invoice['agnt_adm_perc'] * $row_vpro['rent_amt']/100);
+							$travel_amount = 	number_format(convert_currency($travel_amount,$inv),2);
+							if(isset($vah[$r+1]) && $vah[$r+1] != '')
+							{
+								 echo $row_vpro['vehicle_type']."&nbsp; = ".$travel_amount."<BR/>";
+							}else
+							{
+								echo $row_vpro['vehicle_type']."&nbsp; = ".$travel_amount;
+							}
+									}
+								}
+								  ?>
+						
 						</th>
 					<th style='padding:6px; text-align:center'>
 						<?php echo $row_invoice['tot_tr_dist']; ?>

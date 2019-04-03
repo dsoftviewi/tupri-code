@@ -1690,7 +1690,7 @@ function trv_via_fun(nos,fr)
 				$('.loader_ax').fadeIn();
 				$.ajax({
 						type: 'POST',
-						url: "AGENT/ajax_via_modal1.php",
+						url: "AGENT/ajax_via_modal.php",
 						data: "nos="+nos+"&vias="+fr+"&from_city_selt_txt="+from_city_selt_txt+"&frm_cy="+frm_cy+"&to_cy="+to_cy+"&to_city_selt_txt="+to_city_selt_txt,
 							success: function(da)
 							{
@@ -2384,12 +2384,16 @@ function vehrent(fr,travdist,flag,agent_percnt,adm_percent,disp_trdist)
 	//alert(JSON.stringify(myVehicle));
 	$("#"+fr+"_vehicles").val(myVehicle);
 	var allcitids = $('#'+fr+'_cid_arr').val();
+	//alert($("#"+fr+"_day_traveldist").val());
 	//alert(ct_extdis);
 	//alert('Vehicle rent='+fr);
 	if(myVehicle.length > 0)
 	{
+		var day_traveldist = $("#"+fr+"_day_traveldist").val();
+		var arrtime = $('#arrtime_'+fr).val();
+		var depart_time = $('#depart_time_'+fr).val();
 		//alert('arrsend ='+ myVehicle+', trdist ='+ travdist+', trdays='+ plandays+', ext_dist='+ ct_extdis+', allcids='+ allcitids);
-		$.getJSON('<?php echo "AGENT/rent_vehicl.php"; ?>', { arrsend: myVehicle, trdist: travdist, trdays: plandays, ext_dist: ct_extdis, allcids: allcitids }, function(data) {
+		$.getJSON('<?php echo "AGENT/rent_vehicl.php"; ?>', { arrsend: myVehicle, trdist: travdist, trdays: plandays, ext_dist: ct_extdis, allcids: allcitids, arrtime : arrtime,  depart_time:depart_time, day_traveldist:day_traveldist}, function(data) {
 			//alert("Travel Veh ID : "+data.vehcitid);
 			//alert("Value for 'detl': " + data.detl + "\nValue for 'retn': " + data.retn + "\nValue for 'netamt': " + data.netamt);
 			//document.getElementById('show_rental').innerHTML=data.detl;
@@ -2488,13 +2492,15 @@ function before_submit(fr)
 	//alert('BEFORE SUBMIT ==');
 	var checkboxx=$('#check_boxss_br0').val();
 	var datastring = $("#ExampleBootstrapValidationForm").serialize();
+	
 		$('.loader_ax').fadeIn();
         $.ajax({
             type: "POST",
             url: "AGENT/before_submit.php?checkboxx="+checkboxx,
             data: datastring,
             success: function(res) {
-               //  alert('Data send'+res);
+                 //alert('Data send'+res);
+				 
 				    var ress=res.trim().split("#");
 					
 					if($('#check_boxss_br0').val() == '2')

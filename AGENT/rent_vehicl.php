@@ -5,7 +5,15 @@ $arrveh = $_GET['arrsend'];
 $trdist = $_GET['trdist'];
 $trdays = $_GET['trdays'];
 $allcids = $_GET['allcids'];
+$arrtime = $_GET['arrtime'];
+$depart_time = $_GET['depart_time'];
 $arrext_dist = ltrim($_GET['ext_dist'],",");
+$row_timing_settings = get_timings();
+$arr_hr = date("H",strtotime($arrtime));
+$depart_time_hr = date("H",strtotime($depart_time));
+
+$is_arr_time = $is_dept_time=0;
+
 
 $exp_extdis = explode(',',$arrext_dist);
 //print_r($exp_extdis);
@@ -191,11 +199,29 @@ for ($q=0;$q<$cnt_cities;$q++)
 		//$tot_perm+= $tot_perm1; $tot_perm1 = 0;
 		$tot_perm+= $tot_perm1;
 		$stor_perm = ltrim($stor_perm,',');
+		$arr_day = 0;
+		$trdays = $_GET['trdays'];
+		$day_traveldist = $_GET['day_traveldist'];
+		$day_traveldist_array = explode(",",$day_traveldist);
+		$arr_distance =$day_traveldist_array[0];
+		$dep_distance =$day_traveldist_array[count($day_traveldist_array)-1];
+		if($arr_hr >= $row_timing_settings['arr_time'] && $arr_distance < 50){
+			$is_arr_time = 1;
+			$trdays = $trdays-1;
+			$arr_day++;
+		}
 		
-			
+		if($depart_time_hr <= $row_timing_settings['dep_time'] && $dep_distance < 50){
+			$is_dept_time = 1;
+			$trdays = $trdays-1;
+			$arr_day++;
+		}
+	
 		//$rentalrept.= "VEHICLE ".($l+1)." - ".$vehtype."<br>";
 		$rentalrept.= "Day Rental - &#8377; ".$row_vehics['rent_day']."<br>";
 		$rent_upl.= $row_vehics['vehicle_id'].'-';
+		$rent_upl.= $row_vehics['rent_transfer'].'-';
+		$rent_upl.= $arr_day.'-';
 		$rent_upl.= $row_vehics['rent_day'].'-';
 		$rentalrept.= "Max KM Per day - ".$row_vehics['maxkm_perday']." kms"."<br>";
 		$rent_upl.= $row_vehics['maxkm_perday'].'-';
@@ -205,6 +231,12 @@ for ($q=0;$q<$cnt_cities;$q++)
 		$rent_upl.= $exp_extdis1[1].'-';
 		
 		$totrent_amt = $trdays * $row_vehics['rent_day'];
+		if($is_arr_time){
+			$totrent_amt +=$row_vehics['rent_transfer'];
+		}
+		if($is_dept_time){
+			$totrent_amt +=$row_vehics['rent_transfer'];
+		}
 		$max_allwd_kms = $trdays * $row_vehics['maxkm_perday'];
 		//echo $max_allwd_kms;
 		$trdist_extrdis = $trdist + $exp_extdis1[1];

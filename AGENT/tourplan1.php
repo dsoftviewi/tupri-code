@@ -376,8 +376,8 @@ if(isset($_POST['subform']) && $_POST['subform'] == 1)
 		{
 			$veh_upl2 = explode('-',$veh_upl1[$vcnt]);
 	
-			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?, 1)");
-			$insertSQL5->execute(array($id,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9]));
+			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?, 1)");
+			$insertSQL5->execute(array($id,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9],$veh_upl2[10],$veh_upl2[11]));
 		}
 		
 		//Insert All travel vehicles from every city's info
@@ -396,8 +396,8 @@ if(isset($_POST['subform']) && $_POST['subform'] == 1)
 			{
 				$each_veh_upl = explode('-',$exp_get_veh[$evcnt]);
 		
-				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?, 1)");
-				$insertSQL6->execute(array($id,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9]));
+				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?, 1)");
+				$insertSQL6->execute(array($id,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9],$each_veh_upl[10],$each_veh_upl[11]));
 			}
 		}
 		
@@ -484,8 +484,8 @@ if(isset($_POST['subform']) && $_POST['subform'] == 1)
 		{
 			$veh_upl2 = explode('-',$veh_upl1[$vcnt]);
 
-			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?, 1)");
-			$insertSQL5->execute(array($tid,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9]));
+			$insertSQL5 = $conn->prepare("INSERT INTO travel_vehicle (travel_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?, 1)");
+			$insertSQL5->execute(array($tid,$veh_upl2[0],$veh_upl2[1],$veh_upl2[2],$veh_upl2[3],$veh_upl2[4],$veh_upl2[5],$veh_upl2[6],$veh_upl2[7],$veh_upl2[8],$veh_upl2[9],$veh_upl2[10],$veh_upl2[11]));
 		}
 		
 		//Insert All travel vehicles from every city's info
@@ -504,8 +504,8 @@ if(isset($_POST['subform']) && $_POST['subform'] == 1)
 			{
 				$each_veh_upl = explode('-',$exp_get_veh[$evcnt]);
 		
-				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?, 1)");
-				$insertSQL6->execute(array($tid,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9]));
+				$insertSQL6 = $conn->prepare("INSERT INTO dvi_trans_rpt (travel_id, city_id, vehicle_id, rent_transfer, arr_day, rent_day, max_km_day, rent_per_km, return_dist, tot_dist, max_allwd_km, exceed_km, permit_amt, rent_amt, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?, 1)");
+				$insertSQL6->execute(array($tid,$each_cityid,$each_veh_upl[0],$each_veh_upl[1],$each_veh_upl[2],$each_veh_upl[3],$each_veh_upl[4],$each_veh_upl[5],$each_veh_upl[6],$each_veh_upl[7],$each_veh_upl[8],$each_veh_upl[9],$each_veh_upl[10],$each_veh_upl[11]));
 			}
 		}
 		

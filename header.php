@@ -532,8 +532,8 @@ function check_login()
 				 }
 				 else
 				 {
-          window.location.href='dashboard_maintain.php';
-          return false;
+         // window.location.href='dashboard_maintain.php';
+         // return false;
 					if(check == 'AGENT')
 					{
 						window.location.href='agent_manaorder.php?mm=23311f54cbcb20fd815e2574e8b07b39&sm=f0e2efabf331f439ad99596cea1accf3';	

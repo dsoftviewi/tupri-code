@@ -145,7 +145,19 @@ body {
                                              </td>
                                              <td>
 												<p class="text-muted">
-												<?php echo $row_routes['tr_from_cityid'].' TO '.$row_routes['tr_to_cityid']; ?>
+												<?php 
+												if($row_routes['via_cities'] != '-'){
+													$via_cities_arr = explode("-",$row_routes['via_cities']);
+													$middleElem = floor(count($via_cities_arr) / 2);
+													$via_cities = $conn->prepare("SELECT * FROM dvi_cities where id =?");
+													$via_cities->execute(array($via_cities_arr[$middleElem]));
+													$row_via_cities = $via_cities->fetch(PDO::FETCH_ASSOC);
+													echo $row_routes['tr_from_cityid'].' TO '.$row_routes['tr_to_cityid'].' via '.$row_via_cities['name'];
+													
+												}else{
+													 echo $row_routes['tr_from_cityid'].' TO '.$row_routes['tr_to_cityid'];
+													}
+												?>
 												</p>
                                              </td>
                                              

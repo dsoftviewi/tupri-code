@@ -137,7 +137,7 @@ if(trim($row_breakup['sub_paln_id'])!='')//not empty
 //breakup end 
 ?>
 <tr><td align="center">
-	<table border="1" width="85%" style="border-collapse: collapse;">
+	<table border="1" width="95%" style="border-collapse: collapse;">
 	<tr><th colspan="5" style="text-align: center;background-color: rgb(39, 96, 146);
 color: whitesmoke;padding: 5px;"><?php echo "Guest Name : ".$customer_name; ?></th></tr>
 		<tr>
@@ -159,7 +159,7 @@ color: whitesmoke;padding: 5px;"><?php echo "Guest Name : ".$customer_name; ?></
 			$totalRows_or = $or->rowCount();
 		?>
 		<tr>
-			<th style="padding:6px; font-family:Calibri; font-size: 14px;"><?php echo $rno; ?></th>
+			<th style="padding:6px; font-family:Calibri; font-size: 14px;"><?php echo "Breakup ". $rno; ?></th>
 			<th style="padding:6px; font-family:Calibri; font-size: 14px;">
 				<?php echo date('d-M-Y',strtotime($row_or['tr_arr_date'])); 
 
@@ -178,16 +178,18 @@ color: whitesmoke;padding: 5px;"><?php echo "Guest Name : ".$customer_name; ?></
 									if(trim($vah[$r]) != '')
 									{
 						    
-							$vpro = $conn->prepare("SELECT * FROM vehicle_pro where vehi_id =?");
-						    $vpro->execute(array($vah[$r]));
+							$vpro = $conn->prepare("SELECT * FROM travel_vehicle tv,vehicle_pro vp where tv.vehicle_id=vp.vehi_id and tv.travel_id = ? and tv.vehicle_id=?");
+						    $vpro->execute(array($breakup1,$vah[$r]));
 							$row_vpro =$vpro->fetch(PDO::FETCH_ASSOC);
 							$totalRows_vpro = $vpro->rowCount();
+							$travel_amount =  $row_vpro['rent_amt'] +($row_or['agnt_adm_perc'] * $row_vpro['rent_amt']/100);
+							$travel_amount = 	number_format(convert_currency($travel_amount,$_GET['planid']),2);
 							if(isset($vah[$r+1]) && $vah[$r+1] != '')
 							{
-								 echo $row_vpro['vehicle_type'].",&nbsp;";
+								 echo $row_vpro['vehicle_type']."&nbsp; = ".$travel_amount."<BR/>";
 							}else
 							{
-								echo $row_vpro['vehicle_type'];
+								echo $row_vpro['vehicle_type']."&nbsp; = ".$travel_amount;
 							}
 									}
 								}
@@ -314,7 +316,21 @@ if(isset($vah[$r+1]) && $vah[$r+1] != '')
         	<tr>
             <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo $ts; ?>&nbsp;</td>
             <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo date('d-M-Y',strtotime($row_trvscd['tr_date'])); ?>&nbsp;</td>
-            <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo $row_trvscd['tr_from_cityid'].' - '.$row_trvscd['tr_to_cityid']; ?>&nbsp;</td>
+            <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;
+			<?php 
+												if($row_trvscd['via_cities'] != '-'){
+													$via_cities_arr = explode("-",$row_trvscd['via_cities']);
+													$middleElem = floor(count($via_cities_arr) / 2);
+													$via_cities = $conn->prepare("SELECT * FROM dvi_cities where id =?");
+													$via_cities->execute(array($via_cities_arr[$middleElem]));
+													$row_via_cities = $via_cities->fetch(PDO::FETCH_ASSOC);
+													echo $row_trvscd['tr_from_cityid'].' TO '.$row_trvscd['tr_to_cityid'].' via '.$row_via_cities['name'];
+													
+												}else{
+													 echo $row_trvscd['tr_from_cityid'].' TO '.$row_trvscd['tr_to_cityid'];
+													}
+												?>
+			&nbsp;</td>
             <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php  if($row_trvscd['tr_dist_ess']!='0') { echo $row_trvscd['tr_dist_ess']." Kms."; }else { echo $row_trvscd['tr_dist_ss']." Kms.";}?>&nbsp;</td>
             <td style="font-family:Calibri; font-size: 12px; font-weight:600; padding:5px">&nbsp;<?php echo $row_trvscd['tr_time']; ?>&nbsp;</td>
             </tr>
